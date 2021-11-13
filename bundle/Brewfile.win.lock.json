@@ -1,0 +1,14 @@
+{
+  "entries": {
+  },
+  "system": {
+    "linux": {
+      "Ubuntu 20.04.3 LTS (focal)": {
+        "HOMEBREW_VERSION": "3.3.3",
+        "HOMEBREW_PREFIX": "/home/linuxbrew/.linuxbrew",
+        "Homebrew/linuxbrew-core": "6b20029a6587ef96389db64b7e21108cc2232092",
+        "GCC": "9.3.0"
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+## ----------------------------------------
+##  Brewfile
+## This is the file outputed by "brew bundle dump --file 'Brewfile.mac'" command
+## Install: "brew bundle --file "Brewfile.mac"
+## ----------------------------------------
+
+tap "homebrew/cask"
+tap "homebrew/services"
+cask_args appdir: "/Applications"
+
+## ========== Base ==========
+brew 'mas'  # 
+brew "nkf"  # encode for Mac
+brew "grep"  # "grep", "egrep", "fgrep" for Mac
+brew "gnu-sed"  # Replacement for "sed". fro Mac
+
+## ========== Shell ==========
+brew "zsh"
+brew "zsh-completions"
+
+## ========== Fonts ==========
+tap  "homebrew/cask-fonts"
+cask "font-fontawesome"
+cask "font-hack-nerd-font"
+
+## ========== Language & Databases ==========
+tap "AdoptOpenJDK/openjdk"
+cask "adoptopenjdk11"
+
+## ========== Applications ==========
+cask "zoom"
+cask "slack"
+cask "alfred"
+cask "docker"
+cask "kindle"
+cask "iterm2"
+cask "discord"
+cask "postman"
+cask "keycastr"
+cask "gpg-suite"
+cask "rectangle"
+cask "appcleaner"
+cask "sequel-ace"
+cask "google-chrome"
+cask "android-studio"
+cask "karabiner-elements"
+cask "visual-studio-code"
+cask "google-japanese-ime"
+cask "db-browser-for-sqlite"
+# mas  "Xcode", id: 497799835
+# mas "Amphetamine", id: 937984704

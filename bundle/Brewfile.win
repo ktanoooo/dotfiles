@@ -1,0 +1,2 @@
+## ========== Base ==========
+brew "gnupg"  # It is gpg2. For github.

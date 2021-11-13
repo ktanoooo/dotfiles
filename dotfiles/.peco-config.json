@@ -1,0 +1,6 @@
+{
+  "Keymap": {
+    "C-k": "peco.KillEndOfLine",
+    "C-g": "peco.Cancel"
+  }
+}

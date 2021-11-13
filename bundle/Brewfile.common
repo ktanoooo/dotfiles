@@ -1,0 +1,47 @@
+## ----------------------------------------
+## Brewfile
+## This is the file outputed by "brew bundle dump --file 'Brewfile.win'" command
+## Install: "brew bundle --file "Brewfile.win"
+## ----------------------------------------
+
+tap "homebrew/bundle"
+tap "homebrew/services"
+
+## ========== Base ==========
+brew "fd"  # Replacement for "find"
+brew "gh"  # Github CLI
+brew "sd"  # Intuitive find & replace CLI
+brew "k6"  # Performance test tool
+brew "act"  # Github Actions locally
+brew "bat"  # Bash Automated Testing System
+brew "exa"  # Replacement for "ls"
+brew "fzf"  # Command line finder
+brew "ghq"  # Remote Repository management tool
+brew "git"  # git
+brew "asdf"  # Version manager
+brew "dust"  # Replacement for "du"
+brew "tmux"  # Terminal multiplexer
+brew "shfmt"  # Autoformat shell script source code
+brew "neovim"  # Vim-fork focused on extensibility and agility
+brew "ripgrep"  # Replacement for "grep"
+brew "kompose"  # Create k8s's manifest from docker-compose.yml
+brew "minikube"  # Run a k8s cluster locally
+brew "skaffold"  # Easy and Repeatable k8s Development
+brew "git-delta"  # Syntax-highlighting pager for git and diff output
+brew "shellcheck"  # Static analysis and lint tool, for (ba)sh scripts
+brew "imagemagick"  # Tools and libraries to manipulate images in many formats
+brew "git-secrets"  # Prevents you from committing sensitive information to a git repo
+
+## ========== Language & Databases ==========
+brew "node"
+brew "ruby"
+brew "mysql"
+brew "golang"
+brew "python"
+brew "sqlite"
+brew "rustup"
+brew "postgres"
+
+## ========== Shell ==========
+brew "zsh"
+brew "zsh-completions"

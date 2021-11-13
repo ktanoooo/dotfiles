@@ -1,0 +1,156 @@
+[user]
+  name       = ktanoooo
+  email      = ktanoooo1112@gmail.com
+  signingkey = A294A15CF1C1B424
+
+[init]
+  defaultBranch = main
+
+[alias]
+  ad  = add
+  ada = add -A
+  adf = !git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 git add
+  adu = !git diff --name-only --cached | fzf -m --print0 | xargs -0 git restore --staged
+  br  = branch -av
+  brd = !git branch | fzf -m --print0 | tr -d ' ' | xargs -0 git branch -D
+  bl  = !"f() { git blame $1 | fzf --preview 'echo {} | cut -f1 -d\" \" | xargs git show --color'; }; f"
+  cm  = commit --verbose
+  cl  = clean -fd
+  co  = checkout
+  cob = checkout -b
+  coc = !git branch | fzf | xargs git checkout
+  cof = !git ls-files -m -o --exclude-standard | fzf -m --print0 | xargs -0 git checkout
+  ; cor = !hub pr checkout `hub pr list | fzf`
+  cor = !"f() { git fetch -p; git checkout -b $1 origin/$1; }; f"
+  cp  = cherry-pick
+  del = !git branch -r --merged | grep -v 'master\\|develop' | sed 's/origin\\///' | xargs -n 1 git push --delete origin && git fetch origin --prune
+  df  = diff
+  dfc = diff --cached
+  dfh = diff HEAD
+  dfr = !git diff origin `git rev-parse --abbrev-ref HEAD`
+  dft = difftool
+  fp  = fetch -p
+  g   = !ghq get
+  lg  = log --stat
+  lgg = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+  lgs = !git log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit | fzf --preview 'echo {} | cut -f1 -d\" \" | xargs git show --color'
+  lgp = log -p
+  lgd = !"f() { b=$(git rev-parse --abbrev-ref HEAD); git log origin/$b..$b --oneline | fzf --preview 'echo {} | cut -f1 -d\" \" | xargs git show --color'; }; f"
+  mt  = mergetool
+  op  = !gh repo view --web
+  opg = !gh repo view `ghq list | fzf | cut -d "/" -f 2,3` --web
+  opi = !gh issue view `gh issue list | fzf` --web
+  opp = !gh pr view `gh pr list | fzf` --web
+  ; opr = !hub api --paginate -XGET user/repos -f affiliation=owner -f per_page=100 | jq -r '.[].name' | fzf | xargs hub browse
+  ; opt = !hub api --paginate -XGET gists -f affiliation=owner -f per_page=100 | jq -r '.[] | \"\\(.files | keys[]) \\(.id)\"' | fzf | awk -F' ' '{print $NF}' | xargs -I{} open -a "Google Chrome" https://gist.github.com/ktanoooo/{}
+  ps  = !git push origin `git rev-parse --abbrev-ref HEAD`
+  pl  = !git pull origin `git rev-parse --abbrev-ref HEAD`
+  plr = pull --rebase
+  pr  = !"f() { git log --merges --oneline --reverse --ancestry-path $1...master | grep 'Merge pull request' | head -n 1; }; f"
+  ra  = !"f() { echo $1 | sed 's/https/git/g' | sed 's/$/.git/g' | xargs git remote add forked; }; f"
+  rb  = rebase
+  rf  = reflog --format='%C(auto)%h %<|(20)%gd %C(blue)%ci%C(reset) %gs (%s)'
+  rfs = !git reflog --format='%C(auto)%h %<|(20)%gd %C(blue)%ci%C(reset) %gs (%s)' | awk -F' ' '{print $2}' | xargs git reset --hard
+  rs  = reset
+  rsh = reset --hard
+  rmg = !ghq list -p | fzf -m --print0 | xargs -0 rm -rf
+  rv  = !"f() { git revert $1^..$2; }; f"
+  sca = secrets --scan-history
+  st  = status
+  ss  = stash save
+  sc  = stash clear
+  sl  = !git stash list | awk -F':' '{print $1}' | fzf --preview 'git -c color.ui=always stash show -p {}'
+  sp  = !git stash pop `git stash list | awk -F':' '{print $1}' | fzf --preview 'git -c color.ui=always stash show -p {}'`
+  sd  = !git stash drop `git stash list | awk -F':' '{print $1}' | fzf --preview 'git -c color.ui=always stash show -p {}'`
+  sk  = update-index --skip-worktree
+  su  = ls-files --others --exclude-standard
+  usk = update-index --no-skip-worktree
+  vi  = !nvim ~/.gitconfig
+  lf  = !git lfs install
+  ulf = !git lfs uninstall && touch **/* && git commit -a
+
+[core]
+  pager = delta
+  editor = nvim
+  hooksPath = ~/.git_template
+  excludesfile = ~/.gitignore-global  # global gitignore
+  attributesfile = ~/.gitattributes
+
+[color]
+  ui = true
+  diff = auto
+  branch = auto
+  status = auto
+  showbranch = auto
+
+[color "branch"]
+  local = green
+  remote = red
+  current = green reverse
+
+[color "diff"]
+  old = red bold
+  new = green bold
+  meta = yellow bold
+  frag = magenta bold
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+
+[commit]
+  gpgsign = true
+  template = ~/.git_template/commit-template
+
+[credential]
+  helper = osxkeychain
+
+[delta]
+  light = true
+  line-numbers = true
+  syntax-theme = Monokai Extended Light
+
+[diff]
+  prompt    = false
+  tool      = vimdiff
+  algorithm = histogram
+
+[diff "plist"]
+  textconv = plutil -convert xml1 -o -
+
+[difftool]
+  prompt = false
+
+[difftool "vimdiff"]
+  path   = nvim
+
+[ghq]
+  root = ~/.ghq
+
+[gpg]
+  program = gpg2
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  ff            = false
+  conflictstyle = diff3
+  tool          = vimdiff
+
+[mergetool]
+  prompt = false
+  keepBackup = false
+
+[mergetool "vimdiff"]
+  path   = nvim
+
+[pull]
+  ff = only
+
+[url "git@github.com:"]
+  insteadOf = https://github.com/
+
+[url "https://github.com/rust-lang/crates.io-index"]
+  insteadOf = https://github.com/rust-lang/crates.io-index
