@@ -99,6 +99,9 @@
   changed = green
   untracked = cyan
 
+[tag]
+  gpgsign = true
+
 [commit]
   gpgsign = true
   template = ~/.git_template/commit-template
