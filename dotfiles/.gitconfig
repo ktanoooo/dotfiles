@@ -129,7 +129,7 @@
   root = ~/.ghq
 
 [gpg]
-  program = gpg2
+  program = gpg
 
 [interactive]
   diffFilter = delta --color-only
