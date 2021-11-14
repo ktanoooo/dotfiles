@@ -11,8 +11,10 @@ cask_args appdir: "/Applications"
 ## ========== Base ==========
 brew 'mas'  # 
 brew "nkf"  # encode for Mac
+brew "curl"
 brew "grep"  # "grep", "egrep", "fgrep" for Mac
 brew "gnu-sed"  # Replacement for "sed". fro Mac
+brew "coreutils"
 
 ## ========== Shell ==========
 brew "zsh"

@@ -22,7 +22,6 @@ brew "tig"
 brew "asdf"  # Version manager
 brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
-brew "shfmt"  # Autoformat shell script source code
 brew "neovim"  # Vim-fork focused on extensibility and agility
 brew "ripgrep"  # Replacement for "grep"
 brew "kompose"  # Create k8s's manifest from docker-compose.yml
