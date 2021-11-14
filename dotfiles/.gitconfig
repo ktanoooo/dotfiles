@@ -1,7 +1,7 @@
 [user]
   name       = ktanoooo
   email      = ktanoooo1112@gmail.com
-  signingkey = A294A15CF1C1B424
+  signingkey = 47A9305145BB0DE9
 
 [init]
   defaultBranch = main
@@ -99,9 +99,6 @@
   changed = green
   untracked = cyan
 
-[tag]
-  gpgsign = true
-
 [commit]
   gpgsign = true
   template = ~/.git_template/commit-template
@@ -149,8 +146,17 @@
 [mergetool "vimdiff"]
   path   = nvim
 
+[pager]
+  diff = delta
+  show = delta
+  log = delta
+  reflog = delta
+
 [pull]
   ff = only
+
+[tag]
+  gpgsign = true
 
 [url "git@github.com:"]
   insteadOf = https://github.com/

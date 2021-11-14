@@ -48,6 +48,10 @@ symboliclink_dotfiles() {
     target="${HOME}/${relpath}"
     mkdir -p "$(dirname "${target}")"
     ln -sfnv "${abspath}" "${target}"
+    echo $dirpath
+    echo $abspath
+    echo $relpath
+    echo $target
   }
   export -f handle_symlink_from_path
 
