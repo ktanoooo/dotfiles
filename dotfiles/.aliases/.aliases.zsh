@@ -132,3 +132,17 @@ alias unzipsjis='unzip -O cp932'
 alias shs='echo Use "pyhs"; python3 -m http.server'
 alias pyhs='python3 -m http.server'
 
+
+## ----------------------------------------
+##  Zinit
+## ----------------------------------------
+zinit-plug-install() {
+  source ~/.zshrc
+}
+zinit-plug-update() {
+  zinit self-update
+  zinit update
+}
+zinit-plug-clean() {
+  zinit delete --clean
+}

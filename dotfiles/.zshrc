@@ -118,6 +118,7 @@ alias bat='bat --color=always --theme=ansi'
 alias ydl='youtube-dl -x --audio-format mp3'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
+alias python='python3' py='python' pip='pip3'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
 alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
@@ -231,6 +232,13 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 ## ----------------------------------------
 ##  iTerm2
 ## ----------------------------------------
+
+## ----------------------------------------
+##  asdf
+## ----------------------------------------
+if [[ $OSTYPE == "linux-gnu" ]]; then
+  . /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
+fi
 
 ## ----------------------------------------
 ##  Zinit
