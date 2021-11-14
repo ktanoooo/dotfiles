@@ -56,19 +56,20 @@ autoload -Uz colors && colors
 ##  Completion
 ## ----------------------------------------
 setopt auto_list
-setopt auto_menu
+setopt auto_menu  # Go to next line, when bpress tab key
 setopt share_history
-setopt auto_param_slash
+setopt auto_param_slash  # add '/'
 setopt magic_equal_subst
 export HISTSIZE=1000
 export SAVEHIST=10000
 export HISTFILE=${HOME}/.zsh_history
 export FPATH="${HOME}/.zinit/completions:${FPATH}"
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 autoload -Uz compinit && compinit -i && compinit
 autoload -Uz up-line-or-beginning-search && zle -N up-line-or-beginning-search
 autoload -Uz down-line-or-beginning-search && zle -N down-line-or-beginning-search
-zstyle ':completion:*:default' menu select=2
-zstyle ':completion:*:default' list-colors "$LS_COLORS"
+zstyle ':completion:*:default' menu select=2  # select highlight
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}={[:lower:]}'
 
 ## ----------------------------------------
