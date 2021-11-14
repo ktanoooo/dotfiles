@@ -255,6 +255,15 @@ autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 zinit ice wait'0'
+zinit lucid for \
+  ulwlu/enhancd \
+  zsh-users/zsh-completions \
+  zsh-users/zsh-autosuggestions \
+  zsh-users/zsh-syntax-highlighting \
+  # as'completion' is-snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
+  # as'completion' is-snippet 'https://github.com/docker/machine/blob/master/contrib/completion/zsh/_docker-machine' \
+  # as'completion' is-snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose' \
+  # as'completion' is-snippet 'https://github.com/lukechilds/zsh-better-npm-completion/blob/master/zsh-better-npm-completion.plugin.zsh'
 
 ## ----------------------------------------
 ##  Prompt
