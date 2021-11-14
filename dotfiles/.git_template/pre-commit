@@ -1,0 +1,11 @@
+## ----------------------------------------
+##  Checking
+## ----------------------------------------
+# Check for .pem files
+MATCH=$(git diff --cached --name-only | grep '.*\.pem$')
+if [[ ! -z $MATCH ]]; then
+  echo "It looks like you're trying to commit a PEM file in:"
+  echo "$MATCH\n\n"
+  echo "Please check your code and remove any PEM files."
+  exit 1
+fi
