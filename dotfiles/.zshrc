@@ -112,36 +112,26 @@ disable r
 alias vi='nvim'
 alias cdh='cd ~'
 alias op='open ./'
-alias grep='ggrep'
-alias pp='pbpaste >'
 alias cdwk='cd ~/work'
-alias hf='hyperfine --max-runs 3'
-alias k6run='k6 run --vus 10 --duration 40s'
-alias python='python3' py='python' pip='pip3'
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias bat='bat --color=always --theme=ansi'
-alias shfmt="shfmt -i 2 -bn -ci -sr -l -w"
 alias ydl='youtube-dl -x --audio-format mp3'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
 alias ll='exa -alhF --group-directories-first --time-style=long-iso'
 alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
 alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
-alias rg='rg --hidden -g "!.git" -g "!node_modules" --max-columns 200' rgi='rg -i' rgn='rgi --no-ignore'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
-catp() { cat "$1" | pbcopy }
 mkcd() { mkdir "$1" && cd "$1"; }
-rgsd() { rg -l "$1" | xargs sd "$1" "$2"; }
-fdsd() { fd "$1" -x rename "s/${2}/${3}/ if -f" }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
-vv() {
-  [ -z "$1" ] && code -r ./ && return 0;
-  code -r "$1";
-}
 lnsv() {
   [ -z "$2" ] && echo "Specify Target" && return 0;
   abspath=$(absp $1);
   ln -sfnv "${abspath}" "$2";
+}
+vv() {
+  [ -z "$1" ] && code -r ./ && return 0;
+  code -r "$1";
 }
 rgvi() {
   [ -z "$2" ] && matches=`rg "$1" -l`;
@@ -162,13 +152,13 @@ hst() {
   [ -z "${cmd}" ] && echo "fzf Canceled." && return 0;
   echo "${cmd}" && eval "${cmd}"
 }
-cimg() {
-  case "$1" in
-    *.jpeg|*.jpg) opt="--mozjpeg";;
-    *.png)        opt="--oxipng";;
-  esac
-  squoosh-cli "$opt" '{}' "$1"
-}
+
+if [[ $OSTYPE != "linux-gnu" ]]; then
+  # MacOS
+  alias grep='ggrep'
+  alias pp='pbpaste >'
+  catp() { cat "$1" | pbcopy }
+fi
 
 ## ========== Global Alias ==========
 alias -g G='| grep'
@@ -178,15 +168,11 @@ alias -g X='| xargs'
 alias -g C='| wc -l'
 alias -g CP='| pbcopy'
 
-## ========== Suffix Alias ==========
-alias -s {png,jpg,jpeg}='imgcat'
-alias -s {html,mp3,mp4,mov}='open'
-
 ## ========== Git ==========
 ## - ~/.gitconfig has more git aliases.
 alias g='git' && compdef _git g
 alias cdgh='cd `ghq list -p | fzf`'
-alias cdg='cd `git rev-parse --show-toplevel`'
+alias ghweb='gh repo view --web'
 gcre() {
   [ -z "$(ls -A ./)" ] && echo "Fail: Directory is empty." && return 0;
   git init;
@@ -195,8 +181,8 @@ gcre() {
   read        name"?type repo name        : ";
   read description"?type repo description : ";
   gh repo create ${name} --description ${description} --private;
-  git push --set-upstream origin master;
-  gh repo view --web;
+  git push --set-upstream origin main;
+  ghweb;
 }
 
 ## ========== Kubernetes ==========
@@ -234,9 +220,6 @@ vigo() {
 
 ## ========== Aliases && Snippets ==========
 [ -f ~/.secret_alias ] && source ~/.secret_alias
-alias visn='vi     `ls -d ~/.snippets/* | fzf --preview "bat --color=always --theme=ansi {}"`'
-alias vial='vi     `ls -d ~/.aliases/*  | fzf --preview "bat --color=always --theme=ansi {}"`'
-alias soal='source `ls -d ~/.aliases/*  | fzf --preview "bat --color=always --theme=ansi {}"`'
 
 ## ----------------------------------------
 ##  FZF
@@ -248,10 +231,6 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 ## ----------------------------------------
 ##  iTerm2
 ## ----------------------------------------
-if [ "$TERM_PROGRAM" = "iTerm.app" ]; then
-  [ -f ~/.iterm2_shell_integration.zsh ] && source ~/.iterm2_shell_integration.zsh
-  alias imgcat='/usr/local/bin/imgcat'
-fi
 
 ## ----------------------------------------
 ##  Zinit

@@ -1,0 +1,1 @@
+alias tiga='tig --all'

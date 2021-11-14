@@ -1,5 +1,3 @@
-# vim: filetype=zsh
-
 alias grep='grep --color=auto'
 alias a='grep alias $HOME/.aliases'
 alias aa='grep alias $HOME/.aliases-local'

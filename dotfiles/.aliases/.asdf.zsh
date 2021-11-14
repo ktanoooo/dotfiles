@@ -1,6 +1,4 @@
 asdf_setup() {
-  brew install asdf
-  brew install gpg
   echo -e "\n. $(brew --prefix asdf)/asdf.sh" >> ~/.zshrc
 }
 
@@ -21,9 +19,6 @@ asdf_ruby_install() {
 }
 
 asdf_nodejs_install() {
-  sudo apt-get install dirmngr
-  sudo apt-get install gpg
-  sudo apt-get install curl
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
   asdf install nodejs 17.0.1
   asdf global nodejs 17.0.1
