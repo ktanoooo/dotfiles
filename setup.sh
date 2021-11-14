@@ -18,6 +18,42 @@ install_bundle() {
 }
 
 ## ----------------------------------------
+##  Install Asdf
+## ----------------------------------------
+install_asdf_global() {
+  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  if [ -f "${HOME}/.tool-versions" ]; then
+    while read line; do
+      lng=`$line | cut -d' ' -f1`
+      ver=`$line | cut -d' ' -f2`
+      asdf install $lng $ver
+      asdf global $lng $ver
+    done < "${HOME}/.tool-versions"
+  else
+    echo "Please create `${HOME}/.tool-versions`"
+  fi
+}
+
+## ----------------------------------------
+##  Install Yarn
+## ----------------------------------------
+install_yarn() {
+  npm install -g yarn
+  yarn -v
+}
+
+
+## ----------------------------------------
+##  Install Zinit
+## ----------------------------------------
+install_zinit() {
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+  source ~/.zshrc
+  zinit self-update
+}
+
+## ----------------------------------------
 ##  Git Configuration
 ## ----------------------------------------
 git_configuration() {
@@ -78,11 +114,6 @@ symboliclink_dotfiles() {
 }
 
 ## ----------------------------------------
-##  Install asdf
-## ----------------------------------------
-
-
-## ----------------------------------------
 ##  Myself
 ## ----------------------------------------
 setup_for_myself() {
@@ -91,9 +122,13 @@ setup_for_myself() {
 
 main() {
   # install_bundle
+  # install_asdf_gltall
+  # install_yarn
+  # install_zinit
   # git_configuration
   # clone_git_repositories
   symboliclink_dotfiles
+  # setup_for_myself
 }
 
 main
