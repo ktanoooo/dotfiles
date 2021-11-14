@@ -17,7 +17,8 @@ brew "bat"  # Bash Automated Testing System
 brew "exa"  # Replacement for "ls"
 brew "fzf"  # Command line finder
 brew "ghq"  # Remote Repository management tool
-brew "git"  # git
+brew "git"
+brew "tig"
 brew "asdf"  # Version manager
 brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
@@ -28,7 +29,6 @@ brew "kompose"  # Create k8s's manifest from docker-compose.yml
 brew "minikube"  # Run a k8s cluster locally
 brew "neofetch"  # system info script
 brew "skaffold"  # Easy and Repeatable k8s Development
-brew "git-delta"  # Syntax-highlighting pager for git and diff output
 brew "shellcheck"  # Static analysis and lint tool, for (ba)sh scripts
 brew "imagemagick"  # Tools and libraries to manipulate images in many formats
 brew "git-secrets"  # Prevents you from committing sensitive information to a git repo
