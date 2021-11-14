@@ -1,4 +1,4 @@
-alias tm='tmux' && compdef _tmux tm
+alias tm='tmux'
 alias tmn='tmux attach -t 1 || tmux new -s 1'
 alias tmkl='tmux list-sessions | fzf -m | cut -d: -f 1 | xargs -I{} tmux kill-session -t {}'
 tmrn() {

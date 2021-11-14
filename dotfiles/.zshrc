@@ -170,7 +170,7 @@ alias -g CP='| pbcopy'
 
 ## ========== Git ==========
 ## - ~/.gitconfig has more git aliases.
-alias g='git' && compdef _git g
+alias g='git'
 alias cdgh='cd `ghq list -p | fzf`'
 alias ghweb='gh repo view --web'
 gcre() {
@@ -186,11 +186,11 @@ gcre() {
 }
 
 ## ========== Kubernetes ==========
-alias k='kubectl' && compdef _kubectl k
+alias k='kubectl'
 source <(kubectl completion zsh)
 
 ## ========== Tmux ==========
-alias tm='tmux' && compdef _tmux tm
+alias tm='tmux'
 alias tmn='tmux attach -t 1 || tmux new -s 1'
 alias tmkl='tmux list-sessions | fzf -m | cut -d: -f 1 | xargs -I{} tmux kill-session -t {}'
 tmrn() {
@@ -252,16 +252,8 @@ fi
 source "${HOME}/.zinit/bin/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
+
 zinit ice wait'0'
-zinit lucid for \
-  ulwlu/enhancd \
-  zsh-users/zsh-completions \
-  zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-syntax-highlighting \
-  as'completion' is-snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
-  as'completion' is-snippet 'https://github.com/docker/machine/blob/master/contrib/completion/zsh/_docker-machine' \
-  as'completion' is-snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose' \
-  as'completion' is-snippet 'https://github.com/lukechilds/zsh-better-npm-completion/blob/master/zsh-better-npm-completion.plugin.zsh'
 
 ## ----------------------------------------
 ##  Prompt

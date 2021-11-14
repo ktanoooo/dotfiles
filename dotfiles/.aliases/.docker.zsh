@@ -1,9 +1,6 @@
 alias d='docker'
-compdef _docker d
 alias dcc='docker-compose'
-compdef _docker-compose dcc
 alias k='kubectl'
-compdef _kubectl k
 
 ## ----------------------------------------
 ##  Base
