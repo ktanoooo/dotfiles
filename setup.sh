@@ -3,6 +3,8 @@
 ## ----------------------------------------
 ##  Preparation
 ##  Please open zsh by Ubuntu-20.04 on Windows Terminal
+##  Powershell > wsl -l -v
+##  If VERSTION equals 1, please commands '> wsl --set-version Ubuntu-20.04 2'.
 ## ----------------------------------------
 
 EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
@@ -48,10 +50,6 @@ symboliclink_dotfiles() {
     target="${HOME}/${relpath}"
     mkdir -p "$(dirname "${target}")"
     ln -sfnv "${abspath}" "${target}"
-    echo $dirpath
-    echo $abspath
-    echo $relpath
-    echo $target
   }
   export -f handle_symlink_from_path
 
