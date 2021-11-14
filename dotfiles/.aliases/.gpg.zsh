@@ -25,3 +25,8 @@ gpgdl() {
   # Delete public key
   gpg --delete-key ktanoooo1112@gmail.com
 }
+
+## ----------------------------------------
+## Delete
+## ----------------------------------------
+alias gpgchpass='gpg --change-passphrase ktanoooo'
