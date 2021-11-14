@@ -1,0 +1,1 @@
+/home/ktanoooo/.ghq/github.com/ktanoooo/dotfiles/dotfiles/.vimrc
