@@ -22,7 +22,9 @@ brew "tig"
 brew "asdf"  # Version manager
 brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
+brew "awscli"
 brew "neovim"  # Vim-fork focused on extensibility and agility
+brew "awslogs"
 brew "ripgrep"  # Replacement for "grep"
 brew "kompose"  # Create k8s's manifest from docker-compose.yml
 brew "minikube"  # Run a k8s cluster locally
