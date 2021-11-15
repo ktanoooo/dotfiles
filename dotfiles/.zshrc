@@ -169,27 +169,6 @@ alias -g X='| xargs'
 alias -g C='| wc -l'
 alias -g CP='| pbcopy'
 
-## ========== Git ==========
-## - ~/.gitconfig has more git aliases.
-alias g='git'
-alias cdgh='cd `ghq list -p | fzf`'
-alias ghweb='gh repo view --web'
-gcre() {
-  [ -z "$(ls -A ./)" ] && echo "Fail: Directory is empty." && return 0;
-  git init;
-  git secrets --install && git secrets --register-aws;
-  git add -A && git commit;
-  read        name"?type repo name        : ";
-  read description"?type repo description : ";
-  gh repo create ${name} --description ${description} --private;
-  git push --set-upstream origin main;
-  ghweb;
-}
-
-## ========== Kubernetes ==========
-alias k='kubectl'
-source <(kubectl completion zsh)
-
 ## ========== Tmux ==========
 alias tm='tmux'
 alias tmn='tmux attach -t 1 || tmux new -s 1'
