@@ -54,6 +54,14 @@ install_zinit() {
 }
 
 ## ----------------------------------------
+##  Tmux
+## ----------------------------------------
+install_tmux_plugin_manager() {
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+  /bin/bash ${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
+}
+
+## ----------------------------------------
 ##  Git Configuration
 ## ----------------------------------------
 git_configuration() {
@@ -125,6 +133,7 @@ main() {
   # install_asdf_gltall
   # install_yarn
   # install_zinit
+  # install_tmux_plugin_manager
   # git_configuration
   # clone_git_repositories
   symboliclink_dotfiles
