@@ -1,31 +1,63 @@
-alias grep='grep --color=auto'
-alias a='grep alias $HOME/.aliases'
-alias aa='grep alias $HOME/.aliases-local'
+## ========== Global Alias ==========
+alias -g G='| grep'
+alias -g H='| head'
+alias -g T='| tail'
+alias -g X='| xargs'
+alias -g C='| wc -l'
+alias -g CP='| pbcopy'
 
-alias ls='ls -aG'
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+alias cdh='cd ~'
+alias ls='exa -h'
+alias ll='exa -alhF --group-directories-first --time-style=long-iso'
+alias llx='ll --git-ignore --ignore-glob=".git|node_modules"'
+alias tr2='llx -T -L=2' tr3='llx -T -L=3'
 
-alias date-yymmddhhmmss='date +%Y%m%d%H%M%S'
+alias weather='curl -Acurl wttr.in/Tokyo'
+alias weathert='curl -Acurl wttr.in/Tokushima'
+alias bat='bat --color=always --theme=ansi'
+alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
+alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
+alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
+alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
+mkcd() { mkdir "$1" && cd "$1"; }
+absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
+lnsv() {
+  [ -z "$2" ] && echo "Specify Target" && return 0;
+  abspath=$(absp $1);
+  ln -sfnv "${abspath}" "$2";
+}
+vv() {
+  [ -z "$1" ] && code -r ./ && return 0;
+  code -r "$1";
+}
+rgvi() {
+  [ -z "$2" ] && matches=`rg "$1" -l`;
+  [ -z "${matches}" ] && echo "no matches\n" && return 0;
+  selected=`echo "${matches}" | fzf --preview "rg -pn '$1' {}"`;
+  [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
+  vi "${selected}";
+}
+fdvi() {
+  [ -z "$2" ] && matches=`fd "$1"`;
+  [ -z "${matches}" ] && echo "no matches\n" && return 0;
+  selected=`echo "${matches}" | fzf --preview "bat --color=always {}"`;
+  [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
+  vi "${selected}";
+}
+hst() {
+  cmd=`history 1 | awk '{$1="";print $0;}' | fzf`
+  [ -z "${cmd}" ] && echo "fzf Canceled." && return 0;
+  echo "${cmd}" && eval "${cmd}"
+}
+
+if [[ $OSTYPE != "linux-gnu" ]]; then
+  # MacOS
+  alias grep='ggrep'
+  alias pp='pbpaste >'
+  catp() { cat "$1" | pbcopy }
+fi
+
 alias df='df -Th'
-
-# editer
-alias vi='nvim'
-alias vim='nvim'
-alias view='nvim -R'
-alias viewhex="view -b -c '%!xxd'"
-
-## ========== Neovim ==========
-alias vivi='vi ~/.config/nvim/init.vim'
-vink() {
-  FORMAT=`nkf -g $@`;
-  nvim -c ":e ++enc=${FORMAT}" $@;
-}
-vigo() {
-  nvim -c "call append(0, v:oldfiles)" -c "write! ~/.config/nvim/viminfo.log" -c exit;
-  nvim `cat ~/.config/nvim/viminfo.log | fzf --preview 'bat --color=always {}'`;
-}
 
 # (--interactive)オプションで上書き時に対話形式で返すようにする
 alias cp='cp -i'
@@ -35,49 +67,7 @@ alias rm='rm -i'
 # alias   ssh
 alias skg='ssh-keygen -t rsa -f $1'
 
-# alias   pbcopy
-# alias   copyはこの後にファイルを指定する
-alias copy='pbcopy < '
-
-# alias   docker
-alias di='docker images'
-alias dps='docker ps'
-alias drmi='docker rmi -f'
-alias dip='docker inspect'
-alias dpsa='docker ps -a'
-
-# alias   docker-compose
-alias dcb='docker-compose build'
-alias dcup='docker-compose up'
-alias dcd='docker-compose down'
-alias dcps='docker-compose ps'
-alias dcpsa='docker-compose ps -a'
-
-# Ruby
-alias bclpvb='bundle config --local path vendor/bundle'
-alias be='bundle exec'
-alias bi='bundle install'
-alias bi-pvb='echo deprecated! Use "bclpvb" for "bundle config --local path vendor/bundle"'
-alias bi-bbb='bundle install --binstubs .bundle/bin'
-
-# Ruby
-alias bclpvb='bundle config --local path vendor/bundle'
-alias be='bundle exec'
-alias bi='bundle install'
-alias bi-pvb='echo deprecated! Use "bclpvb" for "bundle config --local path vendor/bundle"'
-alias bi-bbb='bundle install --binstubs .bundle/bin'
-
-# tig
-alias ta='tig --all'
-
-# ref. http://vim.wikia.com/wiki/256_colors_setup_for_console_Vim
-alias tmux='tmux -2'
-alias tmux-n='tmux -2 new-session -n ""'
-
 alias unzipsjis='unzip -O cp932'
-alias shs='echo Use "pyhs"; python3 -m http.server'
-alias pyhs='python3 -m http.server'
-
 
 ## ----------------------------------------
 ##  Zinit

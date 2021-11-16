@@ -52,35 +52,9 @@ alias dp='docker ps --latest'
 ## ----------------------------------------
 alias dccup='docker-compose up -d'
 alias dccdown='docker-compose down -v'
+alias dccps='docker-compose ps'
+alias dccpsa='docker-compose ps --all'
 alias dccb='docker-compose ps --services | fzf -m | cut -f1 | xargs docker-compose build'
-
-## ----------------------------------------
-##  Swarm
-## ----------------------------------------
-# alias dlsn='docker node ls'
-# alias dlss='docker service ls'
-# alias drms='docker service rm'
-# alias dscales='docker service scale'
-# alias dupdates='docker service update'
-# alias dcreates='docker service create'
-# alias dupdatei='docker service update --image'
-# alias dupdatee='docker service update --env-add'
-# alias dupdatesc='docker service update --secret-rm'
-# alias dupdatep='docker service update --publish-add'
-# alias drmsa='docker service rm $(docker service ls -q)'
-# alias dipm='docker-machine ip'
-# alias dssh='docker-machine ssh'
-# alias denv='docker-machine env'
-# alias dscp='docker-machine scp'
-# alias dleave='docker swarm leave --force'
-# alias dinit='docker swarm init --advertise-addr'
-# alias dcreatesw='docker network create --driver overlay'
-# alias dpss='docker stack ps'
-# alias ddeploy='docker stack deploy -c'
-# alias dservices='docker stack services'
-# alias dlssc='docker secret ls'
-# alias dcreatesc='docker secret create'
-# alias dinspectsc='docker secret inspect'
 
 ## ----------------------------------------
 ##  Kubernetes
