@@ -40,9 +40,7 @@ install_asdf_global() {
 ## ----------------------------------------
 install_yarn() {
   npm install -g yarn
-  yarn -v
 }
-
 
 ## ----------------------------------------
 ##  Install Zinit
