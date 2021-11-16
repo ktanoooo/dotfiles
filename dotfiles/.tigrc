@@ -13,7 +13,7 @@ set stash-view  = line-number:yes,interval=1 id:no date:default author:full comm
 set tree-view  = line-number:yes,interval=1 mode author:full file-size date:default id:no file-name
 set blame-view  = id:yes,color file-name:auto author:full date:default line-number:yes,interval=1 text
 set reflog-view  = line-number:yes,interval=1 id:yes date:no author:no commit-title:yes,refs,overflow=no
-set main-view  = line-number:yes,interval=1 id:yes date:default author:full commit-title:yes,graph,overflow=no
+set main-view = line-number:no,interval=5 id:no date:no author:width=7 commit-title:yes,graph,refs,overflow=no
 
 ## ----------------------------------------
 ##  Configure
@@ -27,10 +27,24 @@ set line-graphics     = utf-8
 ## ----------------------------------------
 ##  Keybind
 ## ----------------------------------------
-bind generic g move-first-line
-bind main    g move-first-line
-bind generic G move-last-line
-bind main    G move-last-line
+bind main H view-help
+bind generic h scroll-left
+bind generic L view-log
+bind generic l scroll-right
+bind generic <C-F> move-page-down
+bind generic <C-B> move-page-up
+bind main B ?git rebase -i %(commit)
+bind diff B ?git rebase -i %(commit)
+bind main A ?git rebase --committer-date-is-author-date %(commit)
+bind diff A ?git rebase --committer-date-is-author-date %(commit)
+bind main V ?git revert %(commit)
+bind main M ?git reset --hard %(commit)
+bind diff M ?git reset --hard %(commit)
+# ref. https://github.com/jonas/tig/issues/239
+bind main Y @bash -c "echo -n %(commit) | xsel -i -b"
+bind diff Y @bash -c "echo -n %(commit) | xsel -i -b"
+bind main O @hub browse -- commit/%(commit)
+bind diff O @hub browse -- commit/%(commit)
 
 ## ----------------------------------------
 ##  Theme
