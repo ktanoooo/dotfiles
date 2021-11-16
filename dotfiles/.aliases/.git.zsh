@@ -1,11 +1,11 @@
 alias g='git'
+alias gci='git commit'
+alias gca='git commit --amend'
 alias gac='git add -A :/ && git commit'
 alias gaca='git add -A :/ && git commit --amend'
 alias gwip='git add -A :/ && git commit -m "[WIP]"'
 alias gb='git branch'
-alias gca='git commit --amend'
-alias gci='git commit'
-alias gco='git checkout'
+palias gco='git checkout'
 alias gdf='git diff'
 alias gdfc='git diff --cached'
 alias gfop='git fetch origin --prune'
@@ -13,15 +13,23 @@ alias gfup='git fetch upstream --prune'
 alias glggo='git log --graph --oneline'
 alias gp='git push'
 alias gpo='git push origin'
+gpom() {
+  if git branch | grep '[ \*] master$' > /dev/null; then
+    git push origin master $@
+  else
+    git push origin main $@
+  fi
+}
 alias gpl='git pull'
 alias grm='git remote -v'
 alias grma='git remote add'
 alias grms='git remote set-url origin'
-alias grh='git reset --hard origin/main'
-alias grhh='git reset --hard HEAD'
-alias grh1h='git reset --hard HEAD^'
-alias gs='git status -sb'
-alias gst='git status'
+alias grm='git reset --mixed'
+alias grs='git reset --soft'
+alias grh='git reset --hard'
+alias grsom='git reset --soft origin/main'
+alias grmom='git reset --mixed origin/main'
+alias grhom='git reset --hard origin/main'
 alias gconf='git config --local --list'
 
 # gh 
@@ -61,17 +69,4 @@ gcre() {
   git push --set-upstream origin main;
   ghweb;
 }
-gacm() {
-  git add -A :/
-  git commit -m "$(echo $@)"
-}
-gcim() {
-  git commit -m "$(echo $@)"
-}
-gpom() {
-  if git branch | grep '[ \*] master$' > /dev/null; then
-    git push origin master $@
-  else
-    git push origin main $@
-  fi
-}
+
