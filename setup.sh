@@ -126,6 +126,7 @@ symboliclink_dotfiles() {
 ## ----------------------------------------
 setup_for_myself() {
   mkdir -p "${HOME}"/work
+  [ ! -f "${HOME}/.secret_aliass" ] && touch "${HOME}/.secret_aliass"
 }
 
 main() {
