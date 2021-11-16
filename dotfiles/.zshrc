@@ -15,9 +15,6 @@ export ENHANCD_HYPHEN_ARG="-ls"
 export TERM=xterm-256color
 export HOMEBREW_NO_AUTO_UPDATE=1
 export PATH="$PATH:${HOME}/.local/bin"
-export PATH="$PATH:/usr/local/opt/openjdk/bin"
-export CPPFLAGS="-I/usr/local/opt/openjdk/include"
-command -v gdircolors > /dev/null 2>&1 && eval $(gdircolors)
 
 ## ----------------------------------------
 ##  Editor
@@ -34,12 +31,6 @@ export LANGUAGE="en_US.UTF-8"
 export LANG="${LANGUAGE}"
 export LC_ALL="${LANGUAGE}"
 export LC_CTYPE="${LANGUAGE}"
-
-## ----------------------------------------
-##  GPG
-## ----------------------------------------
-# https://unix.stackexchange.com/questions/608842/zshrc-export-gpg-tty-tty-says-not-a-tty
-export GPG_TTY="${TTY}"
 
 ## ----------------------------------------
 ##  Option & Function
@@ -89,106 +80,36 @@ bindkey "^[[1;2B" down-line-or-beginning-search
 ## ----------------------------------------
 ##  Load
 ## ----------------------------------------
+# GPG
+# https://unix.stackexchange.com/questions/608842/zshrc-export-gpg-tty-tty-says-not-a-tty
+export GPG_TTY="${TTY}"
+
 # brew
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# aliases
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files"
+export FZF_DEFAULT_OPTS='--reverse --height 80%'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# asdf
+if [ $OSTYPE = "linux-gnu" ]; then
+  . "`brew --prefix`/opt/asdf/asdf.sh"
+fi
+
+## ----------------------------------------
+##  Aliases
+## ----------------------------------------
 ALIASES_PATH="${HOME}/.aliases"
 if [ -d $ALIASES_PATH -a -r $ALIASES_PATH -a -x $ALIASES_PATH ]; then
   for i in $ALIASES_PATH/*; do
     [[ ${i##*/} = *.zsh ]] && [ \( -f $i -o -h $i \) -a -r $i ] && . $i
   done
 fi
-
-## ----------------------------------------
-##  Disable defualt alias
-## ----------------------------------------
-## because of same as "!!" ( Repeat previous command )
-disable r
-
-## ----------------------------------------
-##  Alias & Function
-##  - ~/.aliases/**.zsh has more aliases.
-## ----------------------------------------
-alias vi='nvim'
-alias cdh='cd ~'
-alias op='open ./'
-alias cdwk='cd ~/work'
-alias weather='curl -Acurl wttr.in/Tokyo'
-alias bat='bat --color=always --theme=ansi'
-alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
-alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
-alias python='python3' py='python' pip='pip3'
-alias ll='exa -alhF --group-directories-first --time-style=long-iso'
-alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
-alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
-alias llx='ll --git-ignore --ignore-glob=".git|node_modules"' tr2='llx -T -L=2' tr3='llx -T -L=3'
-mkcd() { mkdir "$1" && cd "$1"; }
-absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
-lnsv() {
-  [ -z "$2" ] && echo "Specify Target" && return 0;
-  abspath=$(absp $1);
-  ln -sfnv "${abspath}" "$2";
-}
-vv() {
-  [ -z "$1" ] && code -r ./ && return 0;
-  code -r "$1";
-}
-rgvi() {
-  [ -z "$2" ] && matches=`rg "$1" -l`;
-  [ -z "${matches}" ] && echo "no matches\n" && return 0;
-  selected=`echo "${matches}" | fzf --preview "rg -pn '$1' {}"`;
-  [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
-  vi "${selected}";
-}
-fdvi() {
-  [ -z "$2" ] && matches=`fd "$1"`;
-  [ -z "${matches}" ] && echo "no matches\n" && return 0;
-  selected=`echo "${matches}" | fzf --preview "bat --color=always {}"`;
-  [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
-  vi "${selected}";
-}
-hst() {
-  cmd=`history 1 | awk '{$1="";print $0;}' | fzf`
-  [ -z "${cmd}" ] && echo "fzf Canceled." && return 0;
-  echo "${cmd}" && eval "${cmd}"
-}
-
-if [[ $OSTYPE != "linux-gnu" ]]; then
-  # MacOS
-  alias grep='ggrep'
-  alias pp='pbpaste >'
-  catp() { cat "$1" | pbcopy }
-fi
-
-## ========== Global Alias ==========
-alias -g G='| grep'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g X='| xargs'
-alias -g C='| wc -l'
-alias -g CP='| pbcopy'
-
-## ========== Aliases && Snippets ==========
 [ -f ~/.secret_alias ] && source ~/.secret_alias
 
-## ----------------------------------------
-##  FZF
-## ----------------------------------------
-export FZF_DEFAULT_COMMAND="rg --files"
-export FZF_DEFAULT_OPTS='--reverse --height 80%'
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-## ----------------------------------------
-##  iTerm2
-## ----------------------------------------
-
-## ----------------------------------------
-##  asdf
-## ----------------------------------------
-if [[ $OSTYPE == "linux-gnu" ]]; then
-  . /home/linuxbrew/.linuxbrew/opt/asdf/asdf.sh
-fi
+## because of same as "!!" ( Repeat previous command )
+disable r
 
 ## ----------------------------------------
 ##  Zinit
