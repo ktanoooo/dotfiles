@@ -91,14 +91,13 @@ let g:coc_global_extensions = [
   \ 'coc-rls',
   \ 'coc-json',
   \ 'coc-html',
-  \ 'coc-emmet',
   \ 'coc-clangd',
   \ 'coc-docker',
   \ 'coc-python',
-  \ 'coc-explorer',
-  \ 'coc-snippets',
   \ 'coc-tsserver',
+  \ 'coc-solargraph',
   \ 'coc-fzf-preview',
+  \ 'coc-markdownlint',
 \ ]
 nn <Leader>cup :CocUpdate<CR>
 nn <Leader>cstop :CocDisable<CR>
