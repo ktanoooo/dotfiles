@@ -58,13 +58,16 @@ gu() {
     echo "no change"
   fi
 }
+
 gcre() {
-  [ -z "$(ls -A ./)" ] && echo "Fail: Directory is empty." && return 0;
-  git init;
-  git secrets --install && git secrets --register-aws;
-  git add -A && git commit;
   read        name"?type repo name        : ";
   read description"?type repo description : ";
+  repoPath="`ghq root`/github.com/ktanoooo/${name}"
+  [ -d $repoPath  ] && echo "This name Repo is already exists." && return 0;
+  ghq create ${name};
+  cd $repoPath
+  git secrets --install && git secrets --register-aws;
+  git add -A && git commit;
   gh repo create ${name} --description ${description} --private;
   git push --set-upstream origin main;
   ghweb;
