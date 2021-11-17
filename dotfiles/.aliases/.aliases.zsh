@@ -27,8 +27,8 @@ lnsv() {
   ln -sfnv "${abspath}" "$2";
 }
 vv() {
-  [ -z "$1" ] && code -r ./ && return 0;
-  code -r "$1";
+  [ -z "$1" ] && code ./ && return 0;
+  code "$1";
 }
 rgvi() {
   [ -z "$2" ] && matches=`rg "$1" -l`;
