@@ -3,7 +3,10 @@ set -eux
 
 EXEPATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
 
-## ========== Brew Bundle ==========
+
+## ----------------------------------------
+##  Install Brewfile
+## ----------------------------------------
 install_brew() {
   brew upgrade
   brew tap "homebrew/bundle"
@@ -13,6 +16,15 @@ install_brew() {
   else
     brew bundle --file "${EXEPATH}/Brewfile.mac"
   fi
+}
+
+## ----------------------------------------
+##  Install vscode plugins
+## ----------------------------------------
+install_vsplug() {
+  for plugin in $(cat "${EXEPATH}"/Vsplug); do
+    code --install-extension "${plugin}"
+  done
 }
 
 main() {

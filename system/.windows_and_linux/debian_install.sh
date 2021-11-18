@@ -51,8 +51,3 @@ nvim +'PlugInstall --sync' +qa
 
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 /bin/bash ${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
-
-plugins=($(cat ${HOME}/Vsplug))
-for plugin in ${plugins}; do
-  code --install-extension ${plugin}
-done
