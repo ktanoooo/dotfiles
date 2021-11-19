@@ -14,3 +14,6 @@ tma() {
     tmux switch -t "${selected}"
   fi
 }
+tmuxkl() {
+  tmux ls | fzf-tmux | cut -d':' -f1 | xargs tmux kill-session -t
+}
