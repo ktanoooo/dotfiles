@@ -85,7 +85,7 @@ bindkey "^[[1;2B" down-line-or-beginning-search
 export GPG_TTY="${TTY}"
 
 # brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(`brew --prefix`/bin/brew shellenv)"
 
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files"
