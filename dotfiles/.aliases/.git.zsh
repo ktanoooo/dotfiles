@@ -59,6 +59,10 @@ gu() {
   fi
 }
 
+gclo() {
+  [ $# = 1 ] && ghq get -p $1
+}
+
 gcre() {
   read        name"?type repo name        : ";
   read description"?type repo description : ";
