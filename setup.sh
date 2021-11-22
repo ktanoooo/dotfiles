@@ -18,6 +18,45 @@ install_bundle() {
 }
 
 ## ----------------------------------------
+## Symbolic link dotfiles
+## ----------------------------------------
+symboliclink_dotfiles() {
+  handle_symlink_from_path() {
+    file=$1
+    dirpath=$(dirname "${file}") && filename=$(basename "${file}")
+    abspath=$(cd "${dirpath}" && pwd)"/${filename}"
+    relpath=$(echo "${file}" | sed "s|^\./dotfiles/||")
+    target="${HOME}/${relpath}"
+    mkdir -p "$(dirname "${target}")"
+    ln -sfnv "${abspath}" "${target}"
+  }
+  export -f handle_symlink_from_path
+
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    bulk_symlink_target=(
+      "./dotfiles/.aliases"
+      "./dotfiles/.git_template"
+    )
+  else
+    bulk_symlink_target=(
+      "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
+      "./dotfiles/.aliases"
+      "./dotfiles/.git_template"
+      "./dotfiles/.snippets"
+      "./dotfiles/.trashrc"
+    )
+  fi
+
+  find_exclude=""
+  for i in "${bulk_symlink_target[@]}"; do
+    handle_symlink_from_path "${i}"
+    find_exclude="${find_exclude} -path \"${i}\" -prune -or "
+  done
+  find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
+  eval "${find_command}"
+}
+
+## ----------------------------------------
 ##  Install Asdf
 ## ----------------------------------------
 install_asdf_global() {
@@ -80,44 +119,7 @@ clone_git_repositories() {
   # ... other repos
 }
 
-## ----------------------------------------
-## Symbolic link dotfiles
-## ----------------------------------------
-symboliclink_dotfiles() {
-  handle_symlink_from_path() {
-    file=$1
-    dirpath=$(dirname "${file}") && filename=$(basename "${file}")
-    abspath=$(cd "${dirpath}" && pwd)"/${filename}"
-    relpath=$(echo "${file}" | sed "s|^\./dotfiles/||")
-    target="${HOME}/${relpath}"
-    mkdir -p "$(dirname "${target}")"
-    ln -sfnv "${abspath}" "${target}"
-  }
-  export -f handle_symlink_from_path
 
-  if [[ $OSTYPE == "linux-gnu" ]]; then
-    bulk_symlink_target=(
-      "./dotfiles/.aliases"
-      "./dotfiles/.git_template"
-    )
-  else
-    bulk_symlink_target=(
-      "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
-      "./dotfiles/.aliases"
-      "./dotfiles/.git_template"
-      "./dotfiles/.snippets"
-      "./dotfiles/.trashrc"
-    )
-  fi
-
-  find_exclude=""
-  for i in "${bulk_symlink_target[@]}"; do
-    handle_symlink_from_path "${i}"
-    find_exclude="${find_exclude} -path \"${i}\" -prune -or "
-  done
-  find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
-  eval "${find_command}"
-}
 
 ## ----------------------------------------
 ##  Myself
@@ -129,13 +131,13 @@ setup_for_myself() {
 
 main() {
   # install_bundle
+  symboliclink_dotfiles
   # install_asdf_gltall
   # install_yarn
   # install_zinit
   # install_tmux_plugin_manager
   # git_configuration
   # clone_git_repositories
-  symboliclink_dotfiles
   # setup_for_myself
 }
 
