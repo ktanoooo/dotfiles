@@ -13,16 +13,20 @@ set stash-view  = line-number:yes,interval=1 id:no date:default author:full comm
 set tree-view  = line-number:yes,interval=1 mode author:full file-size date:default id:no file-name
 set blame-view  = id:yes,color file-name:auto author:full date:default line-number:yes,interval=1 text
 set reflog-view  = line-number:yes,interval=1 id:yes date:no author:no commit-title:yes,refs,overflow=no
-set main-view = line-number:no,interval=5 id:no date:no author:width=7 commit-title:yes,graph,refs,overflow=no
+set main-view = line-number:no,interval=5 id:no date author:width=7 commit-title:yes,graph,refs,overflow=no
+set main-view-date = custom
+set main-view-date-format = "%Y-%m-%d %H:%M"
 
 ## ----------------------------------------
 ##  Configure
 ## ----------------------------------------
 set split-view-height = 50%
-set vertical-split    = no
+set split-view-width  = 70%
+set vertical-split    = yes
 set ignore-case       = true
 set diff-highlight    = true
 set line-graphics     = utf-8
+set diff-context      = 8
 
 ## ----------------------------------------
 ##  Keybind
