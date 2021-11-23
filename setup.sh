@@ -99,6 +99,18 @@ install_tmux_plugin_manager() {
 }
 
 ## ----------------------------------------
+##  Tig
+## ----------------------------------------
+setup_tig() {
+  # Not yet supported delta in tig, comming soon.
+  # https://github.com/jonas/tig/pull/1140
+  # So, on MacOS, need to use diff-highlight in tig
+  if [[ $OSTYPE != "linux-gnu" ]]; then
+    ln -s `brew --prefix git`/share/git-core/contrib/diff-highlight/diff-highlight `brew --prefix`/bin
+  fi
+}
+
+## ----------------------------------------
 ##  Git Configuration
 ## ----------------------------------------
 git_configuration() {
@@ -118,8 +130,6 @@ clone_git_repositories() {
 
   # ... other repos
 }
-
-
 
 ## ----------------------------------------
 ##  Myself
