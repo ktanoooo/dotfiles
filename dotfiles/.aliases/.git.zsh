@@ -32,6 +32,9 @@ alias grsom='git reset --soft origin/main'
 alias grmom='git reset --mixed origin/main'
 alias grhom='git reset --hard origin/main'
 alias gconf='git config --local --list'
+alias gsta='git stash'
+alias gstaa='git stash apply'
+alias gstad='git stash list | cut -d':' -f1 | xargs git stash drop'
 
 # gh 
 alias ghweb='gh repo view --web'
