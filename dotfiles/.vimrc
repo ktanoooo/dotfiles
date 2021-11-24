@@ -45,7 +45,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 set ignorecase wildignorecase
 set hidden nobackup noswapfile
 set expandtab tabstop=2 softtabstop=2 shiftwidth=2 smartindent
-set encoding=utf-8 fileencodings=cp932,sjis,euc-jp,utf-8,iso-2022-jp
+set encoding=utf-8 fileencodings=utf-8,sjis,utf-16le,euc-jp,iso-2022-jp
 au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 if has('nvim')
   set inccommand=split
