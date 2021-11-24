@@ -58,6 +58,7 @@ if [[ $OSTYPE != "linux-gnu" ]]; then
 fi
 
 alias df='df -Th'
+alias makedummy='dd if=/dev/zero of=/home/user/100MB.file bs=1M count=100'
 
 # (--interactive)オプションで上書き時に対話形式で返すようにする
 alias cp='cp -i'
