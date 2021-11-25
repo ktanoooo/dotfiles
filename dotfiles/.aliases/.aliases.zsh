@@ -44,11 +44,12 @@ fdvi() {
   [ -z "${selected}" ] && echo "fzf Canceled." && return 0;
   vi "${selected}";
 }
-hst() {
+h() {
   cmd=`history 1 | awk '{$1="";print $0;}' | fzf`
   [ -z "${cmd}" ] && echo "fzf Canceled." && return 0;
   echo "${cmd}" && eval "${cmd}"
 }
+alias vvh='code -n ~/.zsh_history'
 
 if [[ $OSTYPE != "linux-gnu" ]]; then
   # MacOS
