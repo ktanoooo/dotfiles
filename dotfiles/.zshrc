@@ -97,9 +97,7 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # asdf
-if [ $OSTYPE = "linux-gnu" ]; then
-  . "`brew --prefix`/opt/asdf/asdf.sh"
-fi
+. "`brew --prefix`/opt/asdf/asdf.sh"
 
 ## ----------------------------------------
 ##  Aliases
