@@ -19,22 +19,27 @@
         "acrylicOpacity": 0.85,
         "useAcrylic": true,
         "cursorColor": "#FFFFFF",
-        "fontFace": "Delugia Nerd Font",
-        "fontSize": 11,
+        "font": {
+          "face": "Delugia Nerd Font",
+          "axes": { "ital": 1 },
+          "size": 11
+        },
         "closeOnExit": "always"
       },
       {
         // Put settings here that you want to apply to all profiles
         "guid": "{adea6a3b-fff8-4d78-9d5a-2d48c5c5cab5}",
-        "acrylicOpacity": 0.5,
         "closeOnExit": true,
         "colorScheme": "Molokai",
         "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
         "cursorColor": "#FFFFFF",
         "cursorShape": "bar",
-        "fontFace": "Delugia Nerd Font",
+        "font": {
+          "face": "Delugia Nerd Font",
+          "axes": { "ital": 1 },
+          "size": 12
+        },
         "acrylicOpacity": 0.7,
-        "fontSize": 12,
         "historySize": 9001,
         "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
         "name": "Git Bash",
@@ -50,7 +55,11 @@
         "commandline": "powershell.exe",
         "hidden": false,
         "colorScheme": "Molokai",
-        "fontFace": "Delugia Nerd Font",
+        "font": {
+          "face": "Delugia Nerd Font",
+          "axes": { "ital": 1 },
+          "size": 12
+        },
         "acrylicOpacity": 0.7,
         "useAcrylic": true
       },
@@ -140,12 +149,5 @@
       "brightPurple": "#5f4190",
       "brightWhite": "#b1b5ae"
     }
-  ],
-  // Add any keybinding overrides to this array.
-  // To unbind a default keybinding, set the command to "unbound"
-  "keybindings": [
-    { "command": "newTab", "keys": ["Ctrl+t"] },
-    { "command": "splitVertical", "keys": ["Alt+d"] },
-    { "command": "splitHorizontal", "keys": ["Alt+Shift+d"] }
   ]
 }
