@@ -1,50 +1,46 @@
 {
-    "[rust]": {
-        "editor.defaultFormatter": "matklad.rust-analyzer",
-        "editor.formatOnSave": true
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true
-    },
-    "workbench.iconTheme": "vscode-icons",
-    "editor.renderWhitespace": "all",
-    "editor.detectIndentation": false,
-    "editor.renderIndentGuides": false,
-    "editor.formatOnType": true,
-    "diffEditor.ignoreTrimWhitespace": false,
-    "editor.minimap.enabled": false,
-    "editor.acceptSuggestionOnCommitCharacter": false,
-    "editor.acceptSuggestionOnEnter": "smart",
-    "explorer.confirmDelete": false,
-    "ruby.intellisense": "rubyLocate",
-    "ruby.useLanguageServer": true,
-    "sync.removeExtensions": true,
-    "sync.gist": "64c36f34cc7d698ea19fddf7bc753fa5",
-    "explorer.confirmDragAndDrop": false,
-    "files.exclude": {
-      "**/.git": false
-    },
-    "editor.wordWrap": "on",
-    "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "editor.tabSize": 2,
+  "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "security.workspace.trust.untrustedFiles": "newWindow",
-    "workbench.colorTheme": "Monokai Pro (Filter Machine)",
-    "window.zoomLevel": -1
+    "editor.formatOnSave": true
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "workbench.iconTheme": "vscode-icons",
+  "editor.renderWhitespace": "all",
+  "editor.detectIndentation": false,
+  "editor.renderIndentGuides": false,
+  "editor.formatOnType": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.minimap.enabled": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.acceptSuggestionOnEnter": "smart",
+  "explorer.confirmDelete": false,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.useLanguageServer": true,
+  "sync.removeExtensions": true,
+  "sync.gist": "64c36f34cc7d698ea19fddf7bc753fa5",
+  "explorer.confirmDragAndDrop": false,
+  "files.exclude": {
+    "**/.git": false
+  },
+  "editor.wordWrap": "on",
+  "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "security.workspace.trust.untrustedFiles": "newWindow",
+  "workbench.colorTheme": "Monokai Pro (Filter Machine)",
+  "window.zoomLevel": -1
 }
