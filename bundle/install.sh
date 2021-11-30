@@ -23,12 +23,14 @@ install_brew() {
 ## ----------------------------------------
 install_vsplug() {
   for plugin in $(cat "${EXEPATH}"/Vsplug); do
-    code --install-extension "${plugin}"
+    if [ -n $plugin ]; then
+      code --install-extension "${plugin}"
+    fi
   done
 }
 
 main() {
-  install_brew
+  install_vsplug
 }
 
 main

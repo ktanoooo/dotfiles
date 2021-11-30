@@ -1,9 +1,7 @@
-# common
 esbenp.prettier-vscode
 dbaeumer.vscode-eslint
 streetsidesoftware.code-spell-checker
 
-# remote
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
@@ -13,21 +11,17 @@ ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-audio
 ms-vsliveshare.vsliveshare-pack
 
-# api
 Arjun.swagger-viewer
 42Crunch.vscode-openapi
 
-# git
 eamodio.gitlens
 
-# theme
 monokai.theme-monokai-pro-vscode
 naumovs.color-highlight
 CoenraadS.bracket-pair-colorizer-2
 oderwat.indent-rainbow
 vscode-icons-team.vscode-icons
 
-# languages
 VisualStudioExptTeam.vscodeintellicode
 Zignd.html-css-class-completion
 kaiwood.endwise
@@ -52,13 +46,11 @@ bung87.vscode-gemfile
 wingrunr21.vscode-ruby
 prisma.prisma
 
-# markdown
 silvenon.mdx
 yzhang.markdown-all-in-one
 DavidAnson.vscode-markdownlint
 shd101wyy.markdown-preview-enhanced
 
-# intellisese
 christian-kohler.npm-intellisense
 christian-kohler.path-intellisense
 leizongmin.node-module-intellisense
