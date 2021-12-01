@@ -1,6 +1,5 @@
 esbenp.prettier-vscode
 dbaeumer.vscode-eslint
-streetsidesoftware.code-spell-checker
 
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
@@ -13,8 +12,6 @@ ms-vsliveshare.vsliveshare-pack
 
 Arjun.swagger-viewer
 42Crunch.vscode-openapi
-
-eamodio.gitlens
 
 monokai.theme-monokai-pro-vscode
 naumovs.color-highlight
