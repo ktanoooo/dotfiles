@@ -117,7 +117,9 @@ disable r
 ##  Action
 ## ----------------------------------------
 cdh
-tmux
+if [ $OSTYPE = "linux-gnu" ]; then
+  tmux
+fi
 
 ## ----------------------------------------
 ##  Zinit
