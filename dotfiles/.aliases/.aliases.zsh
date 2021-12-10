@@ -69,6 +69,10 @@ alias rm='rm -i'
 # alias   ssh
 alias skg='ssh-keygen -t rsa -f $1'
 
+zippas() {
+  [ -z $1 ] && echo "no arg" && return 0;
+  zip -e -r $1.zip $1
+}
 alias unzipsjis='unzip -O cp932'
 
 ## ----------------------------------------
