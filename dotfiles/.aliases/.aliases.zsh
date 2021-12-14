@@ -16,9 +16,7 @@ alias weather='curl -Acurl wttr.in/Tokyo'
 alias weathert='curl -Acurl wttr.in/Tokushima'
 alias bat='bat --color=always --theme=ansi'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
-alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
-alias psa='ps aux' pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
-alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
+
 mkcd() { mkdir "$1" && cd "$1"; }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
 lnsv() {
@@ -58,16 +56,10 @@ if [[ $OSTYPE != "linux-gnu" ]]; then
   catp() { cat "$1" | pbcopy }
 fi
 
-alias df='df -Th'
-alias makedummy='dd if=/dev/zero of=/home/user/100MB.file bs=1M count=100'
-
 # (--interactive)オプションで上書き時に対話形式で返すようにする
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
-
-# alias   ssh
-alias skg='ssh-keygen -t rsa -f $1'
 
 zipd() {
   [ -z $1 ] && echo "no arg" && return 0;
