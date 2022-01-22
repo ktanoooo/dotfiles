@@ -15,22 +15,21 @@ if [ "$#" -eq 0 ]; then
   # source sh/workpane.sh
 else
   case $1 in
-    "viztech")
-    # 引数が viztechの時
-    # source sh/workpane.sh viztech
-      tmux send-keys -t 0 "cd ~/myself/viztech" C-m  # C-m は enter
+    "egakiba")
+    # 引数が egakibaの時
+    # source sh/workpane.sh egakiba
+      tmux send-keys -t 0 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_front" C-m  # C-m は enter
       tmux send-keys -t 0 "yarn dev" C-m  # C-m は enter
 
-      tmux send-keys -t 1 "cd ~/myself/viztech" C-m  # C-m は enter
+      tmux send-keys -t 1 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_front" C-m  # C-m は enter
       tmux send-keys -t 1 "code ." C-m  # C-m は enter
       tmux send-keys -t 1 "clear" C-m  # C-m は enter
 
-      tmux send-keys -t 2 "cd ~/myself/viztech_backend" C-m  # C-m は enter
+      tmux send-keys -t 2 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_bff" C-m  # C-m は enter
       tmux send-keys -t 2 "yarn start:dev" C-m # C-m は enter
 
-      tmux send-keys -t 3 "cd ~/myself/webgl_school_lesson_sample" C-m  # C-m は enter
-      tmux send-keys -t 3 "clear" C-m  # C-m は enter
-      tmux send-keys -t 3 "code ." C-m  # C-m は enter
+      tmux send-keys -t 3 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_bff" C-m  # C-m は enter
+      tmux send-keys -t 3 "yarn prisma studio" C-m  # C-m は enter
       ;;
     "ana")
       tmux send-keys -t 0 "cda" C-m  # C-m は enter
