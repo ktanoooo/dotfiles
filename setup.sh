@@ -36,14 +36,15 @@ symboliclink_dotfiles() {
     bulk_symlink_target=(
       "./dotfiles/.aliases"
       "./dotfiles/.git_template"
+      "./scripts"
     )
   else
     bulk_symlink_target=(
       "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
       "./dotfiles/.aliases"
       "./dotfiles/.git_template"
-      "./dotfiles/.snippets"
       "./dotfiles/.trashrc"
+      "./scripts"
     )
   fi
 
