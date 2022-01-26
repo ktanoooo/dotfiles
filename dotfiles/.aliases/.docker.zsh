@@ -20,8 +20,8 @@ alias dcstart='docker container ls --all --format "{{.ID}}\t{{.Names}}\t{{.Image
 alias dcinspect='docker container ls --all --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" | fzf | cut -f1 | xargs docker container inspect'
 alias dcip='docker container ls --all --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" | fzf | cut -f1 | xargs docker container inspect --format "{{ .NetworkSettings.IPAddress }}"'
 alias dcexec='docker container ls --all --format "{{.ID}}\t{{.Names}}\t{{.Image}}\t{{.Status}}" | fzf | cut -f1 | xargs -I{} docker container exec -it {} sh'
-alias dcrma='docker container rm --force --volumes $(docker ps -all --quiet --filter status=exited)'
-alias dcrmf='docker container rm --force --volumes $(docker ps -all -quiet)'
+alias dcrma='docker container rm --force --volumes $(docker container ls --all --quiet --filter status=exited)'
+alias dcrmf='docker container rm --force --volumes $(docker container ls --all --quiet)'
 
 ## ----------------------------------------
 ##  Image
@@ -45,10 +45,10 @@ alias dninspect='docker network ls --format "{{.ID}}\t{{.Name}}\t{{.Driver}}" | 
 ## ----------------------------------------
 ##  Process
 ## ----------------------------------------
-alias dp='docker ps --latest'
+alias dp='docker container ls --latest'
 
 ## ----------------------------------------
-##  Docker Compose
+##  Docker container
 ## ----------------------------------------
 alias dccup='docker-compose up -d'
 alias dccdown='docker-compose down -v'
