@@ -27,9 +27,6 @@ else
 
       tmux send-keys -t 2 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_bff" C-m  # C-m は enter
       tmux send-keys -t 2 "yarn start:dev" C-m # C-m は enter
-
-      tmux send-keys -t 3 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_bff" C-m  # C-m は enter
-      tmux send-keys -t 3 "yarn prisma studio" C-m  # C-m は enter
       ;;
     "ana")
       tmux send-keys -t 0 "cda" C-m  # C-m は enter
