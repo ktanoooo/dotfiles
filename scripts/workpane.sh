@@ -3,12 +3,8 @@
 # cdコマンドを効かせるためには sourceを使う必要がある
 # ref. https://qiita.com/mattak/items/bd159863be10b0ae81d8
 
-# 引数関係なく共通の処理
+# How to use
 # source sh/workpane.sh
-tmux split-window -v
-tmux split-window -v
-tmux split-window -v
-tmux select-layout even-vertical
 
 if [ "$#" -eq 0 ]; then
   # 引数なしの時
@@ -16,8 +12,10 @@ if [ "$#" -eq 0 ]; then
 else
   case $1 in
     "egakiba")
-    # 引数が egakibaの時
-    # source sh/workpane.sh egakiba
+      tmux split-window -v
+      tmux split-window -v
+      tmux select-layout even-vertical
+
       tmux send-keys -t 0 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_front" C-m  # C-m は enter
       tmux send-keys -t 0 "yarn dev" C-m  # C-m は enter
 
@@ -29,6 +27,11 @@ else
       tmux send-keys -t 2 "yarn start:dev" C-m # C-m は enter
       ;;
     "ana")
+      tmux split-window -v
+      tmux split-window -v
+      tmux split-window -v
+      tmux select-layout even-vertical
+
       tmux send-keys -t 0 "cda" C-m  # C-m は enter
       tmux send-keys -t 0 "bs" C-m  # C-m は enter
 
