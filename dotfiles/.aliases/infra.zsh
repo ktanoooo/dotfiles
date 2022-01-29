@@ -16,5 +16,6 @@ duh() {
   fi
 }
 alias makedummy='dd if=/dev/zero of=/home/user/100MB.file bs=1M count=100'
+alias makedummy='dd if=/dev/zero of=./100MB.file bs=1M count=100'
 
 alias skg='ssh-keygen -t rsa -f $1'
