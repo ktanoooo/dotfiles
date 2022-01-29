@@ -15,7 +15,11 @@ duh() {
     du -h -d $1 | sort -h -r
   fi
 }
-alias makedummy='dd if=/dev/zero of=./100MB.file bs=1M count=100'
+# create dummyfile
+alias dummy1m='dd if=/dev/zero of=./1MB.file bs=1M count=1'
+alias dummy10m='dd if=/dev/zero of=./10MB.file bs=1M count=10'
+alias dummy100m='dd if=/dev/zero of=./100MB.file bs=1M count=100'
+alias dummy1g='dd if=/dev/zero of=./1GB.file bs=1M count=1024'
 
 sshkg() {
   read filename"?type set filename [id_ed25519_*]: "
