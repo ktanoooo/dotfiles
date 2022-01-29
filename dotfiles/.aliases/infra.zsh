@@ -15,7 +15,32 @@ duh() {
     du -h -d $1 | sort -h -r
   fi
 }
-alias makedummy='dd if=/dev/zero of=/home/user/100MB.file bs=1M count=100'
 alias makedummy='dd if=/dev/zero of=./100MB.file bs=1M count=100'
 
-alias skg='ssh-keygen -t rsa -f $1'
+sshkg() {
+  read filename"?type set filename [id_ed25519_*]: "
+  [ -z $filename ] && echo "type error" && return
+  read hostname"?type set hostname [github.com]: "
+  [ -z $hostname ] && echo "type error" && return
+  read user"?type set User [git/ubuntu/root]: "
+  [ -z $user ] && echo "type error" && return
+  if [ $hostname = "github.com" ]; then
+    sshalias=$hostname
+  else 
+    read sshalias"?type set ssh alias [projectprd]: "
+    [ -z $sshalias ] && echo "type error" && return
+  fi
+  fullpath=${HOME}/.ssh/id_ed25519_${filename}
+  mkdir -p ${HOME}/.ssh
+  ssh-keygen -t ed25519 -f $fullpath -N "" -C "ktanoooo1112@gmail.com"
+  ssh-keyscan -t ed25519 $hostname >> ${HOME}/.ssh/known_hosts
+# インデント大事
+cat >> ${HOME}/.ssh/config << EOF
+HOST $sshalias
+  HostName $hostname
+  User $user
+  IdentityFile ~/.ssh/id_ed25519_${filename}
+
+EOF
+  cat ${fullpath}.pub
+}

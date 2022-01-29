@@ -12,8 +12,14 @@ echo "eval \$($(brew --prefix)/bin/brew shellenv)" >>~/.profile
 sudo apt install build-essential
 
 mkdir -p ${HOME}/.ssh
-ssh-keygen -t rsa -b 4096 -C "ktanoooo1112@gmail.com"
-ssh-keyscan -t rsa github.com >> ${HOME}/.ssh/known_hosts
+ssh-keygen -t ed25519 -f id_ed25519_github -C "ktanoooo1112@gmail.com"
+ssh-keyscan -t ed25519 github.com >> "${HOME}"/.ssh/known_hosts
+cat >> ${HOME}/.ssh/config << EOF
+HOST github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_github
+EOF
 
 brew install zsh
 sudo sh -c 'echo /home/linuxbrew/.linuxbrew/bin/zsh >> /etc/shells'

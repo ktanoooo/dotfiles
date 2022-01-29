@@ -115,9 +115,16 @@ setup_tig() {
 ##  Git Configuration
 ## ----------------------------------------
 git_configuration() {
-  mkdir -p "${HOME}"/.ssh
-  ssh-keygen -t rsa -b 4096 -C $USER_EMAIL
-  ssh-keyscan -t rsa github.com >> "${HOME}"/.ssh/known_hosts
+  mkdir -p ${HOME}/.ssh
+  ssh-keygen -t ed25519 -f id_ed25519_github -C "ktanoooo1112@gmail.com"
+  ssh-keyscan -t ed25519 github.com >> "${HOME}"/.ssh/known_hosts
+# インデント大事
+cat >> ${HOME}/.ssh/config << EOF
+HOST github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_github
+EOF
   brew install gh
   gh auth login
 }
