@@ -10,5 +10,75 @@
 # 3. First line must not use period at end of line.
 # 4. Never blank body.
 #
-# [Completion]
-# Add Delete Feature Fix Refactor Rename Update Merge Revert InitialCommit
+# [Message]
+# Positive
+#   Add {*A to *B}
+#     - Add a feature
+#     - Add test for bug #1234
+#     - Add function method
+#     - Add null check
+#   Update {*A to *B}
+#     - Update package to v1.2.4
+#   Implement(Impl):実装
+#     - Implement `Class::version` for filename
+#   Improve:改良 (performance)
+#     - Improve tests for components
+#   Extend :機能拡張
+#   Enhance:機能向上
+#   Optimize
+#   Ensure (*A is ~ed)
+#     - Ensure fetch polyfill is loaded in server
+#   Use {*A insted of *B}
+#   Make {*A *B}
+#   Sorting {*A by *B}
+#     - Sorting data by id
+#   Simplify {*A}
+#     - Simplify Object#method code
+#   Define {*A}
+#     - Define `Object#method`
+#   Fix/Revise(bug)  *A(filename/typo/error hundling)
+#     - Fix typo in docs
+#     - Fix for #1234
+#     - Fix link to the spec
+#   Modify(not bug)
+#     - Modify an existing feature
+#   Refactor {*A (a bit) (to *B)}
+#   Tweak
+#   Bump {*A to *B}
+#     - Bump version to 2.0.0
+#     - Bump the patch version to 2.0.0
+#
+# Negative
+#   Delete {*A form *B}
+#   Remove {*A from *B}/{use of *A}/{to avoid *A}
+#     - Remove a feature
+#     - Remove unused code
+#     - Remove debug from tests
+#     - Remove use of deprecated method
+#     - Remove methods to avoid warnings
+#   Avoid {*A to *B}
+#     - Avoid method call to compact
+#   Clean {up *A}/{*A up}
+#     - Clean the func up
+#
+# Replace
+#   Change {*A to *B}
+#     - Change variable name
+#   Move {*A from *B to *C}
+#   Replace {*A with *B}
+#   Rename {*A to *B}
+#     - Rename `a.js` to `b.js`
+#
+# Git
+#   Merge {*A}
+#     - Merge #1234
+#   Revert    to *A(commit hash)
+#     @ Revert to 88a69caec37031687c7192f8a512ea
+#
+# Other
+#   InitialCommit
+#
+# more sample:
+# https://qiita.com/gogotanaka/items/b65e1b081fa976e5d754
+# https://android.benigumo.com/20161121/git-commit-message-title/
+# https://yutakatay.gitbook.io/katapedia/doc/komittomessjideyokuu
