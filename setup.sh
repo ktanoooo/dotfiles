@@ -83,6 +83,19 @@ install_yarn() {
 }
 
 ## ----------------------------------------
+## Setup Rust
+## ----------------------------------------
+setup_rust() {
+  rustup-init -y
+  source ${HOME}/.cargo/env
+  rustup component add rls --toolchain stable
+  rustup component add rust-src --toolchain stable
+  rustup component add rls-preview --toolchain stable
+  rustup component add rust-analysis --toolchain stable
+  rustup update stable
+}
+
+## ----------------------------------------
 ##  Install Zinit
 ## ----------------------------------------
 install_zinit() {
@@ -152,6 +165,7 @@ main() {
   symboliclink_dotfiles
   # install_asdf_gltall
   # install_yarn
+  # setup_rust
   # install_zinit
   # install_tmux_plugin_manager
   # git_configuration

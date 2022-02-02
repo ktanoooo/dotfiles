@@ -29,8 +29,21 @@ install_vsplug() {
   done
 }
 
+## ----------------------------------------
+##  Install cargo packages
+## ----------------------------------------
+install_cargo_pkgs() {
+  for plugin in $(cat "${EXEPATH}"/Cargofile); do
+    if [ -n $plugin ]; then
+      cargo install "${plugin}"
+    fi
+  done
+}
+
+
 main() {
-  install_vsplug
+  # install_vsplug
+  # install_cargo_pkgs
 }
 
 main

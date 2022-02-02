@@ -1,0 +1,10 @@
+cargo-audit
+cargo-expand
+cargo-edit
+cargo-update
+cargo-outdated
+cargo-tree
+cargo-watch
+diesel_cli
+ytop
+du-dust
