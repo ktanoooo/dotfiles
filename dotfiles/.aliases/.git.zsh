@@ -24,6 +24,7 @@ gpom() {
 alias gpl='git pull'
 alias grm='git remote -v'
 alias grma='git remote add'
+alias grmaup='git remote add upstream'
 alias grms='git remote set-url origin'
 alias grso='git reset --soft'
 alias grsoh='git reset --soft HEAD^'
