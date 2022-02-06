@@ -15,9 +15,12 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true
   },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust",
+    "editor.formatOnSave": true
+  },
   "workbench.iconTheme": "vscode-icons",
   "editor.renderWhitespace": "all",
-  "editor.detectIndentation": false,
   "editor.renderIndentGuides": false,
   "editor.formatOnType": true,
   "diffEditor.ignoreTrimWhitespace": false,
