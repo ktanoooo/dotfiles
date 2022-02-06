@@ -17,7 +17,9 @@
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true
   },
   "workbench.iconTheme": "vscode-icons",
   "editor.renderWhitespace": "all",
