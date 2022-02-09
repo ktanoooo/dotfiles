@@ -17,6 +17,8 @@ alias weathert='curl -Acurl wttr.in/Tokushima'
 alias bat='bat --color=always --theme=ansi'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 
+alias ydlmp3='youtube-dl -x --audio-format mp3'
+
 mkcd() { mkdir "$1" && cd "$1"; }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
 lnsv() {
