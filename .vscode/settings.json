@@ -43,41 +43,38 @@
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "security.workspace.trust.untrustedFiles": "newWindow",
-  "workbench.colorTheme": "Nord",
-  "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.formatOnSave": true,
   "window.zoomLevel": -1,
+  "workbench.colorTheme": "Nord",
+  "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
+  // https://php-mania.com/memo/48
+  "workbench.colorCustomizations": {
+    "editorLineNumber.foreground": "#556e57",
+    "sideBar.foreground": "#77aca1"
+  },
   // https://gist.github.com/junagao/f785ed77589246a3d063273b3a56f114
   "editor.tokenColorCustomizations": {
     "textMateRules": [
       {
         "scope": [
           //following will be in italic
-          "comment",
-          "entity.name.type.class", //class names
-          "constant", //String, Number, Boolean…, this, super
-          "storage.modifier", //static keyword
-          "storage.type.class.js", //class keyword
-          "keyword" //import, export, return…
+          // search scope
+          // ctrl + shift + p => developer: Inspect Editor Tokens and Scopes
+          "source.css",
+          "source.scss",
+          "source.js",
+          "source.ts",
+          "source.html",
+          "source.rb",
+          "source.json",
+          "source.yaml",
+          "source.ignore",
+          "text.html.markdown"
         ],
         "settings": {
           "fontStyle": "italic"
-        }
-      },
-      {
-        "scope": [
-          //following will be excluded from italics (VSCode has some defaults for italics)
-          "invalid",
-          "keyword.operator",
-          "constant.numeric.css",
-          "keyword.other.unit.px.css",
-          "constant.numeric.decimal.js",
-          "constant.numeric.json"
-        ],
-        "settings": {
-          "fontStyle": ""
         }
       }
     ]
