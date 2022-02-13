@@ -21,7 +21,6 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true
   },
-  "workbench.iconTheme": "vscode-icons",
   "editor.renderWhitespace": "all",
   "editor.renderIndentGuides": false,
   "editor.formatOnType": true,
@@ -46,6 +45,7 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "security.workspace.trust.untrustedFiles": "newWindow",
   "workbench.colorTheme": "Nord",
+  "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.formatOnSave": true,
