@@ -45,7 +45,7 @@
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "security.workspace.trust.untrustedFiles": "newWindow",
-  "workbench.colorTheme": "Monokai Pro (Filter Machine)",
+  "workbench.colorTheme": "Nord",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.formatOnSave": true,
