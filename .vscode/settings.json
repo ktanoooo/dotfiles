@@ -62,21 +62,31 @@
           //following will be in italic
           // search scope
           // ctrl + shift + p => developer: Inspect Editor Tokens and Scopes
+          "text.log",
+          "text.html.erb",
+          "text.html.markdown",
           "source.css",
-          "source.scss",
           "source.js",
           "source.ts",
+          "source.jsx",
+          "source.tsx",
+          "source.ruby",
+          "source.scss",
           "source.html",
-          "source.rb",
           "source.json",
           "source.yaml",
+          "source.shell",
           "source.ignore",
-          "text.html.markdown"
+          "source.groovy",
+          "source.dockerfile",
+          "source.powershell",
+          "entity.other.inherited-class.module.first.ruby"
         ],
         "settings": {
           "fontStyle": "italic"
         }
       }
     ]
-  }
+  },
+  "bracket-pair-colorizer-2.depreciation-notice": false
 }
