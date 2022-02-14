@@ -37,6 +37,8 @@ alias gconf='git config --local --list'
 alias gsta='git stash'
 alias gstaa='git stash apply'
 alias gstad='git stash list | cut -d':' -f1 | xargs -I {} git stash drop {}'
+alias gstadrb='git fsck | awk `/dangling commit/ {print $3}` | fzf | xargs -I{} git cherry-pick -n -m1 {}'
+
 
 # gh 
 alias ghweb='gh repo view --web'
