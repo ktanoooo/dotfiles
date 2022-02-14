@@ -11,21 +11,6 @@ if [ "$#" -eq 0 ]; then
   # source sh/workpane.sh
 else
   case $1 in
-    "egakiba")
-      tmux split-window -v
-      tmux split-window -v
-      tmux select-layout even-vertical
-
-      tmux send-keys -t 0 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_front" C-m  # C-m は enter
-      tmux send-keys -t 0 "yarn dev" C-m  # C-m は enter
-
-      tmux send-keys -t 1 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_front" C-m  # C-m は enter
-      tmux send-keys -t 1 "code ." C-m  # C-m は enter
-      tmux send-keys -t 1 "clear" C-m  # C-m は enter
-
-      tmux send-keys -t 2 "cd ~/.ghq/github.com/ktanoooo/egakiba_school_bff" C-m  # C-m は enter
-      tmux send-keys -t 2 "yarn start:dev" C-m # C-m は enter
-      ;;
     "ana")
       tmux split-window -v
       tmux split-window -v
