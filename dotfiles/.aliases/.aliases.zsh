@@ -1,3 +1,5 @@
+type pbcopy >/dev/null 2>&1 || alias pbcopy='clip.exe'
+
 ## ========== Global Alias ==========
 alias -g G='| grep'
 alias -g H='| head'
