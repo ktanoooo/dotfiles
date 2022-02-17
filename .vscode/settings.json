@@ -80,6 +80,7 @@
           "source.groovy",
           "source.dockerfile",
           "source.powershell",
+          "source.json.comments",
           "entity.other.inherited-class.module.first.ruby"
         ],
         "settings": {
