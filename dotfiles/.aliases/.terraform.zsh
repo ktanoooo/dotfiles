@@ -1,0 +1,5 @@
+tfinit='terraform init'
+tfpln='terraform plan'
+tfapy='terraform applay'
+tfdl='terraform destroy'
+tffmt='terraform fmt -recursive'
