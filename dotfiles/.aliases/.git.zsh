@@ -34,9 +34,11 @@ alias grha='git reset --hard'
 alias grhah='git reset --hard HEAD^'
 alias grbom='git rebase origin/main'
 alias gconf='git config --local --list'
-alias gsta='git stash'
-alias gstaa='git stash apply'
-alias gstad='git stash list | cut -d':' -f1 | xargs -I {} git stash drop {}'
+alias gsta='git stash -u'
+alias gstac='git stash save -u $1'
+alias gstal='git stash list'
+alias gstaa='git stash list | fzf | cut -d':' -f1 | xargs -I{} git stash apply {}'
+alias gstad='git stash list | fzf | cut -d':' -f1 | xargs -I{} git stash drop {}'
 gstadrb() {
   git fsck | awk '/dangling commit/ {print $3}' | fzf | xargs -I{} git cherry-pick -n -m1 {}
 }
