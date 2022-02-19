@@ -71,6 +71,7 @@
           "source.jsx",
           "source.tsx",
           "source.ruby",
+          "source.rust",
           "source.scss",
           "source.html",
           "source.json",
