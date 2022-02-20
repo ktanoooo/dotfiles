@@ -6,7 +6,6 @@ alias loi='[ !-z $1 ] && lsof -i $1'
 alias loikl='lsof -i | fzf | awk "{print \$2 }" | xargs kill -9'
 
 alias fd='fd -iH --no-ignore-vcs -E ".git" -E "node_modules"' rmds='fd .DS_Store -X rm'
-
 alias dfh='df -Th'
 duh() {
   if [ -z "$1" ]; then
@@ -15,6 +14,11 @@ duh() {
     du -h -d $1 | sort -h -r
   fi
 }
+
+# ip
+alias ipinfo='curl -sL ipinfo.io'
+alias ipinfotor='curl -sL --socks5 127.0.0.1:9050 ipinfo.io'
+
 # create dummyfile
 alias dummy1m='dd if=/dev/zero of=./1MB.file bs=1M count=1'
 alias dummy10m='dd if=/dev/zero of=./10MB.file bs=1M count=10'
