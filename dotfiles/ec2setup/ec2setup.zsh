@@ -48,3 +48,24 @@ sudo firewall-cmd --permanent --new-service-from-file=サービス名.xml --name
 sudo firewall-cmd --permanent --delete-service=サービス名  # サービス定義を削除
 sudo firewall-cmd --permanent --zone=ゾーン名 --add-service=サービス名  # 現在のゾーンに指定したサービスを追加
 sudo firewall-cmd --permanent --zone=ゾーン名 --remove-service=サービス名  # 現在のゾーンから指定したサービスを取り除く
+
+#################################
+# Setup docker
+#################################
+sudo yum install -y docker
+## start
+sudo systemctl start docker
+## auto enable
+sudo systemctl enable docker
+sudo systemctl is-enabled docker # check auto enable
+sudo usermod -aG docker ec2-user  # Add ec2-user to docker group
+exit 
+## install docker-compose
+sudo curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+#################################
+# Run Nginx container
+#################################
+docker run -d nginx
+docker image ls
