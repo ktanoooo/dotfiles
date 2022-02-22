@@ -37,7 +37,6 @@ brew "youtube-dl"
 brew "imagemagick"  # Tools and libraries to manipulate images in many formats
 brew "git-secrets"  # Prevents you from committing sensitive information to a git repo
 brew "tmux-xpanes"
-brew "hashicorp/tap/terraform"
 
 ## ========== Language & Databases ==========
 brew "node"
@@ -52,3 +51,8 @@ brew "postgres"
 ## ========== Shell ==========
 brew "zsh"
 brew "zsh-completions"
+
+
+## ========== Terraform ==========
+tap "hashicorp/tap"
+brew "hashicorp/tap/terraform"
