@@ -99,6 +99,10 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 # asdf
 . "`brew --prefix`/opt/asdf/asdf.sh"
 
+# terraform
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
+
 ## ----------------------------------------
 ##  Aliases
 ## ----------------------------------------
