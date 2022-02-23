@@ -23,6 +23,7 @@ brew "tor"
 brew "asdf"  # Version manager
 brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
+brew "nmap"  # Port scan
 brew "awscli"
 brew "neovim"  # Vim-fork focused on extensibility and agility
 brew "awslogs"
