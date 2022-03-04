@@ -48,7 +48,7 @@
   "editor.formatOnSave": true,
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Nord",
-  "workbench.iconTheme": "Monokai Pro (Filter Machine) Icons",
+  "workbench.iconTheme": "vscode-icons",
   // https://php-mania.com/memo/48
   "workbench.colorCustomizations": {
     "editorLineNumber.foreground": "#556e57",
