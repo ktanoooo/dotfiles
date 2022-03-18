@@ -20,6 +20,7 @@ brew "ghq"  # Remote Repository management tool
 brew "git"
 brew "tig"
 brew "tor"
+brew "htop"
 brew "asdf"  # Version manager
 brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
