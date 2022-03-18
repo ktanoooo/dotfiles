@@ -69,3 +69,19 @@ docker-compose --version
 #################################
 docker run -d nginx
 docker image ls
+
+
+#################################
+# Setup github
+#################################
+sudo yum install git -y
+cd ~/.ssh
+ssh-keygen -t ed25519
+
+#################################
+# Setup Node
+#################################
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install node
+node -e "console.log('Running Node.js ' + process.version)"
