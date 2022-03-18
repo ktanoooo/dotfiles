@@ -111,3 +111,5 @@ pids
 # Ignore 
 /storage/*
 !/storage/.keep
+
+/.vscode/settings.json
