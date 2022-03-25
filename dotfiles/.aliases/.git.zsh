@@ -43,10 +43,13 @@ gstadrb() {
   git fsck | awk '/dangling commit/ {print $3}' | fzf | xargs -I{} git cherry-pick -n -m1 {}
 }
 
-# gh 
+# gh - local repository management
 alias ghweb='gh repo view --web'
+gclo() {
+  [ $# = 1 ] && ghq get -p $1
+}
 
-# ghq
+# ghq - remote repository management
 alias cdgh='cd `ghq list -p | fzf`'
 
 gu() {
@@ -70,10 +73,6 @@ gu() {
   fi
 }
 
-gclo() {
-  [ $# = 1 ] && ghq get -p $1
-}
-
 gcre() {
   read        name"?type repo name        : ";
   read description"?type repo description : ";
@@ -84,7 +83,7 @@ gcre() {
   git secrets --install && git secrets --register-aws;
   printf "# ${name}\n\n${description}" >> README.md
   git add -A && git commit -m "first commit";
-  gh repo create ${name} --description ${description} --private;
+  gh repo create ${name} --description ${description} --private --source=. --remote=origin;
   git push --set-upstream origin main;
   ghweb;
 }
