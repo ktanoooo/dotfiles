@@ -165,7 +165,7 @@ clone_git_repositories() {
 ## ----------------------------------------
 setup_for_myself() {
   mkdir -p "${HOME}"/work
-  [ ! -f "${HOME}/.secret_alias" ] && touch "${HOME}/.secret_alias"
+  [ ! -f "${HOME}/.alias-local" ] && touch "${HOME}/.alias-local"
 }
 
 main() {

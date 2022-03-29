@@ -112,7 +112,7 @@ if [ -d $ALIASES_PATH -a -r $ALIASES_PATH -a -x $ALIASES_PATH ]; then
     [[ ${i##*/} = *.zsh ]] && [ \( -f $i -o -h $i \) -a -r $i ] && . $i
   done
 fi
-[ -f ~/.secret_alias ] && source ~/.secret_alias
+[ -f ~/.aliases-local ] && source ~/.aliases-local
 
 ## because of same as "!!" ( Repeat previous command )
 disable r
