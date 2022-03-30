@@ -124,7 +124,7 @@ if [ $OSTYPE = "linux-gnu" ]; then
   tmux
 fi
 
-cdgh
+cdh
 
 ## ----------------------------------------
 ##  Zinit
