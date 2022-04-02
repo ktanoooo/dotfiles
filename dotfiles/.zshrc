@@ -114,18 +114,6 @@ if [ -d $ALIASES_PATH -a -r $ALIASES_PATH -a -x $ALIASES_PATH ]; then
 fi
 [ -f ~/.aliases-local ] && source ~/.aliases-local
 
-## because of same as "!!" ( Repeat previous command )
-disable r
-
-## ----------------------------------------
-##  Action
-## ----------------------------------------
-if [ $OSTYPE = "linux-gnu" ]; then
-  tmux
-fi
-
-cdh
-
 ## ----------------------------------------
 ##  Zinit
 ## ----------------------------------------
