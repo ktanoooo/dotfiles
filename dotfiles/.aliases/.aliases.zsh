@@ -1,4 +1,5 @@
-type pbcopy >/dev/null 2>&1 || alias pbcopy='clip.exe'
+type pbcopy > /dev/null 2>&1 || alias pbcopy='clip.exe'
+type open > /dev/null 2>&1 || alias open='explorer.exe'
 
 ## ========== Global Alias ==========
 alias -g G='| grep'
