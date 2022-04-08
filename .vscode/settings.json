@@ -91,7 +91,7 @@
     ]
   },
   "bracket-pair-colorizer-2.depreciation-notice": false,
-  // https://github.com/redhat-developer/vscode-yaml/issues/397
+  // https://github.com/redhat-developer/vscode-yaml/issues/397#issuecomment-896049900
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow": "/.github/workflows/**/*.yml"
   }
