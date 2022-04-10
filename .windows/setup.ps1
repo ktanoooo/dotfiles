@@ -7,8 +7,8 @@
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Set WSL2 as default
+wsl --install
 wsl --set-default-version 2
-
 
 $chocoBundle = Get-Item *.txt
 
@@ -25,8 +25,8 @@ choco install wsl-ubuntu-2004 -y
 choco install microsoft-windows-terminal -y
 
 # Copy settings json to C:\Users\ktanoooo\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\
-curl https://raw.githubusercontent.com/ktanoooo/dotfiles/master/.windows/windows_terminal_settings.json  -o $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/windows_terminal_settings.json -o $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\settings.json
 
-curl https://raw.githubusercontent.com/ktanoooo/dotfiles/master/.vscode/settings.json -o $env:APPDATA\Code\User\settings.json
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/settings.json -o $env:APPDATA\Code\User\settings.json
 
-curl https://raw.githubusercontent.com/ktanoooo/dotfiles/master/.vscode/keybindings.json -o $env:APPDATA\Code\User\keybindings.json
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/keybindings.json -o $env:APPDATA\Code\User\keybindings.json
