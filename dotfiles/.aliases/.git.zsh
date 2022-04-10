@@ -83,6 +83,7 @@ gcre() {
   git secrets --install && git secrets --register-aws;
   printf "# ${name}\n\n${description}" >> README.md
   git add -A && git commit -m "first commit";
+  [ -z $description] && description=$name;
   gh repo create ${name} --description ${description} --private --source=. --remote=origin;
   git push --set-upstream origin main;
   ghweb;
