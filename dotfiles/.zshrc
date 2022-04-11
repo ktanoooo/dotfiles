@@ -113,6 +113,7 @@ if [ -d $ALIASES_PATH -a -r $ALIASES_PATH -a -x $ALIASES_PATH ]; then
   done
 fi
 [ -f ~/.aliases-local ] && source ~/.aliases-local
+[ -f ~/.aliases-works-local ] && source ~/.aliases-works-local
 
 ## ----------------------------------------
 ##  Zinit
