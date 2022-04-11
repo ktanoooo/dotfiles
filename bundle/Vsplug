@@ -1,5 +1,6 @@
 esbenp.prettier-vscode
 dbaeumer.vscode-eslint
+EditorConfig.EditorConfig
 eamodio.gitlens
 
 ms-vscode-remote.remote-containers
