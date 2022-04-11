@@ -10,6 +10,7 @@ tap "homebrew/services"
 ## ========== Base ==========
 brew "fd"  # Replacement for "find"
 brew "gh"  # Github CLI
+brew "jq"
 brew "sd"  # Intuitive find & replace CLI
 brew "k6"  # Performance test tool
 brew "act"  # Github Actions locally
