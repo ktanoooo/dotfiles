@@ -18,10 +18,10 @@ choco install vscode -y
 choco install discord -y
 choco install keepass -y
 choco install postman -y
+choco install powertoys -y
 choco install googlechrome -y
 choco install cascadiacode -y  # Code Font
 choco install mysql.workbench -y
-choco install wsl-ubuntu-2004 -y
 choco install microsoft-windows-terminal -y
 
 # Copy settings json to C:\Users\ktanoooo\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState\
