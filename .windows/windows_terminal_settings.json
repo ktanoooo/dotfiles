@@ -11,23 +11,45 @@
     "defaults": {},
     "list": [
       {
-        "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-        "hidden": false,
         "name": "Ubuntu-20.04",
+        "hidden": false,
+        "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
         "source": "Windows.Terminal.Wsl",
-        "colorScheme": "Japanesque",
+        "colorScheme": "MyScheme",
         "acrylicOpacity": 0.85,
         "useAcrylic": true,
         "cursorColor": "#FFFFFF",
         "font": {
-          "face": "Delugia Nerd Font",
+          "face": "Hack Nerd Font",
           "axes": { "ital": 1 },
           "size": 11
         },
         "closeOnExit": "always"
       },
       {
+        // Make changes here to the powershell.exe profile
+        "commandline": "powershell.exe",
+        "hidden": false,
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "name": "Windows PowerShell",
+        "colorScheme": "Molokai",
+        "font": {
+          "face": "Hack Nerd Font",
+          "axes": { "ital": 1 },
+          "size": 12
+        },
+        "acrylicOpacity": 0.7,
+        "useAcrylic": true
+      },
+      {
+        "name": "cmd",
+        "hidden": false,
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}"
+      },
+      {
         // Put settings here that you want to apply to all profiles
+        "name": "Git Bash",
+        "hidden": true,
         "guid": "{adea6a3b-fff8-4d78-9d5a-2d48c5c5cab5}",
         "closeOnExit": true,
         "colorScheme": "Molokai",
@@ -35,52 +57,35 @@
         "cursorColor": "#FFFFFF",
         "cursorShape": "bar",
         "font": {
-          "face": "Delugia Nerd Font",
+          "face": "Hack Nerd Font",
           "axes": { "ital": 1 },
           "size": 12
         },
         "acrylicOpacity": 0.7,
         "historySize": 9001,
         "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
-        "name": "Git Bash",
         "padding": "0, 0, 0, 0",
         "snapOnInput": true,
         "startingDirectory": "%USERPROFILE%",
         "useAcrylic": true
       },
       {
-        // Make changes here to the powershell.exe profile
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-        "name": "Windows PowerShell",
-        "commandline": "powershell.exe",
-        "hidden": false,
-        "colorScheme": "Molokai",
-        "font": {
-          "face": "Delugia Nerd Font",
-          "axes": { "ital": 1 },
-          "size": 12
-        },
-        "acrylicOpacity": 0.7,
-        "useAcrylic": true
-      },
-      {
-        // Make changes here to the cmd.exe profile
-        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-        "name": "cmd",
-        "commandline": "cmd.exe",
-        "hidden": false
-      },
-      {
-        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-        "hidden": false,
         "name": "Azure Cloud Shell",
+        "hidden": true,
+        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
         "source": "Windows.Terminal.Azure"
       },
       {
-        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-        "hidden": false,
-        "name": "Ubuntu",
-        "source": "Windows.Terminal.Wsl"
+        "name": "Developer Command Prompt for VS 2019",
+        "hidden": true,
+        "guid": "{bcb6c4e4-9c34-53ba-bc27-7e6796e0ce8b}",
+        "source": "Windows.Terminal.VisualStudio"
+      },
+      {
+        "name": "Developer PowerShell for VS 2019",
+        "hidden": true,
+        "guid": "{b815d601-24f9-5359-b9b6-62deb086486f}",
+        "source": "Windows.Terminal.VisualStudio"
       }
     ]
   },
