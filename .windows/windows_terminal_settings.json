@@ -12,10 +12,10 @@
     "list": [
       {
         "name": "Ubuntu-20.04",
-        "hidden": false,
         "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+        "hidden": false,
         "source": "Windows.Terminal.Wsl",
-        "colorScheme": "MyScheme",
+        "colorScheme": "Japanesque",
         "acrylicOpacity": 0.85,
         "useAcrylic": true,
         "cursorColor": "#FFFFFF",
@@ -28,10 +28,10 @@
       },
       {
         // Make changes here to the powershell.exe profile
-        "commandline": "powershell.exe",
-        "hidden": false,
-        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "name": "Windows PowerShell",
+        "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+        "hidden": false,
+        "commandline": "powershell.exe",
         "colorScheme": "Molokai",
         "font": {
           "face": "Hack Nerd Font",
@@ -42,15 +42,17 @@
         "useAcrylic": true
       },
       {
+        // Make changes here to the cmd.exe profile
         "name": "cmd",
-        "hidden": false,
-        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}"
+        "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+        "commandline": "cmd.exe",
+        "hidden": false
       },
       {
         // Put settings here that you want to apply to all profiles
         "name": "Git Bash",
-        "hidden": true,
         "guid": "{adea6a3b-fff8-4d78-9d5a-2d48c5c5cab5}",
+        "hidden": true,
         "closeOnExit": true,
         "colorScheme": "Molokai",
         "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
@@ -71,21 +73,15 @@
       },
       {
         "name": "Azure Cloud Shell",
-        "hidden": true,
         "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
+        "hidden": true,
         "source": "Windows.Terminal.Azure"
       },
       {
-        "name": "Developer Command Prompt for VS 2019",
+        "name": "Ubuntu",
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "hidden": true,
-        "guid": "{bcb6c4e4-9c34-53ba-bc27-7e6796e0ce8b}",
-        "source": "Windows.Terminal.VisualStudio"
-      },
-      {
-        "name": "Developer PowerShell for VS 2019",
-        "hidden": true,
-        "guid": "{b815d601-24f9-5359-b9b6-62deb086486f}",
-        "source": "Windows.Terminal.VisualStudio"
+        "source": "Windows.Terminal.Wsl"
       }
     ]
   },
