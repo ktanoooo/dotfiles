@@ -164,7 +164,6 @@ clone_git_repositories() {
 ##  Myself
 ## ----------------------------------------
 setup_for_myself() {
-  mkdir -p "${HOME}"/work
   [ ! -f "${HOME}/.alias-local" ] && touch "${HOME}/.alias-local"
 }
 
