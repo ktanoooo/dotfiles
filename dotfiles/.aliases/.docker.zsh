@@ -48,7 +48,7 @@ alias dninspect='docker network ls --format "{{.ID}}\t{{.Name}}\t{{.Driver}}" | 
 alias dp='docker container ls --latest'
 
 ## ----------------------------------------
-##  Docker container
+##  Docker Compose
 ## ----------------------------------------
 alias dccup='docker-compose up -d'
 alias dccdown='docker-compose down -v'
