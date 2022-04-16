@@ -44,16 +44,24 @@ setopt auto_param_keys
 autoload -Uz colors && colors
 
 ## ----------------------------------------
+##  History
+## ----------------------------------------
+export HISTSIZE=20000  # Save history in memory
+export SAVEHIST=20000  # Save history in .zsh_history
+export HISTFILE=${HOME}/.zsh_history
+setopt share_history  # Share history with other terminal
+setopt hist_ignore_space  # Ignore history if it exists space at the head of the line
+setopt hist_ignore_all_dups  # Ignore old history if it duplicates
+
+# ref. https://qiita.com/syui/items/c1a1567b2b76051f50c4
+
+## ----------------------------------------
 ##  Completion
 ## ----------------------------------------
 setopt auto_list
 setopt auto_menu  # Go to next line, when bpress tab key
-setopt share_history
 setopt auto_param_slash  # add '/'
 setopt magic_equal_subst
-export HISTSIZE=20000
-export SAVEHIST=20000
-export HISTFILE=${HOME}/.zsh_history
 export FPATH="${HOME}/.zinit/completions:${FPATH}"
 export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
 autoload -Uz compinit && compinit -i && compinit
