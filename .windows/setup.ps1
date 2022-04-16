@@ -32,7 +32,7 @@ choco install discord -y
 choco install cascadiacode -y  # Code Font
 
 # Install Work tools
-choco install keepass -y
+choco install keepassxc -y
 choco install postman -y
 choco install mysql.workbench -y
 choco install microsoft-windows-terminal -y
