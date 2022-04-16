@@ -112,8 +112,8 @@ if [ -d $ALIASES_PATH -a -r $ALIASES_PATH -a -x $ALIASES_PATH ]; then
     [[ ${i##*/} = *.zsh ]] && [ \( -f $i -o -h $i \) -a -r $i ] && . $i
   done
 fi
-[ -f ~/.aliases-local ] && source ~/.aliases-local
-[ -f ~/.aliases-works-local ] && source ~/.aliases-works-local
+[ -f ~/.aliases-local.zsh ] && source ~/.aliases-local.zsh
+[ -f ~/.aliases-works-local.zsh ] && source ~/.aliases-works-local.zsh
 
 ## ----------------------------------------
 ##  Zinit
