@@ -48,7 +48,7 @@ install_zsh() {
 }
 
 main() {
-  initial
+  initial_update
   install_brew
   install_zsh
 }
