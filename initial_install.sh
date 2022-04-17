@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eux
 
 ## ----------------------------------------
 ##  Preparation
@@ -7,7 +8,7 @@
 ## ----------------------------------------
 
 # Update and Upgrade apt
-initial() {
+initial_update() {
   sudo apt update -y
   sudo apt upgrade -y
 }
@@ -53,8 +54,5 @@ main() {
 }
 
 # Main
-USER_NAME="ktanoooo"
-USER_EMAIL="ktanoooo1112@gmail.com"
 main
-
-# If it is finished, reopen Windows Terminal. Maybe it will be opened on zsh.
+exec $SHELL -l

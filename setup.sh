@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eux
 
 ## ----------------------------------------
 ##  Preparation
@@ -40,7 +41,6 @@ symboliclink_dotfiles() {
     )
   else
     bulk_symlink_target=(
-      "./dotfiles/Library/Application Support/Alfred/Alfred.alfredpreferences"
       "./dotfiles/.aliases"
       "./dotfiles/.git_template"
       "./dotfiles/.trashrc"
@@ -168,16 +168,16 @@ setup_for_myself() {
 }
 
 main() {
-  # install_bundle
+  install_bundle
   symboliclink_dotfiles
-  # install_asdf_gltall
-  # install_yarn
-  # setup_rust
-  # install_zinit
-  # install_tmux_plugin_manager
-  # git_configuration
-  # clone_git_repositories
-  # setup_for_myself
+  install_asdf_gltall
+  install_yarn
+  setup_rust
+  install_zinit
+  install_tmux_plugin_manager
+  git_configuration
+  clone_git_repositories
+  setup_for_myself
 }
 
 main
