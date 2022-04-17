@@ -1,12 +1,12 @@
 #!/bin/bash
 set -eux
 
-## ----------------------------------------
-##  Preparation
-##  Please open zsh by Ubuntu-20.04 on Windows Terminal
-##  Powershell > wsl -l -v
-##  If VERSTION equals 1, please commands '> wsl --set-version Ubuntu-20.04 2'.
-## ----------------------------------------
+# ----------------------------------------
+#  Preparation
+#  Please open zsh by Ubuntu-20.04 on Windows Terminal
+#  Powershell > wsl -l -v
+#  If VERSTION equals 1, please commands '> wsl --set-version Ubuntu-20.04 2'.
+# ----------------------------------------
 
 EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
@@ -168,16 +168,16 @@ setup_for_myself() {
 }
 
 main() {
-  install_bundle
-  symboliclink_dotfiles
-  install_asdf_gltall
-  install_yarn
-  setup_rust
-  install_zinit
-  install_tmux_plugin_manager
+  # install_bundle
+  # symboliclink_dotfiles
+  # install_asdf_global
+  # install_yarn
+  # setup_rust
+  # install_zinit
+  # install_tmux_plugin_manager
   git_configuration
   clone_git_repositories
-  setup_for_myself
+  # setup_for_myself
 }
 
 main

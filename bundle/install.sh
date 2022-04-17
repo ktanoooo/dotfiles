@@ -42,8 +42,8 @@ install_cargo_pkgs() {
 
 
 main() {
-  # install_vsplug
-  # install_cargo_pkgs
+  install_vsplug
+  install_cargo_pkgs
 }
 
 main
