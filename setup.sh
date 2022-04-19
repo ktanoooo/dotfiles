@@ -53,7 +53,8 @@ symboliclink_dotfiles() {
 ##  Install Bundle
 ## ----------------------------------------
 install_bundle() {
-  /bin/bash https://raw.githubusercontent.com/ktanoooo/dotfiles/main/bundle/install.sh
+  CWD=${EXEPATH}/bundle
+  /bin/bash "${CWD}"/install.sh
 }
 
 ## ----------------------------------------
@@ -129,35 +130,10 @@ vimplug_setup() {
 }
 
 ## ----------------------------------------
-##  Git Configuration
-## ----------------------------------------
-setup_github() {
-  mkdir -p ${HOME}/.ssh
-  cd ${HOME}/.ssh
-  ssh-keygen -t ed25519 -f id_ed25519_github -C "ktanoooo1112@gmail.com"
-  ssh-keyscan -t ed25519 github.com >> "${HOME}"/.ssh/known_hosts
-  cd ${HOME}
-# Keep the following indententions.
-cat >> ${HOME}/.ssh/config << EOF
-HOST github.com
-  HostName github.com
-  User git
-  IdentityFile ~/.ssh/id_ed25519_github
-EOF
-  brew install gh
-  gh auth login
-}
-
-## ----------------------------------------
 ##  Myself
 ## ----------------------------------------
 setup_for_myself() {
-  clone_git_repositories() {
-    ghq get -p git@github.com:ktanoooo/dotfiles.git
-  }
-
   [ ! -f "${HOME}/.alias-local" ] && touch "${HOME}/.alias-local"
-  clone_git_repositories
 }
 
 main() {
@@ -168,7 +144,6 @@ main() {
   install_zinit
   install_tmux_plugin_manager
   setup_tig
-  clone_git_repositories
   setup_for_myself
 
   exec $SHELL -l

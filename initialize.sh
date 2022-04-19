@@ -41,6 +41,12 @@ HOST github.com
 EOF
   brew install gh
   gh auth login
+
+  clone_git_repositories() {
+    ghq get -p git@github.com:ktanoooo/dotfiles.git
+  }
+
+  clone_git_repositories
 }
 
 ## ----------------------------------------
