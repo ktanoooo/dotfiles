@@ -3,9 +3,12 @@
     "inProcess": [
       { "originalKeys": "162", "newRemapKeys": "91" },
       { "originalKeys": "93", "newRemapKeys": "17" },
+      { "originalKeys": "91", "newRemapKeys": "18" },
+      { "originalKeys": "29", "newRemapKeys": "244" },
       { "originalKeys": "20", "newRemapKeys": "17" },
       { "originalKeys": "164", "newRemapKeys": "17" },
-      { "originalKeys": "91", "newRemapKeys": "18" }
+      { "originalKeys": "28", "newRemapKeys": "243" },
+      { "originalKeys": "240", "newRemapKeys": "93" }
     ]
   },
   "remapShortcuts": { "global": [], "appSpecific": [] }
