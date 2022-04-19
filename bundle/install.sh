@@ -3,7 +3,6 @@ set -eux
 
 EXEPATH=$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)
 
-
 ## ----------------------------------------
 ##  Install Brewfile
 ## ----------------------------------------
@@ -40,8 +39,8 @@ install_cargo_pkgs() {
   done
 }
 
-
 main() {
+  install_brew
   install_vsplug
   install_cargo_pkgs
 }

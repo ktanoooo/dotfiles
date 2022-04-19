@@ -11,14 +11,6 @@ set -eux
 EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
 ## ----------------------------------------
-##  Install Bundle
-## ----------------------------------------
-install_bundle() {
-  CWD=${EXEPATH}/bundle
-  /bin/bash "${CWD}"/install.sh
-}
-
-## ----------------------------------------
 ## Symbolic link dotfiles
 ## ----------------------------------------
 symboliclink_dotfiles() {
@@ -58,35 +50,39 @@ symboliclink_dotfiles() {
 }
 
 ## ----------------------------------------
+##  Install Bundle
+## ----------------------------------------
+install_bundle() {
+  /bin/bash https://raw.githubusercontent.com/ktanoooo/dotfiles/main/bundle/install.sh
+}
+
+## ----------------------------------------
 ##  Install Asdf
 ## ----------------------------------------
 install_asdf_global() {
-  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git
-  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+  asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git || true
+  asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
+  asdf plugin add golang https://github.com/kennyp/asdf-golang.git || true
+  asdf plugin add python https://github.com/danhper/asdf-python.git || true
   if [ -f "${HOME}/.tool-versions" ]; then
     while read line; do
-      lng=`$line | cut -d' ' -f1`
-      ver=`$line | cut -d' ' -f2`
+      lng=`echo $line | cut -d' ' -f1`
+      ver=`echo $line | cut -d' ' -f2`
       asdf install $lng $ver
       asdf global $lng $ver
     done < "${HOME}/.tool-versions"
+    type node > /dev/null 2>&1 && npm install -g yarn
   else
     echo "Please create `${HOME}/.tool-versions`"
   fi
 }
 
 ## ----------------------------------------
-##  Install Yarn
+## Install Rust
 ## ----------------------------------------
-install_yarn() {
-  npm install -g yarn
-}
-
-## ----------------------------------------
-## Setup Rust
-## ----------------------------------------
-setup_rust() {
-  rustup-init -y
+install_rust() {
+  sudo apt-get install pkg-config libssl-dev libz-dev
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source ${HOME}/.cargo/env
   rustup component add rls --toolchain stable
   rustup component add rust-src --toolchain stable
@@ -99,7 +95,7 @@ setup_rust() {
 ##  Install Zinit
 ## ----------------------------------------
 install_zinit() {
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zdharma/zinit/master/doc/install.sh)"
+  sh -c "$(curl -fsSL https://git.io/zinit-install)"
   source ~/.zshrc
   zinit self-update
 }
@@ -135,11 +131,13 @@ vimplug_setup() {
 ## ----------------------------------------
 ##  Git Configuration
 ## ----------------------------------------
-git_configuration() {
+setup_github() {
   mkdir -p ${HOME}/.ssh
+  cd ${HOME}/.ssh
   ssh-keygen -t ed25519 -f id_ed25519_github -C "ktanoooo1112@gmail.com"
   ssh-keyscan -t ed25519 github.com >> "${HOME}"/.ssh/known_hosts
-# インデント大事
+  cd ${HOME}
+# Keep the following indententions.
 cat >> ${HOME}/.ssh/config << EOF
 HOST github.com
   HostName github.com
@@ -151,34 +149,30 @@ EOF
 }
 
 ## ----------------------------------------
-##  Clone Git Repositories
-## ----------------------------------------
-clone_git_repositories() {
-  mkdir -p "${HOME}"/.ghq/github.com/ktanoooo/dotfiles && cd "$_" || exit 1
-  git clone --recursive https://github.com/ktanoooo/dotfiles .
-
-  # ... other repos
-}
-
-## ----------------------------------------
 ##  Myself
 ## ----------------------------------------
 setup_for_myself() {
+  clone_git_repositories() {
+    ghq get -p git@github.com:ktanoooo/dotfiles.git
+  }
+
   [ ! -f "${HOME}/.alias-local" ] && touch "${HOME}/.alias-local"
+  clone_git_repositories
 }
 
 main() {
-  # install_bundle
-  # symboliclink_dotfiles
-  # install_asdf_global
-  # install_yarn
-  # setup_rust
-  # install_zinit
-  # install_tmux_plugin_manager
-  git_configuration
+  symboliclink_dotfiles
+  install_bundle
+  install_asdf_global
+  install_rust
+  install_zinit
+  install_tmux_plugin_manager
+  setup_tig
   clone_git_repositories
-  # setup_for_myself
+  setup_for_myself
+
+  exec $SHELL -l
 }
 
+# Main
 main
-exec $SHELL -l

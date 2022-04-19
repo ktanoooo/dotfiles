@@ -7,13 +7,9 @@ set -eux
 ##  Step2. Open Ubuntu-20.04 by Windows Terminal
 ## ----------------------------------------
 
-# Update and Upgrade apt
-initial_update() {
-  sudo apt update -y
-  sudo apt upgrade -y
-}
-
-# Install brew
+## ----------------------------------------
+## Install brew
+## ----------------------------------------
 install_brew() {
   # Install brew dependent packages
   sudo apt install build-essential curl file git -y
@@ -22,37 +18,59 @@ install_brew() {
   test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
-  echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.profile
-  # references: 
+  echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.profile
   # https://brew.sh/index_ja
   # https://docs.brew.sh/Homebrew-on-Linux
 }
 
-# Install zsh
+## ----------------------------------------
+##  Git Configuration
+## ----------------------------------------
+setup_github() {
+  mkdir -p ${HOME}/.ssh
+  cd ${HOME}/.ssh
+  ssh-keygen -t ed25519 -f id_ed25519_github -C "ktanoooo1112@gmail.com"
+  ssh-keyscan -t ed25519 github.com >> "${HOME}"/.ssh/known_hosts
+  cd ${HOME}
+# Keep the following indententions.
+cat >> ${HOME}/.ssh/config << EOF
+HOST github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_github
+EOF
+  brew install gh
+  gh auth login
+}
+
+## ----------------------------------------
+## Install zsh
+## ----------------------------------------
 install_zsh() {
   brew install zsh
   if [[ $OSTYPE == "linux-gnu" ]]; then
-    ZSH_PATH=`$(brew --prefix)/bin/zsh`
-    ZSH_SHARE_PATH=`$(brew --prefix)/share/zsh`
+    ZSH_PATH="$(brew --prefix)/bin/zsh"
+    ZSH_SHARE_PATH="$(brew --prefix)/share/zsh"
     echo `which zsh` | sudo tee -a /etc/shells
-    chsh -s `which zsh`
-    echo "eval \$($(brew --prefix)/bin/brew shellenv)" >> ~/.zshrc
   else
-    ZSHPATH="/usr/local/bin/zsh"
+    ZSH_PATH="/usr/local/bin/zsh"
     ZSH_SHARE_PATH="/usr/local/share/zsh"
     sudo sh -c "$(echo $ZSH_PATH)" >> /etc/shells
-    sudo chsh -s $ZSH_PATH
   fi
   chmod 755 $ZSH_SHARE_PATH
   chmod 755 "${ZSH_SHARE_PATH}/site-functions"
+  sudo chsh -s $ZSH_PATH
 }
 
 main() {
-  initial_update
+  sudo apt update -y
+  sudo apt upgrade -y
+
   install_brew
+  setup_github
   install_zsh
+  exec $SHELL -l
 }
 
 # Main
 main
-exec $SHELL -l
