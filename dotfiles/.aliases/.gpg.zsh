@@ -1,5 +1,13 @@
 ## ----------------------------------------
 ##  Generate new key
+##    Please select what kind of key you want: => (1) RSA and RSA
+##    What keysize do you want? (3072) => 4096
+##    Key is valid for? (0) => 0
+##    Is this correct? (y/N) => y
+##    Real name: ktanoooo
+##    Email address: ktanoooo1112@gmail.com
+##    Comment: (Enter)
+##    Change (N)ame, (C)omment, (E)mail or (O)kay/(Q)uit? => O
 ## ----------------------------------------
 alias gpggen='gpg --full-gen-key'
 
