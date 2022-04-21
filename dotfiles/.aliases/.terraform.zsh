@@ -1,6 +1,6 @@
 alias tfinit='terraform init'
 alias tfpln='terraform plan'
-alias tfapy='terraform applay'
+alias tfapy='terraform apply'
 alias tfdl='terraform destroy'
 alias tffmt='terraform fmt -recursive'
 alias tfshow='terraform show'
