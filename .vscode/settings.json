@@ -67,6 +67,7 @@
           "text.html.markdown",
           "source.css",
           "source.js",
+          "source.tf",
           "source.ts",
           "source.jsx",
           "source.tsx",
