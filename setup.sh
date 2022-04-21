@@ -65,6 +65,7 @@ install_asdf_global() {
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
   asdf plugin add golang https://github.com/kennyp/asdf-golang.git || true
   asdf plugin add python https://github.com/danhper/asdf-python.git || true
+  asdf plugin add terraform https://github.com/Banno/asdf-hashicorp.git || true
   if [ -f "${HOME}/.tool-versions" ]; then
     while read line; do
       lng=`echo $line | cut -d' ' -f1`

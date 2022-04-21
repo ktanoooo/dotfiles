@@ -56,10 +56,6 @@ brew "postgres"
 brew "zsh"
 brew "zsh-completions"
 
-## ========== Terraform ==========
-tap "hashicorp/tap"
-brew "hashicorp/tap/terraform"
-
 ## ========== Heroku ==========
 tap "heroku/brew"
 brew "heroku"
