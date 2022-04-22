@@ -4,6 +4,7 @@ alias tfapy='terraform apply'
 alias tfdl='terraform destroy'
 alias tffmt='terraform fmt -recursive'
 alias tfshow='terraform show'
+alias tfout='terraform output'
 
 alias tfsl='terraform state list'
 alias tfsrm='terraform state rm $1'
