@@ -9,8 +9,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; CapsLockとAppsKey入れ替え
 ; powertoysに置き換え
-; vkF0::AppsKey
-; AppsKey::vkF0
+; vkF0::F13
+; F13::vkF0
 
 ; mac風に入れ替え
 ; powertoysに置き換え
@@ -21,10 +21,10 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; Ecmas風矢印設定
 ; 次の改行大事
 
-AppsKey & f::Right
-AppsKey & b::Left
-AppsKey & p::Up
-AppsKey & n::Down
+F13 & f::Right
+F13 & b::Left
+F13 & p::Up
+F13 & n::Down
 
-AppsKey & e::End
-AppsKey & w::Home
+F13 & e::End
+F13 & w::Home
