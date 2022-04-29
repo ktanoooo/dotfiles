@@ -36,3 +36,4 @@ choco install keepassxc -y
 choco install postman -y
 choco install mysql.workbench -y
 choco install microsoft-windows-terminal -y
+choco install dropbox -y
