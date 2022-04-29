@@ -20,6 +20,7 @@ brew "exa"  # Replacement for "ls"
 brew "fzf"  # Command line finder
 brew "ghq"  # Remote Repository management tool
 brew "git"
+brew "lha"  # Utility for creating and opening lzh archives
 brew "tig"
 brew "tor"
 brew "htop"

@@ -76,6 +76,12 @@ zipdp() {
 }
 alias unzipsjis='unzip -O cp932'
 
+openlzh() {
+  [ -z $1 ] && echo "no arg" && return 0;
+  mkdir -p _$1
+  lha -xw=./_$1 $1
+}
+
 ## ----------------------------------------
 ##  Zinit
 ## ----------------------------------------
