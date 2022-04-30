@@ -15,6 +15,7 @@ curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/windows_t
 # Install Keyboard Manager
 choco install powertoys -y
 curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/keyboard_manager/powertoys_default.json -o $env:USERPROFILE\AppData\Local\Microsoft\PowerToys\'Keyboard Manager'\default.json
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/keyboard_manager/move_cursor_like_ecmas.ahk -o $env:USERPROFILE\AppData\Roaming\Microsoft\Windows\'Start Menu'\Programs\Startup\move_cursor_like_ecmas.ahk
 
 # Install VSCode
 choco install vscode -y
