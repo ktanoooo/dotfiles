@@ -30,7 +30,8 @@ choco install slack -y
 choco install discord -y
 
 # Install Fonts
-choco install cascadiacode -y  # Code Font
+choco install cascadiacode -y
+choco install nerdfont-hack -y
 
 # Install Work tools
 choco install keepassxc -y
