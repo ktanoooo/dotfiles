@@ -1,8 +1,16 @@
+alias tf='terraform'
+
 alias tfinit='terraform init'
 alias tfpln='terraform plan'
 alias tfapy='terraform apply'
 alias tfdl='terraform destroy'
-alias tffmt='terraform fmt -recursive'
+
+# format
+alias tffmt='terraform fmt -recursive' #  Also process files in subdirectories. By default, only the given directory (or current directory) is processed.
+alias tffmtc='terraform fmt -check -recursive' # Check if the input is formatted. Exit status will be 0 if all input is properly formatted and non-zero otherwise.
+
+alias tfvalid='terraform validate;'
+
 alias tfshow='terraform show'
 alias tfout='terraform output'
 
