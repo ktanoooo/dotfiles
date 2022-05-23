@@ -1,3 +1,4 @@
+alias dus1='dust -pr -d 1'
 alias dus='dust -pr -d 2 -X ".git" -X "node_modules"'
 alias psa='ps aux'
 alias pskl='psa | fzf | awk "{ print \$2 }" | xargs kill -9'
