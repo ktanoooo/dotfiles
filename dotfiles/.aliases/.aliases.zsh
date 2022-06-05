@@ -15,6 +15,8 @@ alias ll='exa -alhF --group-directories-first --time-style=long-iso'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"'
 alias tr2='llx -T -L=2' tr3='llx -T -L=3'
 
+alias dateiso='date --iso-8601'
+
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias weathert='curl -Acurl wttr.in/Tokushima'
 alias bat='bat --color=always --theme=ansi'
