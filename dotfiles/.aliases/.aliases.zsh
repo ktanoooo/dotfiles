@@ -16,6 +16,7 @@ alias llx='ll --git-ignore --ignore-glob=".git|node_modules"'
 alias tr2='llx -T -L=2' tr3='llx -T -L=3'
 
 alias dateiso='date --iso-8601'
+alias datetime='date --iso-8601=seconds'
 
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias weathert='curl -Acurl wttr.in/Tokushima'
