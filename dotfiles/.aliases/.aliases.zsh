@@ -25,6 +25,23 @@ alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 
 alias ydlmp3='youtube-dl -x --audio-format mp3'
 
+convert20() {
+  [ -z "$1" ] && echo "no file paths" && return 0;
+  convert -resize 20%x $1 resize-$1
+}
+convert40() {
+  [ -z "$1" ] && echo "no file paths" && return 0;
+  convert -resize 40%x $1 resize-$1
+}
+convert60() {
+  [ -z "$1" ] && echo "no file paths" && return 0;
+  convert -resize 60%x $1 resize-$1
+}
+convert80() {
+  [ -z "$1" ] && echo "no file paths" && return 0;
+  convert -resize 80%x $1 resize-$1
+}
+
 mkcd() { mkdir "$1" && cd "$1"; }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
 lnsv() {
