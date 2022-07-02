@@ -92,3 +92,12 @@ gcre() {
   git push --set-upstream origin main;
   ghweb;
 }
+
+gcreremote() {
+  dirname=$(basename `pwd`)
+  name=$dirname
+  description=$dirname
+  git secrets --install && git secrets --register-aws;
+  gh repo create ${name} --description ${description} --private --source=. --remote=origin;
+  ghweb;
+}
