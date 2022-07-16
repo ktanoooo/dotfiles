@@ -25,6 +25,7 @@ brew "tig"
 brew "tor"
 brew "htop"
 brew "asdf"  # Version manager
+brew "dive"  # Analyze a docker image
 brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
 brew "nmap"  # Port scan
