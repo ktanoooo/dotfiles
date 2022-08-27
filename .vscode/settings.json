@@ -21,8 +21,10 @@
     "editor.tabSize": 4,
     "editor.insertSpaces": true
   },
+  "[prisma]": {
+    "editor.defaultFormatter": "Prisma.prisma"
+  },
   "editor.renderWhitespace": "all",
-  "editor.renderIndentGuides": false,
   "editor.formatOnType": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
