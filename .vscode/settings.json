@@ -24,6 +24,10 @@
   "[prisma]": {
     "editor.defaultFormatter": "Prisma.prisma"
   },
+  "[proto3]": {
+    "editor.defaultFormatter": "xaver.clang-format"
+  },
+  "clang-format.language.proto.style": "google",
   "editor.renderWhitespace": "all",
   "editor.formatOnType": true,
   "diffEditor.ignoreTrimWhitespace": false,
