@@ -37,7 +37,7 @@ alias dirmf='docker image prune --all --force'
 ##  Network
 ## ----------------------------------------
 alias dn='docker network'
-alias dnls='docker network ls --all --latest'
+alias dnls='docker network ls'
 alias dnconnect='docker network connect'
 alias dndisconn='docker network disconnect'
 alias dninspect='docker network ls --format "{{.ID}}\t{{.Name}}\t{{.Driver}}" | fzf | cut -f1 | xargs docker network inspect'
@@ -55,6 +55,7 @@ alias dccdown='docker-compose down -v'
 alias dccps='docker-compose ps'
 alias dccpsa='docker-compose ps --all'
 alias dccb='docker-compose ps --services | fzf -m | cut -f1 | xargs docker-compose build'
+alias dcci='docker-compose images'
 
 ## ----------------------------------------
 ##  Kubernetes
