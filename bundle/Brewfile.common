@@ -30,6 +30,7 @@ brew "dust"  # Replacement for "du"
 brew "tmux"  # Terminal multiplexer
 brew "nmap"  # Port scan
 brew "redis"
+brew "ffmpeg"  # youtube-dl
 brew "tflint"
 brew "awscli"
 brew "neovim"  # Vim-fork focused on extensibility and agility
