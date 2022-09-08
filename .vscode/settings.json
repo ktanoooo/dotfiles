@@ -43,6 +43,9 @@
   "files.exclude": {
     "**/.git": false
   },
+  "files.associations": {
+    "*.gs": "javascript"
+  },
   "editor.wordWrap": "on",
   "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
   "typescript.updateImportsOnFileMove.enabled": "always",
