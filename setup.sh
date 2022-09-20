@@ -58,6 +58,34 @@ install_bundle() {
 }
 
 ## ----------------------------------------
+##  Install Databases on WSL (mac use Homebrew)
+## ----------------------------------------
+install_databases() {
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    # postgresql
+    sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+    wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    sudo apt install -y \
+      postgresql \
+      libpq-dev
+
+    # mysql
+    sudo apt install -y \
+      mysql-server \
+      mysql-client \
+      libpq-dev \
+      libmysqlclient-dev
+
+    # sqlite
+    sudo apt install -y \
+      sqlite3 \
+      libpq-dev \
+      libmysqlclient-dev \
+      libsqlite3-dev
+  fi
+}
+
+## ----------------------------------------
 ##  Install Asdf
 ## ----------------------------------------
 install_asdf_global() {
@@ -141,6 +169,7 @@ setup_for_myself() {
 main() {
   symboliclink_dotfiles
   install_bundle
+  install_databases
   install_asdf_global
   install_rust
   install_zinit
