@@ -26,6 +26,11 @@ cask "font-fontawesome"
 cask "font-hack-nerd-font"
 
 ## ========== Language & Databases ==========
+brew "libpq"      # For diesel_cli, Postgres C API library
+brew "mysql"      # For diesel_cli
+brew "sqlite"     # For diesel_cli
+brew "postgresql" # For diesel_cli
+
 tap "AdoptOpenJDK/openjdk"
 cask "adoptopenjdk11"
 
