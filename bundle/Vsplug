@@ -43,6 +43,7 @@ sianglim.slim
 ms-vscode.vscode-typescript-tslint-plugin
 redhat.vscode-yaml
 rust-lang.rust
+rust-lang.rust-analyzer
 lanza.lldb-vscode
 dsznajder.es7-react-js-snippets
 bung87.vscode-gemfile
