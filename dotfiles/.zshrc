@@ -44,6 +44,11 @@ setopt auto_param_keys
 autoload -Uz colors && colors
 
 ## ----------------------------------------
+##  Limit Setup
+## ----------------------------------------
+ulimit -n 4096
+
+## ----------------------------------------
 ##  History
 ## ----------------------------------------
 export HISTSIZE=20000  # Save history in memory
