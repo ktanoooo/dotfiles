@@ -13,6 +13,7 @@ set -eux
 install_brew() {
   # Install brew dependent packages
   sudo apt install build-essential curl file git -y
+
   # Install brew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
