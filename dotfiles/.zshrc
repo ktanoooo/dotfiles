@@ -93,6 +93,12 @@ bindkey "^[[1;2B" down-line-or-beginning-search
 ## ----------------------------------------
 ##  Load
 ## ----------------------------------------
+# Rust
+# https://github.com/sfackler/rust-openssl/issues/763#issuecomment-667017742
+if [ $OSTYPE = "linux-gnu" ]; then
+  export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+fi
+
 # GPG
 # https://unix.stackexchange.com/questions/608842/zshrc-export-gpg-tty-tty-says-not-a-tty
 export GPG_TTY="${TTY}"
@@ -110,7 +116,7 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # asdf
-. "`brew --prefix`/opt/asdf/asdf.sh"
+. "`brew --prefix asdf`/libexec/asdf.sh"
 
 # terraform
 autoload -U +X bashcompinit && bashcompinit
@@ -144,14 +150,21 @@ autoload -Uz _zinit
 
 zinit ice wait'0'
 zinit lucid for \
-  ulwlu/enhancd \
   zsh-users/zsh-completions \
   zsh-users/zsh-autosuggestions \
-  zsh-users/zsh-syntax-highlighting \
+  zsh-users/zsh-syntax-highlighting
   # as'completion' is-snippet 'https://github.com/docker/cli/blob/master/contrib/completion/zsh/_docker' \
   # as'completion' is-snippet 'https://github.com/docker/machine/blob/master/contrib/completion/zsh/_docker-machine' \
   # as'completion' is-snippet 'https://github.com/docker/compose/blob/master/contrib/completion/zsh/_docker-compose' \
   # as'completion' is-snippet 'https://github.com/lukechilds/zsh-better-npm-completion/blob/master/zsh-better-npm-completion.plugin.zsh'
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 ## ----------------------------------------
 ##  Prompt
@@ -162,12 +175,3 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 ### End of Zinit's installer chunk
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
-
-### End of Zinit's installer chunk
