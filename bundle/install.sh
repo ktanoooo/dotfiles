@@ -32,7 +32,8 @@ install_vsplug() {
 ##  Install cargo packages
 ## ----------------------------------------
 install_cargo_pkgs() {
-  for plugin in $(cat "${EXEPATH}"/Cargofile); do
+  plugins=$(cat "${EXEPATH}"/Cargofile | sed -e 's/#.*$//' -e '/^$/d')
+  for plugin in $plugins; do
     if [ -n $plugin ]; then
       cargo install "${plugin}"
     fi
