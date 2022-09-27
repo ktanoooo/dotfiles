@@ -3,16 +3,16 @@
 
 {
   "$schema": "https://aka.ms/terminal-profiles-schema",
-  "defaultProfile": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+  "defaultProfile": "{2c4de342-38b7-51cf-b940-2309a097f518}",
   "initialCols": 120,
-  "initialRows": 90,
+  "initialRows": 70,
   "initialPosition": "0,0",
   "profiles": {
     "defaults": {},
     "list": [
       {
-        "name": "Ubuntu-20.04",
-        "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+        "name": "Ubuntu",
+        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
         "hidden": false,
         "source": "Windows.Terminal.Wsl",
         "colorScheme": "Japanesque",
@@ -47,41 +47,6 @@
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "commandline": "cmd.exe",
         "hidden": false
-      },
-      {
-        // Put settings here that you want to apply to all profiles
-        "name": "Git Bash",
-        "guid": "{adea6a3b-fff8-4d78-9d5a-2d48c5c5cab5}",
-        "hidden": true,
-        "closeOnExit": true,
-        "colorScheme": "Molokai",
-        "commandline": "C:\\Program Files\\Git\\bin\\bash.exe",
-        "cursorColor": "#FFFFFF",
-        "cursorShape": "bar",
-        "font": {
-          "face": "Hack Nerd Font",
-          "axes": { "ital": 1 },
-          "size": 12
-        },
-        "acrylicOpacity": 0.7,
-        "historySize": 9001,
-        "icon": "C:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
-        "padding": "0, 0, 0, 0",
-        "snapOnInput": true,
-        "startingDirectory": "%USERPROFILE%",
-        "useAcrylic": true
-      },
-      {
-        "name": "Azure Cloud Shell",
-        "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-        "hidden": true,
-        "source": "Windows.Terminal.Azure"
-      },
-      {
-        "name": "Ubuntu",
-        "guid": "{2c4de342-38b7-51cf-b940-2309a097f518}",
-        "hidden": true,
-        "source": "Windows.Terminal.Wsl"
       }
     ]
   },
