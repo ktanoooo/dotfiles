@@ -15,6 +15,7 @@ set blame-view  = id:yes,color file-name:auto author:full date:default line-numb
 set reflog-view  = line-number:yes,interval=1 id:yes date:no author:no commit-title:yes,refs,overflow=no
 set main-view = line-number:no,interval=5 id:no date author:width=7 commit-title:yes,graph,refs,overflow=no
 set main-view-date = custom
+set main-view-date-local = true
 set main-view-date-format = "%Y-%m-%d %H:%M"
 
 ## ----------------------------------------
