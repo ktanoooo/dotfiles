@@ -11,6 +11,13 @@ set -eux
 EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 
 ## ----------------------------------------
+## Locale
+## ----------------------------------------
+sudo locale-gen en_US
+sudo locale-gen en_US.UTF-8
+sudo update-locale LC_ALL=en_US.UTF-8
+
+## ----------------------------------------
 ## Symbolic link dotfiles
 ## ----------------------------------------
 symboliclink_dotfiles() {
