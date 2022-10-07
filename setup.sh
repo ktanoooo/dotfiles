@@ -13,9 +13,11 @@ EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 ## ----------------------------------------
 ## Locale
 ## ----------------------------------------
-sudo locale-gen en_US
-sudo locale-gen en_US.UTF-8
-sudo update-locale LC_ALL=en_US.UTF-8
+setup_locale() {
+  sudo locale-gen en_US
+  sudo locale-gen en_US.UTF-8
+  sudo update-locale LC_ALL=en_US.UTF-8
+}
 
 ## ----------------------------------------
 ## Symbolic link dotfiles
@@ -57,14 +59,6 @@ symboliclink_dotfiles() {
 }
 
 ## ----------------------------------------
-##  Install Bundle
-## ----------------------------------------
-install_bundle() {
-  CWD=${EXEPATH}/bundle
-  /bin/bash "${CWD}"/install.sh
-}
-
-## ----------------------------------------
 ##  Install Databases on WSL (mac use Homebrew)
 ## ----------------------------------------
 install_databases() {
@@ -93,6 +87,28 @@ install_databases() {
 }
 
 ## ----------------------------------------
+## Install Rust
+## ----------------------------------------
+install_rust() {
+  sudo apt-get install pkg-config libssl-dev libz-dev
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  source ${HOME}/.cargo/env
+  rustup component add rls --toolchain stable
+  rustup component add rust-src --toolchain stable
+  rustup component add rls-preview --toolchain stable
+  rustup component add rust-analysis --toolchain stable
+  rustup update stable
+}
+
+## ----------------------------------------
+##  Install Bundle
+## ----------------------------------------
+install_bundle() {
+  CWD=${EXEPATH}/bundle
+  /bin/bash "${CWD}"/install.sh
+}
+
+## ----------------------------------------
 ##  Install Asdf
 ## ----------------------------------------
 install_asdf_global() {
@@ -113,20 +129,6 @@ install_asdf_global() {
   else
     echo "Please create `${HOME}/.tool-versions`"
   fi
-}
-
-## ----------------------------------------
-## Install Rust
-## ----------------------------------------
-install_rust() {
-  sudo apt-get install pkg-config libssl-dev libz-dev
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  source ${HOME}/.cargo/env
-  rustup component add rls --toolchain stable
-  rustup component add rust-src --toolchain stable
-  rustup component add rls-preview --toolchain stable
-  rustup component add rust-analysis --toolchain stable
-  rustup update stable
 }
 
 ## ----------------------------------------
@@ -174,11 +176,13 @@ setup_for_myself() {
 }
 
 main() {
+  setup_locale
+  
   symboliclink_dotfiles
-  install_bundle
   install_databases
-  install_asdf_global
   install_rust
+  install_bundle
+  install_asdf_global
   install_zinit
   install_tmux_plugin_manager
   setup_tig
