@@ -40,7 +40,7 @@ HOST github.com
   User git
   IdentityFile ~/.ssh/id_ed25519_github
 EOF
-  brew install gh
+  brew install gh ghq
   gh auth login
 
   clone_git_repositories() {
@@ -67,6 +67,7 @@ install_zsh() {
   chmod 755 $ZSH_SHARE_PATH
   chmod 755 "${ZSH_SHARE_PATH}/site-functions"
   sudo chsh -s $ZSH_PATH
+  sudo chsh $USER -s $ZSH_PATH
 }
 
 main() {
