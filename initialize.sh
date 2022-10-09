@@ -28,26 +28,30 @@ install_brew() {
 ##  Git Configuration
 ## ----------------------------------------
 setup_github() {
-  mkdir -p ${HOME}/.ssh
-  cd ${HOME}/.ssh
-  ssh-keygen -t ed25519 -f id_ed25519_github -C "ktanoooo1112@gmail.com"
-  ssh-keyscan -t ed25519 github.com >> "${HOME}"/.ssh/known_hosts
+  FILENAME=id_ed25519_github
+  SSH_DIR=~/.ssh
+  SSH_KEY_PATH=${SSH_DIR}/${FILENAME}
+  SSH_KEY_PUB_PATH=${SSH_KEY_PATH}.pub
+
+  mkdir -p ${SSH_DIR}
+  cd ${SSH_DIR}
+  ssh-keygen -t ed25519 -f FILENAME -C "ktanoooo1112@gmail.com"
+  ssh-keyscan -t ed25519 github.com >> "${SSH_DIR}"/known_hosts
   cd ${HOME}
 # Keep the following indententions.
-cat >> ${HOME}/.ssh/config << EOF
+cat >> ${SSH_DIR}/config << EOF
 HOST github.com
   HostName github.com
   User git
-  IdentityFile ~/.ssh/id_ed25519_github
+  IdentityFile ${SSH_KEY_PATH}
 EOF
   brew install gh ghq
-  gh auth login
+  yes | gh auth login -p ssh -h GitHub.com --web
+  gh ssh-key add ${SSH_KEY_PUB_PATH} --title "main_pc"
+  git config --global user.name ktanoooo
+  git config --global user.email "ktanoooo1112@gmail.com"
 
-  clone_git_repositories() {
-    ghq get -p git@github.com:ktanoooo/dotfiles.git
-  }
-
-  clone_git_repositories
+  ghq get -p git@github.com:ktanoooo/dotfiles.git
 }
 
 ## ----------------------------------------
