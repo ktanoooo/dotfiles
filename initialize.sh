@@ -46,7 +46,7 @@ HOST github.com
   IdentityFile ${SSH_KEY_PATH}
 EOF
   brew install gh ghq
-  yes | gh auth login -p ssh -h GitHub.com --web
+  yes | gh auth login -p ssh -h github.com -s admin:public_key --web
   gh ssh-key add ${SSH_KEY_PUB_PATH} --title "main_pc"
   git config --global user.name ktanoooo
   git config --global user.email "ktanoooo1112@gmail.com"
