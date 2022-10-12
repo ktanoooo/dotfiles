@@ -90,7 +90,10 @@ install_databases() {
 ## Install Rust
 ## ----------------------------------------
 install_rust() {
-  sudo apt-get install pkg-config libssl-dev libz-dev
+  sudo apt install -y \
+    pkg-config \
+    libssl-dev \
+    libz-dev
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   source ${HOME}/.cargo/env
   rustup component add rls --toolchain stable
