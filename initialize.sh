@@ -35,7 +35,7 @@ setup_github() {
 
   mkdir -p ${SSH_DIR}
   cd ${SSH_DIR}
-  ssh-keygen -t ed25519 -f FILENAME -C "ktanoooo1112@gmail.com"
+  ssh-keygen -t ed25519 -f ${FILENAME} -C "ktanoooo1112@gmail.com"
   ssh-keyscan -t ed25519 github.com >> "${SSH_DIR}"/known_hosts
   cd ${HOME}
 # Keep the following indententions.
