@@ -175,7 +175,7 @@ vimplug_setup() {
 ##  Myself
 ## ----------------------------------------
 setup_for_myself() {
-  [ ! -f "${HOME}/.alias-local" ] && touch "${HOME}/.alias-local"
+  [ ! -f "${HOME}/.alias-local.zsh" ] && touch "${HOME}/.alias-local.zsh"
 }
 
 main() {
