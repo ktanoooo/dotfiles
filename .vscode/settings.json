@@ -27,6 +27,7 @@
   "[proto3]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
+  "window.newWindowDimensions": "inherit",
   "clang-format.language.proto.style": "google",
   "editor.renderWhitespace": "all",
   "editor.formatOnType": true,
