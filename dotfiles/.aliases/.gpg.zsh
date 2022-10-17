@@ -12,16 +12,10 @@
 alias gpggen='gpg --full-gen-key'
 
 ## ----------------------------------------
-##  Show github ktanoooo info
-## ----------------------------------------
-alias gpgkey='gpg --list-secret-key --keyid-format LONG ktanoooo'
-alias gpgsec='gpgkey | sed -n -e1p -e4p | cut -d " " -f4 | cut -d "/" -f2 | sed -n 1p'
-alias gpgpub='gpgkey | sed -n -e1p -e4p | cut -d " " -f4 | cut -d "/" -f2 | sed -n 2p'
-
-## ----------------------------------------
 ##  Export public key
 ## ----------------------------------------
-alias gpgexp='gpgkey | sed -n -e1p -e4p | cut -d " " -f4 | cut -d "/" -f2 | sed -n 2p | xargs gpg --armor --export'
+alias gpgpub="gpg -k G uid | awk '{print \$3\" \"\$4}' | fzf | awk '{print \$1}' | xargs gpg -k --keyid-format=long {} G sub | cut -d '/' -f2 | cut -d ' ' -f1"
+alias gpgexp='gpgpub | xargs gpg --armor --export'
 
 ## ----------------------------------------
 ## Delete
