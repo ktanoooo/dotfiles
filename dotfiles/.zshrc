@@ -117,6 +117,9 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 
 # asdf
 . "`brew --prefix asdf`/libexec/asdf.sh"
+## bugfix: https://github.com/prisma/prisma/issues/14073#issuecomment-1179663578
+## Prefer /usr/bin path to avoid using opennessl (@1.1.x) which depends on homebrew
+export PATH="/usr/bin:$PATH:${HOME}"
 
 # terraform
 autoload -U +X bashcompinit && bashcompinit
