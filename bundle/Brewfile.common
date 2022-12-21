@@ -33,6 +33,7 @@ brew "awslogs"
 brew "kompose"  # Create k8s's manifest from docker-compose.yml
 brew "minikube"  # Run a k8s cluster locally
 brew "neofetch"  # system info script
+brew "protobuf"
 brew "skaffold"  # Easy and Repeatable k8s Development
 brew "git-delta"  # Syntax-highlighting pager for git and diff output
 brew "shellcheck"  # Static analysis and lint tool, for (ba)sh scripts
