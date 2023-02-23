@@ -24,8 +24,6 @@ alias randgen='openssl rand -base64 30 | pbcopy'
 
 alias userid='cat /etc/passwd | fzf | cut -d : -f1 | xargs id'
 
-alias weather='curl -Acurl wttr.in/Tokyo'
-alias weathert='curl -Acurl wttr.in/Tokushima'
 alias bat='bat --color=always --theme=ansi'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 
