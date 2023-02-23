@@ -22,6 +22,8 @@ alias datetime='date --iso-8601=seconds'
 
 alias randgen='openssl rand -base64 30 | pbcopy'
 
+alias userid='cat /etc/passwd | fzf | cut -d : -f1 | xargs id'
+
 alias weather='curl -Acurl wttr.in/Tokyo'
 alias weathert='curl -Acurl wttr.in/Tokushima'
 alias bat='bat --color=always --theme=ansi'
@@ -45,6 +47,7 @@ convert80() {
   [ -z "$1" ] && echo "no file paths" && return 0;
   convert -resize 80%x $1 resize-$1
 }
+
 
 mkcd() { mkdir "$1" && cd "$1"; }
 absp() { echo $(cd $(dirname "$1") && pwd -P)/$(basename "$1"); }
