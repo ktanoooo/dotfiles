@@ -14,4 +14,10 @@ asdf_install() {
   fi
 }
 
+# https://github.com/asdf-vm/asdf/issues/1115#issuecomment-1018009184
+asdf_clean() {
+  rm -f ~/.asdf/shims/*
+  asdf reshim
+}
+
 alias asdfc='asdf current'
