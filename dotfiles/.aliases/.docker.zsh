@@ -1,5 +1,5 @@
 alias d='docker'
-alias dcc='docker-compose'
+alias dcc='docker compose'
 alias k='kubectl'
 
 ## ----------------------------------------
@@ -50,12 +50,12 @@ alias dp='docker container ls --latest'
 ## ----------------------------------------
 ##  Docker Compose
 ## ----------------------------------------
-alias dccup='docker-compose up -d'
-alias dccdown='docker-compose down -v'
-alias dccps='docker-compose ps'
-alias dccpsa='docker-compose ps --all'
-alias dccb='docker-compose ps --services | fzf -m | cut -f1 | xargs docker-compose build'
-alias dcci='docker-compose images'
+alias dccup='docker compose up -d'
+alias dccdown='docker compose down -v'
+alias dccps='docker compose ps'
+alias dccpsa='docker compose ps --all'
+alias dccb='docker compose ps --services | fzf -m | cut -f1 | xargs docker compose build'
+alias dcci='docker compose images'
 
 ## ----------------------------------------
 ##  Kubernetes
