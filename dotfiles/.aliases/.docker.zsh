@@ -58,7 +58,7 @@ alias dp='docker container ls --latest'
 ## ----------------------------------------
 ##  Docker Compose
 ## ----------------------------------------
-alias dccup='docker compose up -d'
+alias dccup='docker compose up'
 alias dccdown='docker compose down -v'
 alias dccps='docker compose ps'
 alias dccpsa='docker compose ps --all'
