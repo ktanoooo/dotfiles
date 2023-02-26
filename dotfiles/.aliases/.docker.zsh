@@ -34,6 +34,14 @@ alias dirma='docker image prune'
 alias dirmf='docker image prune --all --force'
 
 ## ----------------------------------------
+##  Volume
+## ----------------------------------------
+alias dvls='docker volume ls'
+alias dvinspect='docker volume ls --quiet | fzf | xargs docker volume inspect'
+alias dvrma='docker volume prune'
+alias dvrmf='docker volume prune --force'
+
+## ----------------------------------------
 ##  Network
 ## ----------------------------------------
 alias dn='docker network'
