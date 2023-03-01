@@ -13,7 +13,7 @@ alias jq='gojq'  # An implementation of jq command written in Go language
 
 alias cdh='cd ~'
 alias ls='exa -h'
-alias ll='exa -alhF --group-directories-first --time-style=long-iso'
+alias ll='exa -alhFg --group-directories-first --time-style=long-iso'
 alias llx='ll --git-ignore --ignore-glob=".git|node_modules"'
 alias tr2='llx -T -L=2' tr3='llx -T -L=3'
 
