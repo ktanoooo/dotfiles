@@ -7,6 +7,7 @@ alias k='kubectl'
 ## ----------------------------------------
 alias drma='docker system prune --volumes'
 alias drmf='docker system prune --force --all --volumes'
+alias dstats='docker stats --all'
 
 ## ----------------------------------------
 ##  Container
