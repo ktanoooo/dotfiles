@@ -1,4 +1,5 @@
 alias gpu='nvidia-smi'
+alias gpuinfo='nvidia-container-cli info'
 
 install_nvidia_container_toolkit() {
   # https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#setting-up-nvidia-container-toolkit
