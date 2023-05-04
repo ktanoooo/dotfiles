@@ -6,4 +6,5 @@ cnewl() {
 }
 alias cch='cargo check'
 alias crn='cargo run'
+alias crnl='cargo run --release'
 alias cbl='cargo build'
