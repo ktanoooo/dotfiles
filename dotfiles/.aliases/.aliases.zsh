@@ -27,6 +27,8 @@ alias userid='cat /etc/passwd | fzf | cut -d : -f1 | xargs id'
 alias bat='bat --color=always --theme=ansi'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 
+alias vcsync='curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/settings.json -o $env:APPDATA\Code\User\settings.json'
+
 ytmp3() {
   [ -z "$1" ] $$ echo "no url" && return 0;
   yt-dlp -x --audio-format mp3 $1
