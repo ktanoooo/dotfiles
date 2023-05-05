@@ -16,7 +16,7 @@
     "editor.formatOnSave": true
   },
   "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust",
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
     "editor.insertSpaces": true
@@ -49,6 +49,8 @@
   },
   "editor.wordWrap": "on",
   "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
+  "prettier.singleQuote": true,
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.tabSize": 2,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
