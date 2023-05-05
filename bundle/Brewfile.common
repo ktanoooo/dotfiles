@@ -25,7 +25,8 @@ brew "gojq"  # Implementation of jq (written in Go)
 brew "tmux"  # Terminal multiplexer
 brew "nmap"  # Port scan
 brew "redis"
-brew "ffmpeg"  # youtube-dl
+brew "ffmpeg"  # yt-dlp
+brew "yt-dlp"  # alternative to youtube-dl
 brew "tflint"
 brew "awscli"
 brew "neovim"  # Vim-fork focused on extensibility and agility
@@ -37,7 +38,6 @@ brew "protobuf"
 brew "skaffold"  # Easy and Repeatable k8s Development
 brew "git-delta"  # Syntax-highlighting pager for git and diff output
 brew "shellcheck"  # Static analysis and lint tool, for (ba)sh scripts
-brew "youtube-dl"
 brew "imagemagick"  # Tools and libraries to manipulate images in many formats
 brew "git-secrets"  # Prevents you from committing sensitive information to a git repo
 brew "tmux-xpanes"

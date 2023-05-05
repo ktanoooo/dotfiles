@@ -27,7 +27,15 @@ alias userid='cat /etc/passwd | fzf | cut -d : -f1 | xargs id'
 alias bat='bat --color=always --theme=ansi'
 alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 
-alias ydlmp3='youtube-dl -x --audio-format mp3'
+ytmp3() {
+  [ -z "$1" ] $$ echo "no url" && return 0;
+  yt-dlp -x --audio-format mp3 $1
+}
+
+ytmp4() {
+  [ -z "$1" ] $$ echo "no url" && return 0;
+  yt-dlp -f bestvideo+bestaudio $1
+}
 
 convert20() {
   [ -z "$1" ] && echo "no file paths" && return 0;
