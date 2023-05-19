@@ -139,7 +139,7 @@ install_asdf_global() {
 ##  Install Devbox
 ## ----------------------------------------
 install_devbox() {
-  if [[ $OSTYPE != "linux-gnu" ]]; then
+  if [[ $OSTYPE == "linux-gnu" ]]; then
     sh <(curl -L https://nixos.org/nix/install) --no-daemon
   else
     sh <(curl -L https://nixos.org/nix/install)
