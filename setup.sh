@@ -136,6 +136,17 @@ install_asdf_global() {
 }
 
 ## ----------------------------------------
+##  Install Devbox
+## ----------------------------------------
+install_devbox() {
+  if [[ $OSTYPE != "linux-gnu" ]]; then
+    sh <(curl -L https://nixos.org/nix/install) --no-daemon
+  else
+    sh <(curl -L https://nixos.org/nix/install)
+  fi
+}
+
+## ----------------------------------------
 ##  Install Zinit
 ## ----------------------------------------
 install_zinit() {
@@ -187,6 +198,7 @@ main() {
   install_rust
   install_bundle
   install_asdf_global
+  install_devbox
   install_zinit
   install_tmux_plugin_manager
   setup_tig
