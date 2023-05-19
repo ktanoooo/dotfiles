@@ -139,6 +139,7 @@ install_asdf_global() {
 ##  Install Devbox
 ## ----------------------------------------
 install_devbox() {
+  curl -fsSL https://get.jetpack.io/devbox | bash
   if [[ $OSTYPE == "linux-gnu" ]]; then
     sh <(curl -L https://nixos.org/nix/install) --no-daemon
   else
