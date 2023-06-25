@@ -5,7 +5,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ; 連打エラーを防ぐ
 ; https://sites.google.com/site/autohotkeyjp/reference/commands/-MaxHotkeysPerInterval
-#MaxHotkeysPerInterval 1000
+#MaxHotkeysPerInterval 400
 
 ; CapsLockとAppsKey入れ替え
 ; powertoysに置き換え
