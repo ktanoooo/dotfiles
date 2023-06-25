@@ -42,13 +42,6 @@ brew "imagemagick"  # Tools and libraries to manipulate images in many formats
 brew "git-secrets"  # Prevents you from committing sensitive information to a git repo
 brew "tmux-xpanes"
 
-## ========== Language & Databases ==========
-brew "node"
-brew "ruby"
-brew "golang"
-brew "python"
-
-
 ## ========== Shell ==========
 brew "zsh"
 brew "zsh-completions"
