@@ -20,7 +20,7 @@ curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/keyboard_
 
 # Install VSCode
 choco install vscode -y
-curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/settings.json -o $env:AppData\Roaming\Code\User\settings.json
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/settings.json -o $env:AppData\Code\User\settings.json
 curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/keybindings.json -o $env:APPDATA\Code\User\keybindings.json
 
 # Install Browser
