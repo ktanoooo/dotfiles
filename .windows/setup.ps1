@@ -28,6 +28,7 @@ choco install googlechrome -y
 # Install Communication Apps
 choco install slack -y
 choco install discord -y
+choco install zoom -y
 
 # Install Fonts
 choco install cascadiacode -y
