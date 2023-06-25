@@ -52,7 +52,3 @@ brew "python"
 ## ========== Shell ==========
 brew "zsh"
 brew "zsh-completions"
-
-## ========== Heroku ==========
-tap "heroku/brew"
-brew "heroku"

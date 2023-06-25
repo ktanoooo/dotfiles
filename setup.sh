@@ -148,6 +148,17 @@ install_devbox() {
 }
 
 ## ----------------------------------------
+##  Install heroku-cli
+## ----------------------------------------
+install_heroku() {
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+  else
+    curl https://cli-assets.heroku.com/install.sh | sh
+  fi
+}
+
+## ----------------------------------------
 ##  Install Zinit
 ## ----------------------------------------
 install_zinit() {
@@ -200,6 +211,7 @@ main() {
   install_bundle
   install_asdf_global
   install_devbox
+  install_heroku
   install_zinit
   install_tmux_plugin_manager
   setup_tig
