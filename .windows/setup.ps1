@@ -42,3 +42,4 @@ choco install mysql.workbench -y
 choco install microsoft-windows-terminal -y
 choco install dropbox -y
 choco install docker-desktop -y
+choco install openvpn -y
