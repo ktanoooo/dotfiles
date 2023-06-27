@@ -116,9 +116,14 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # asdf
-. "`brew --prefix asdf`/libexec/asdf.sh"
-## bugfix: https://github.com/prisma/prisma/issues/14073#issuecomment-1179663578
-## Prefer /usr/bin path to avoid using opennessl (@1.1.x) which depends on homebrew
+# https://asdf-vm.com/guide/getting-started.html
+. "$HOME/.asdf/asdf.sh"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+# initialise completions with ZSH's compinit
+autoload -Uz compinit && compinit
+
+
 export PATH="/usr/bin:$PATH:${HOME}"
 
 # terraform
@@ -177,4 +182,5 @@ zinit light-mode for \
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 [ -f ~/.p10k.zsh ] && source ~/.p10k.zsh
 
+### End of Zinit's installer chunk
 ### End of Zinit's installer chunk

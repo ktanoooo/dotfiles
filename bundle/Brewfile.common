@@ -19,7 +19,6 @@ brew "lha"  # Utility for creating and opening lzh archives
 brew "tig"
 brew "tor"
 brew "htop"
-brew "asdf"  # Version manager
 brew "dive"  # Analyze a docker image
 brew "gojq"  # Implementation of jq (written in Go)
 brew "tmux"  # Terminal multiplexer
