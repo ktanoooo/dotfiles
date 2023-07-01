@@ -104,10 +104,13 @@ fi
 export GPG_TTY="${TTY}"
 
 # brew
-if [ $OSTYPE = "linux-gnu" ]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-else
-  eval "$(/usr/local/bin/brew shellenv)"
+BREW_PATH=`echo $PATH | grep linuxbrew`
+if [ -z $BREW_PATH ]; then
+  if [ $OSTYPE = "linux-gnu" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  else
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
 fi
 
 # fzf
@@ -122,7 +125,6 @@ export FZF_DEFAULT_OPTS='--reverse --height 80%'
 fpath=(${ASDF_DIR}/completions $fpath)
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
-
 
 export PATH="/usr/bin:$PATH:${HOME}"
 
