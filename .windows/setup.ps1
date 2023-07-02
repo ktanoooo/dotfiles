@@ -5,6 +5,8 @@
 
 # Install Chocolatey
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/bundle/install.ps1 -o .\install.ps1 -UseBasicParsing
+. ".\install.ps1"
 
 # Set WSL2 as default
 wsl --set-default-version 2
