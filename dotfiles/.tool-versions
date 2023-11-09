@@ -3,5 +3,5 @@ deno 1.30.3
 python 3.10.0
 nodejs 18.14.2
 golang 1.17.3
-terraform 1.4.6
+terraform 1.6.3
 terragrunt 0.45.11
