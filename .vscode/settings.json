@@ -27,6 +27,10 @@
   "[proto3]": {
     "editor.defaultFormatter": "xaver.clang-format"
   },
+  "[terraform]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "hashicorp.terraform"
+  },
   "window.newWindowDimensions": "inherit",
   "clang-format.language.proto.style": "google",
   "editor.renderWhitespace": "all",
