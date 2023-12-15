@@ -62,6 +62,10 @@
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": [
+    "source.organizeImports",
+    "source.fixAll.eslint"
+  ],
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Nord",
   "workbench.iconTheme": "vscode-icons",
