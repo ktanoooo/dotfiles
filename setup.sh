@@ -162,6 +162,18 @@ install_heroku() {
 }
 
 ## ----------------------------------------
+##  Android
+## ----------------------------------------
+export ANDROID_HOME=/mnt/c/Users/ktano/AppData/Local/Android/Sdk
+export PATH=${ANDROID_HOME}/platform-tools:${PATH}
+
+if [[ $OSTYPE == "linux-gnu" ]]; then
+  if [ ! -f /mnt/c/Users/ktano/AppData/Local/Android/Sdk/platform-tools/adb ]; then
+    ln -s /mnt/c/Users/ktano/AppData/Local/Android/Sdk/platform-tools/adb.exe /mnt/c/Users/ktano/AppData/Local/Android/Sdk/platform-tools/adb
+  fi
+fi
+
+## ----------------------------------------
 ##  Install Zinit
 ## ----------------------------------------
 install_zinit() {
