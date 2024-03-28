@@ -1,7 +1,7 @@
 ruby 3.3.0
 deno 1.30.3
 python 3.10.0
-nodejs 18.14.2
+nodejs 20.11.0
 golang 1.17.3
 terraform 1.6.3
 terragrunt 0.45.11
