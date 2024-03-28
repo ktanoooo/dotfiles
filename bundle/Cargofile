@@ -10,7 +10,7 @@ diesel_cli
 # Replacement
 sd        # sed
 bat       # cat
-exa       # ls
+eza       # ls
 ytop      # top, htop
 procs     # ps
 hexyl     # hexdump
