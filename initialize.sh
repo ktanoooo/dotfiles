@@ -11,9 +11,6 @@ set -eux
 ## Install brew
 ## ----------------------------------------
 install_brew() {
-  # Install brew dependent packages
-  sudo apt install build-essential curl file git -y
-
   # Install brew
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
@@ -75,8 +72,11 @@ install_zsh() {
 }
 
 main() {
-  sudo apt update -y
-  sudo apt upgrade -y
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    sudo apt update -y
+    sudo apt upgrade -y
+    sudo apt install -y build-essential curl file git
+  fi
 
   install_brew
   setup_github
