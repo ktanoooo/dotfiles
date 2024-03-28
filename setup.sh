@@ -14,9 +14,11 @@ EXEPATH=$(cd "$(dirname "${BASH_SOURCE[0]}")" > /dev/null 2>&1 && pwd)
 ## Locale
 ## ----------------------------------------
 setup_locale() {
-  sudo locale-gen en_US
-  sudo locale-gen en_US.UTF-8
-  sudo update-locale LC_ALL=en_US.UTF-8
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    sudo locale-gen en_US
+    sudo locale-gen en_US.UTF-8
+    sudo update-locale LC_ALL=en_US.UTF-8
+  fi
 }
 
 ## ----------------------------------------
@@ -90,17 +92,19 @@ install_databases() {
 ## Install Rust
 ## ----------------------------------------
 install_rust() {
-  sudo apt install -y \
-    pkg-config \
-    libssl-dev \
-    libz-dev
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-  source ${HOME}/.cargo/env
-  rustup component add rls --toolchain stable
-  rustup component add rust-src --toolchain stable
-  rustup component add rls-preview --toolchain stable
-  rustup component add rust-analysis --toolchain stable
-  rustup update stable
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    sudo apt install -y \
+      pkg-config \
+      libssl-dev \
+      libz-dev
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    source ${HOME}/.cargo/env
+    rustup component add rls --toolchain stable
+    rustup component add rust-src --toolchain stable
+    rustup component add rls-preview --toolchain stable
+    rustup component add rust-analysis --toolchain stable
+    rustup update stable
+  fi
 }
 
 ## ----------------------------------------
@@ -164,10 +168,9 @@ install_heroku() {
 ## ----------------------------------------
 ##  Android
 ## ----------------------------------------
-export ANDROID_HOME=/mnt/c/Users/ktano/AppData/Local/Android/Sdk
-export PATH=${ANDROID_HOME}/platform-tools:${PATH}
-
 if [[ $OSTYPE == "linux-gnu" ]]; then
+  export ANDROID_HOME=/mnt/c/Users/ktano/AppData/Local/Android/Sdk
+  export PATH=${ANDROID_HOME}/platform-tools:${PATH}
   if [ ! -f /mnt/c/Users/ktano/AppData/Local/Android/Sdk/platform-tools/adb ]; then
     ln -s /mnt/c/Users/ktano/AppData/Local/Android/Sdk/platform-tools/adb.exe /mnt/c/Users/ktano/AppData/Local/Android/Sdk/platform-tools/adb
   fi
