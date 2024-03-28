@@ -109,7 +109,7 @@ if [ -z $BREW_PATH ]; then
   if [ $OSTYPE = "linux-gnu" ]; then
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   else
-    eval "$(/usr/local/bin/brew shellenv)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
   fi
 fi
 

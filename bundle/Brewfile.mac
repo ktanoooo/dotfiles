@@ -4,7 +4,6 @@
 ## Install: "brew bundle --file "Brewfile.mac"
 ## ----------------------------------------
 
-tap "homebrew/cask"
 tap "homebrew/services"
 cask_args appdir: "/Applications"
 
