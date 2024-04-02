@@ -132,6 +132,11 @@ export PATH="/usr/bin:$PATH:${HOME}"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+# adb
+if [[ $OSTYPE == darwin* ]]; then
+  export PATH="${HOME}/Library/Android/sdk/platform-tools/:$PATH"
+fi
+
 ## ----------------------------------------
 ##  Aliases
 ## ----------------------------------------
