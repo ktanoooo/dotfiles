@@ -104,6 +104,8 @@ install_rust() {
     rustup component add rls-preview --toolchain stable
     rustup component add rust-analysis --toolchain stable
     rustup update stable
+  else
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
   fi
 }
 
