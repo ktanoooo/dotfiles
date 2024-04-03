@@ -1,5 +1,6 @@
 ruby 3.3.0
 deno 1.30.3
+java openjdk-20
 python 3.10.0
 nodejs 20.11.0
 golang 1.17.3

@@ -134,9 +134,17 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 # adb
 if [[ $OSTYPE == darwin* ]]; then
-  export PATH="${HOME}/Library/Android/sdk/platform-tools/:$PATH"
+  export ANDROID_HOME=$HOME/Library/Android/sdk
+  export ANDROID_SDK_ROOT=$HOME/Library/Android/sdk
+  export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 fi
 
+# jdk
+if [[ $OSTYPE == darwin* ]]; then
+  if [ -f ~/.asdf/plugins/java/set-java-home.zsh ]; then
+    . ~/.asdf/plugins/java/set-java-home.zsh
+  fi
+fi
 ## ----------------------------------------
 ##  Aliases
 ## ----------------------------------------
