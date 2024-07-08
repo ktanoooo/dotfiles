@@ -124,6 +124,7 @@ install_asdf_global() {
   # https://asdf-vm.com/guide/getting-started.html
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0
 
+  asdf plugin-add php https://github.com/asdf-community/asdf-php.git || true
   asdf plugin add ruby https://github.com/asdf-vm/asdf-ruby.git || true
   asdf plugin add deno https://github.com/asdf-community/asdf-deno.git || true
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
