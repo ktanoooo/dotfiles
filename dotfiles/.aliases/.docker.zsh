@@ -8,6 +8,7 @@ alias k='kubectl'
 alias drma='docker system prune --volumes'
 alias drmf='docker system prune --force --all --volumes'
 alias dstats='docker stats --all'
+alias ddf='docker system df'
 
 ## ----------------------------------------
 ##  Container
@@ -41,6 +42,7 @@ alias dvls='docker volume ls'
 alias dvinspect='docker volume ls --quiet | fzf | xargs docker volume inspect'
 alias dvrma='docker volume prune'
 alias dvrmf='docker volume prune --force'
+alias dvrmff='docker volume rm $(docker volume ls -qf dangling=true)'
 
 ## ----------------------------------------
 ##  Network
