@@ -1,5 +1,0 @@
-alias vgs='vagrant global-status'
-alias vup='vagrant up'
-alias vh='vagrant halt'
-alias vs='vagrant ssh'
-alias vrs='vagrant reload;vagrant ssh'
