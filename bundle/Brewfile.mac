@@ -1,57 +1,70 @@
-## ----------------------------------------
-##  Brewfile
-## This is the file outputed by "brew bundle dump --file 'Brewfile.mac'" command
-## Install: "brew bundle --file "Brewfile.mac"
-## ----------------------------------------
-
+tap "homebrew/bundle"
 tap "homebrew/services"
-cask_args appdir: "/Applications"
-
-## ========== Base ==========
-brew 'mas'  # 
-brew "nkf"  # encode for Mac
+tap "mongodb/brew"
+brew "act"
+brew "xz"
+brew "awscli"
+brew "awslogs"
+brew "cocoapods"
 brew "curl"
-brew "grep"  # "grep", "egrep", "fgrep" for Mac
-brew "gnu-sed"  # Replacement for "sed". fro Mac
-brew "coreutils"
-
-## ========== Shell ==========
+brew "dive"
+brew "fastlane"
+brew "ffmpeg"
+brew "fzf"
+brew "gh"
+brew "ghq"
+brew "git"
+brew "git-delta"
+brew "git-secrets"
+brew "gnu-sed"
+brew "gnupg"
+brew "gojq"
+brew "grep"
+brew "htop"
+brew "imagemagick"
+brew "k6"
+brew "kompose"
+brew "lha"
+brew "libpq"
+brew "mas"
+brew "minikube"
+brew "mongosh"
+brew "mysql"
+brew "neofetch"
+brew "neovim"
+brew "nkf"
+brew "nmap"
+brew "postgresql@14"
+brew "protobuf"
+brew "skaffold"
+brew "tflint"
+brew "tig"
+brew "tmux"
+brew "tmux-xpanes"
+brew "tor"
+brew "watchman"
+brew "yt-dlp"
 brew "zsh"
 brew "zsh-completions"
-
-## ========== Fonts ==========
-tap  "homebrew/cask-fonts"
+cask "alfred", args: { appdir: "/Applications" }
+cask "android-studio", args: { appdir: "/Applications" }
+cask "bloomrpc", args: { appdir: "/Applications" }
+cask "discord", args: { appdir: "/Applications" }
+cask "docker-desktop", args: { appdir: "/Applications" }
 cask "font-fontawesome"
 cask "font-hack-nerd-font"
-
-## ========== Language & Databases ==========
-brew "libpq"      # For diesel_cli, Postgres C API library
-brew "mysql"      # For diesel_cli
-brew "sqlite"     # For diesel_cli
-brew "postgresql" # For diesel_cli
-
-tap "AdoptOpenJDK/openjdk"
-cask "adoptopenjdk11"
-
-## ========== Applications ==========
-cask "zoom"
-cask "slack"
-cask "alfred"
-cask "docker"
-cask "kindle"
-cask "iterm2"
-cask "discord"
-cask "postman"
-cask "bloomrpc"
-cask "keycastr"
-cask "rectangle"
-cask "appcleaner"
-cask "sequel-ace"
-cask "google-chrome"
-cask "android-studio"
-cask "karabiner-elements"
-cask "visual-studio-code"
-cask "google-japanese-ime"
-cask "db-browser-for-sqlite"
-# mas  "Xcode", id: 497799835
-# mas "Amphetamine", id: 937984704
+cask "google-chrome", args: { appdir: "/Applications" }
+cask "iterm2", args: { appdir: "/Applications" }
+cask "keepassxc"
+cask "kindle", args: { appdir: "/Applications" }
+cask "postman", args: { appdir: "/Applications" }
+cask "rectangle", args: { appdir: "/Applications" }
+cask "slack", args: { appdir: "/Applications" }
+cask "visual-studio-code", args: { appdir: "/Applications" }
+cask "zoom", args: { appdir: "/Applications" }
+mas "LINE", id: 539883307
+mas "Microsoft Excel", id: 462058435
+mas "Table Tool", id: 1122008420
+mas "TestFlight", id: 899247664
+mas "Transporter", id: 1450874784
+mas "Xcode", id: 497799835
