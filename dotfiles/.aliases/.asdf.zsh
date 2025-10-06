@@ -21,3 +21,13 @@ asdf_clean() {
 }
 
 alias asdfc='asdf current'
+alias asdfpl="asdf plugin list"
+alias asdfpu='asdf plugin update --all'
+alias asdfpr='asdf plugin remove'
+alias asdfpad='asdf plugin add'
+alias asdfi='asdf install'
+alias asdfu='asdf uninstall'
+alias asdfl='asdf list'
+alias asdflg='asdf list global'
+alias asdfg='asdf global'
+alias asdflo='asdf local'
