@@ -1,8 +1,8 @@
-ruby 3.3.0
+ruby 3.4.6
 deno 1.30.3
 java openjdk-20
 python 3.10.0
-nodejs 20.11.0
+nodejs 24.9.0
 golang 1.17.3
 terraform 1.6.3
 terragrunt 0.45.11
