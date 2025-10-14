@@ -49,6 +49,7 @@ brew "zsh-completions"
 cask "alfred", args: { appdir: "/Applications" }
 cask "android-studio", args: { appdir: "/Applications" }
 cask "bloomrpc", args: { appdir: "/Applications" }
+cask "cursor"
 cask "discord", args: { appdir: "/Applications" }
 cask "docker-desktop", args: { appdir: "/Applications" }
 cask "font-fontawesome"
