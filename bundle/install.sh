@@ -40,10 +40,23 @@ install_cargo_pkgs() {
   done
 }
 
+# ----------------------------------------
+# Install Google Cloud SDK
+# ----------------------------------------
+install_gcloud() {
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    sudo curl https://sdk.cloud.google.com | bash
+    exec $SHELL -l
+  else
+    echo "installed with homebrew cask: google-cloud-sdk"
+  fi
+}
+
 main() {
   install_brew
   install_vsplug
   install_cargo_pkgs
+  install_gcloud
 }
 
 main

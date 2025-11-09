@@ -1,3 +1,14 @@
+# ----------------------------------------
+# Google Cloud
+# ----------------------------------------
+alias gclogin='gcloud auth login'
+alias gclal='gcloud auth list'
+alias gclconf='gcloud config list'
+alias gclsetp='gcloud config set project $1'
+
+# ----------------------------------------
+# Terraform
+# ----------------------------------------
 alias tf='terraform'
 
 alias tfinit='terraform init'

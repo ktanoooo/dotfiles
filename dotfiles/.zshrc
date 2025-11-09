@@ -199,3 +199,9 @@ zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 ### End of Zinit's installer chunk
 ### End of Zinit's installer chunk
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/ktanoooo/google-cloud-sdk/path.zsh.inc' ]; then . '/home/ktanoooo/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/ktanoooo/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/ktanoooo/google-cloud-sdk/completion.zsh.inc'; fi

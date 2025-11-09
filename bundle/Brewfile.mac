@@ -55,6 +55,7 @@ cask "docker-desktop", args: { appdir: "/Applications" }
 cask "font-fontawesome"
 cask "font-hack-nerd-font"
 cask "google-chrome", args: { appdir: "/Applications" }
+cask "google-cloud-sdk"
 cask "iterm2", args: { appdir: "/Applications" }
 cask "keepassxc"
 cask "kindle", args: { appdir: "/Applications" }
