@@ -6,3 +6,4 @@ nodejs 24.9.0
 golang 1.17.3
 terraform 1.6.3
 terragrunt 0.45.11
+php 8.1.31
