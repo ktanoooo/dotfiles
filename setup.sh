@@ -220,6 +220,25 @@ vimplug_setup() {
 }
 
 ## ----------------------------------------
+##  Setup GPG
+##  Use GUI pinentry to allow GPG passphrase input from
+##  non-interactive processes (e.g., IDE, Claude Code).
+##  - macOS: pinentry-mac (brew install pinentry-mac)
+##  - Linux: pinentry-gnome3 (apt install pinentry-gnome3)
+## ----------------------------------------
+setup_gpg() {
+  mkdir -p "${HOME}/.gnupg"
+  chmod 700 "${HOME}/.gnupg"
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    sudo apt install -y pinentry-gnome3
+    ln -sfnv "${EXEPATH}/dotfiles/.gnupg/gpg-agent.conf.linux" "${HOME}/.gnupg/gpg-agent.conf"
+  else
+    ln -sfnv "${EXEPATH}/dotfiles/.gnupg/gpg-agent.conf.mac" "${HOME}/.gnupg/gpg-agent.conf"
+  fi
+  gpgconf --kill gpg-agent 2>/dev/null || true
+}
+
+## ----------------------------------------
 ##  Myself
 ## ----------------------------------------
 setup_for_myself() {
@@ -239,6 +258,7 @@ main() {
   install_zinit
   install_tmux_plugin_manager
   setup_tig
+  setup_gpg
   setup_for_myself
 
   exec $SHELL -l
