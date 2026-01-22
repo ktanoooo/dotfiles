@@ -39,12 +39,14 @@ symboliclink_dotfiles() {
   if [[ $OSTYPE == "linux-gnu" ]]; then
     bulk_symlink_target=(
       "./dotfiles/.aliases"
+      "./dotfiles/.claude"
       "./dotfiles/.git_template"
       "./scripts"
     )
   else
     bulk_symlink_target=(
       "./dotfiles/.aliases"
+      "./dotfiles/.claude"
       "./dotfiles/.git_template"
       "./dotfiles/.trashrc"
       "./scripts"
