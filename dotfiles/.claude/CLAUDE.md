@@ -21,7 +21,7 @@
 ### Git
 
 - コミットメッセージは英語
-- Conventional Commits 形式を使用: `type(scope): description`
+- Imperative style（命令形）を使用: `Add ...`, `Fix ...`, `Update ...` など
 - 1コミット1目的
 
 ### ドキュメント
