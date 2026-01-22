@@ -158,6 +158,21 @@ fi
 [ -f ~/.aliases-works-local.zsh ] && source ~/.aliases-works-local.zsh
 
 ## ----------------------------------------
+## SSH Agent (see: docs/ssh-agent.md)
+## ----------------------------------------
+if [[ $OSTYPE == darwin* ]]; then
+  ssh-add --apple-load-keychain 2>/dev/null
+  [ -f ~/.ssh/id_ed25519_github ] && ssh-add ~/.ssh/id_ed25519_github 2>/dev/null
+elif [[ $OSTYPE == linux* ]]; then
+  if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" > /dev/null
+  fi
+  for key in ~/.ssh/id_ed25519_github ~/.ssh/id_rsa; do
+    [ -f "$key" ] && ssh-add "$key" 2>/dev/null
+  done
+fi
+
+## ----------------------------------------
 ##  Zinit
 ## ----------------------------------------
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
