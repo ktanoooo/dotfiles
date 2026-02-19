@@ -1,33 +1,81 @@
 ---
 name: commit
 description: "変更内容を確認し、適切なコミットメッセージを生成してコミットする。「コミットして」「変更をコミット」などの依頼時に使用。"
-argument-hint: "[optional: specific message or scope]"
+argument-hint: "[single] [cc] [ja] [scope]"
 disable-model-invocation: false
 allowed-tools: Bash, Read, Grep, Glob
 ---
 
 # コミットスキル
 
-現在の変更内容を確認し、Conventional Commits 形式でコミットメッセージを生成してコミットする。
+現在の変更内容を確認し、コミットメッセージを生成してコミットする。
+引数により形式・言語・粒度を切り替え可能。
+
+## 引数パース
+
+`$ARGUMENTS` を以下のルールで解釈する:
+
+- `single` が含まれる → 全変更を1コミットにまとめる
+- `cc` が含まれる → Conventional Commits 形式を使用
+- `ja` が含まれる → 日本語でメッセージを記述
+- 上記以外の単語 → scope として扱う（Conventional Commits 形式時のみ有効）
+- 引数なし → Imperative style、英語、自動分割（デフォルト）
+
+### 使用例
+
+| コマンド | 形式 | 言語 | 粒度 | 例 |
+|----------|------|------|------|----|
+| `/commit` | Imperative | 英語 | 自動分割 | `Add user validation` |
+| `/commit single` | Imperative | 英語 | 1コミット | `Add user validation` |
+| `/commit cc` | Conventional Commits | 英語 | 自動分割 | `feat: add user validation` |
+| `/commit ja` | Imperative | 日本語 | 自動分割 | `ユーザーバリデーションを追加` |
+| `/commit cc ja` | Conventional Commits | 日本語 | 自動分割 | `feat: ユーザーバリデーションを追加` |
+| `/commit cc auth` | Conventional Commits | 英語 | 自動分割 | `feat(auth): add user validation` |
+| `/commit single cc ja` | Conventional Commits | 日本語 | 1コミット | `feat: ユーザーバリデーションを追加` |
+
+## コミット粒度
+
+### デフォルト（自動分割）
+
+変更内容を分析し、目的が異なる変更群を検出した場合は複数コミットに分割する。
+
+- ファイル単位・変更目的（機能追加、バグ修正、リファクタリング等）で分割を判断
+- 分割案をユーザーに提示し、承認を得てからコミットを実行
+- すべての変更が同一目的であれば1コミットにまとめる
+
+### `single` 指定時
+
+全変更を1コミットにまとめる。分割判断をスキップする。
 
 ## 実行手順
 
-1. `git status` と `git diff` で変更内容を確認
+1. `git status` と `git diff --staged` で変更内容を確認（staged がなければ `git diff` も確認）
 2. 変更の種類と範囲を分析
-3. Conventional Commits 形式でメッセージを生成
-4. ユーザーに確認後、コミットを実行
+3. `single` 指定でない場合、目的が異なる変更群を識別し分割案を作成
+4. 分割案またはコミット内容をユーザーに提示して確認
+5. 承認後、引数に基づいた形式でコミットを実行
 
-## Conventional Commits 形式
+## メッセージ形式
+
+### デフォルト: 英語・Imperative style
+
+```
+<verb> <description>
+```
+
+- 動詞で始める: `Add`, `Fix`, `Update`, `Remove`, `Refactor` など
+- 50文字以内
+- 末尾にピリオドを付けない
+
+### Conventional Commits 形式（`cc` 指定時）
 
 ```
 type(scope): description
 
 [optional body]
-
-[optional footer]
 ```
 
-### type
+#### type
 
 | type | 説明 |
 |------|------|
@@ -40,25 +88,13 @@ type(scope): description
 | test | テストの追加・修正 |
 | chore | ビルドプロセスや補助ツールの変更 |
 
-### scope
+#### scope
 
-変更の影響範囲を示す（任意）。例: `auth`, `api`, `ui`
-
-### description
-
-- 命令形で記述（Add, Fix, Update など）
-- 50文字以内
-- 末尾にピリオドを付けない
+引数で scope が指定された場合のみ付与。例: `auth`, `api`, `ui`
 
 ## 注意事項
 
 - 機密情報を含むファイル（`.env` など）は除外
-- 大量の変更がある場合は分割を提案
 - `--amend` は明示的に指示された場合のみ使用
 - push は自動で行わない（明示的に指示された場合のみ）
-
-## 引数
-
-`$ARGUMENTS` が指定された場合:
-- 特定のメッセージやスコープとして使用
-- 例: `/commit auth` → `feat(auth): ...` のようにスコープを設定
+- Co-Authored-By 行を追加しない
