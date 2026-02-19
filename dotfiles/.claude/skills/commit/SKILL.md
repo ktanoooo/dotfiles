@@ -3,7 +3,6 @@ name: commit
 description: "変更内容を確認し、適切なコミットメッセージを生成してコミットする。「コミットして」「変更をコミット」などの依頼時に使用。"
 argument-hint: "[single] [cc] [ja] [scope]"
 disable-model-invocation: false
-allowed-tools: Bash, Read, Grep, Glob
 ---
 
 # コミットスキル

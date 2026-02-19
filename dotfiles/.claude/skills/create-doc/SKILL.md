@@ -3,7 +3,6 @@ name: create-doc
 description: "ドキュメントを作成する。URLや技術トピックを受け取り、docs/ディレクトリにMarkdownで整理されたドキュメントを生成する。「ドキュメント作成」「ドキュメント化」「資料をまとめて」などの依頼時に使用。"
 argument-hint: "[URL or topic]"
 disable-model-invocation: false
-allowed-tools: Read, Write, WebFetch, WebSearch, Glob, Grep
 ---
 
 # ドキュメント作成スキル
