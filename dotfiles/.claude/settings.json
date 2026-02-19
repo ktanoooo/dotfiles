@@ -1,4 +1,5 @@
 {
+  "env": {},
   "permissions": {
     "allow": [
       "Bash(git status:*)",
@@ -21,6 +22,9 @@
       "Bash(yarn run:*)",
       "Bash(yarn test:*)",
       "Bash(yarn install:*)",
+      "Bash(bun run:*)",
+      "Bash(bun test:*)",
+      "Bash(bun install:*)",
       "Bash(make:*)",
       "Bash(ls:*)",
       "Bash(pwd:*)",
@@ -36,6 +40,5 @@
       "Bash(gh repo:*)"
     ],
     "deny": []
-  },
-  "env": {}
+  }
 }
