@@ -37,7 +37,9 @@
       "Bash(touch:*)",
       "Bash(gh pr:*)",
       "Bash(gh issue:*)",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "Read",
+      "Glob"
     ],
     "deny": []
   }
