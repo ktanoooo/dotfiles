@@ -19,7 +19,9 @@ case "$(uname -s)" in
     say -v Kyoko "$MSG_JA"
     ;;
   Linux)
-    if command -v espeak &>/dev/null; then
+    if grep -qi microsoft /proc/version 2>/dev/null && command -v powershell.exe &>/dev/null; then
+      powershell.exe -c "Start-Sleep -Seconds 3; Add-Type -AssemblyName System.Speech; \$s = New-Object System.Speech.Synthesis.SpeechSynthesizer; \$s.SelectVoiceByHints([System.Globalization.CultureInfo]::GetCultureInfo('ja-JP')); \$s.Speak('$MSG_JA')" &
+    elif command -v espeak &>/dev/null; then
       espeak "$MSG_EN" 2>/dev/null &
     elif command -v spd-say &>/dev/null; then
       spd-say "$MSG_EN" 2>/dev/null &
