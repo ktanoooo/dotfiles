@@ -127,4 +127,5 @@ CLAUDE.local.md
 !/.claude/skills/
 !/.claude/commands/
 !/.claude/agents/
+!/.claude/hooks/
 
