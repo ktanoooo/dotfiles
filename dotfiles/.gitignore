@@ -33,7 +33,7 @@ Brewfile.*.lock.json
 ##  Ruby
 ## ----------------------------------------
 /vendor/bundle
-.ruby-version
+# .ruby-version
 /.bundle
 /public/assets
 .byebug_history
@@ -108,7 +108,7 @@ pids
 ## ----------------------------------------
 ##  Uploaded files in development.
 ## ----------------------------------------
-# Ignore 
+# Ignore
 /storage/*
 !/storage/.keep
 
@@ -128,4 +128,3 @@ CLAUDE.local.md
 !/.claude/commands/
 !/.claude/agents/
 !/.claude/hooks/
-
