@@ -37,6 +37,8 @@
   "window.newWindowDimensions": "inherit",
   "clang-format.language.proto.style": "google",
   "editor.renderWhitespace": "all",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
