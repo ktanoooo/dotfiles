@@ -31,6 +31,9 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "hashicorp.terraform"
   },
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp"
+  },
   "window.newWindowDimensions": "inherit",
   "clang-format.language.proto.style": "google",
   "editor.renderWhitespace": "all",
@@ -42,8 +45,6 @@
   "explorer.confirmDelete": false,
   "ruby.intellisense": "rubyLocate",
   "ruby.useLanguageServer": true,
-  "sync.removeExtensions": true,
-  "sync.gist": "64c36f34cc7d698ea19fddf7bc753fa5",
   "explorer.confirmDragAndDrop": false,
   "files.exclude": {
     "**/.git": false
@@ -57,11 +58,9 @@
   "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.updateImportsOnFileMove.enabled": "always",
   "editor.tabSize": 2,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "security.workspace.trust.untrustedFiles": "newWindow",
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": [
     "source.organizeImports",
     "source.fixAll.eslint"
@@ -115,5 +114,17 @@
   // https://github.com/redhat-developer/vscode-yaml/issues/397#issuecomment-896049900
   "yaml.schemas": {
     "https://json.schemastore.org/github-workflow": "/.github/workflows/**/*.yml"
-  }
+  },
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "remote.autoForwardPortsSource": "hybrid",
+  "dev.containers.defaultExtensions": [
+    "eamodio.gitlens",
+    "oderwat.indent-rainbow",
+    "shd101wyy.markdown-preview-enhanced"
+  ],
+  "files.insertFinalNewline": true,
+  "claudeCode.preferredLocation": "panel",
+  "gitlens.ai.model": "vscode",
+  "gitlens.ai.vscode.model": "copilot:gpt-4.1",
+  "terminal.integrated.scrollback": 20000
 }
