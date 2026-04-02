@@ -13,6 +13,7 @@ symlink() {
 
   if [ -e "${src}" ]; then
     mkdir -p "$(dirname "${dst}")"
+    [ -d "${dst}" ] && rm -rf "${dst}"
     ln -sfnv "${src}" "${dst}"
   fi
 }
@@ -23,7 +24,8 @@ symlink() {
 setup_aliases() {
   local snippet='for f in ~/.aliases/*.zsh; do [ -f "$f" ] && source "$f"; done'
   for rc in "${HOME}/.bashrc" "${HOME}/.zshrc"; do
-    if [ -f "${rc}" ] && ! grep -qF '.aliases' "${rc}"; then
+    # Skip if rc file doesn't exist or already contains the exact snippet line
+    if [ -f "${rc}" ] && ! grep -qxF "${snippet}" "${rc}"; then
       echo "${snippet}" >> "${rc}"
     fi
   done

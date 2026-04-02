@@ -123,7 +123,7 @@
     "oderwat.indent-rainbow"
   ],
   "dotfiles.repository": "ktanoooo/dotfiles",
-  "dotfiles.installCommand": "~/dotfiles/devcontainer/install.sh",
+  "dotfiles.installCommand": "devcontainer/install.sh",
   "files.insertFinalNewline": true,
   "claudeCode.preferredLocation": "panel",
   "gitlens.ai.model": "vscode",
