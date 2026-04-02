@@ -38,7 +38,6 @@
   "clang-format.language.proto.style": "google",
   "editor.renderWhitespace": "all",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
   "editor.formatOnType": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "editor.minimap.enabled": false,
@@ -121,12 +120,14 @@
   "remote.autoForwardPortsSource": "hybrid",
   "dev.containers.defaultExtensions": [
     "eamodio.gitlens",
-    "oderwat.indent-rainbow",
-    "shd101wyy.markdown-preview-enhanced"
+    "oderwat.indent-rainbow"
   ],
+  "dotfiles.repository": "ktanoooo/dotfiles",
+  "dotfiles.installCommand": "~/dotfiles/devcontainer/install.sh",
   "files.insertFinalNewline": true,
   "claudeCode.preferredLocation": "panel",
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
-  "terminal.integrated.scrollback": 20000
+  "terminal.integrated.scrollback": 20000,
+  "editor.formatOnSave": true
 }
