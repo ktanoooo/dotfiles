@@ -19,10 +19,23 @@ symlink() {
 }
 
 ## ----------------------------------------
+## Install eza
+## ----------------------------------------
+install_eza() {
+  if command -v eza &>/dev/null; then
+    return
+  fi
+
+  if command -v apt-get &>/dev/null; then
+    sudo apt-get update && sudo apt-get install -y eza
+  fi
+}
+
+## ----------------------------------------
 ## Load aliases in shell rc
 ## ----------------------------------------
 setup_aliases() {
-  local snippet='for f in ~/.aliases/*.zsh; do [ -f "$f" ] && source "$f"; done'
+  local snippet='for f in ~/.aliases/.*.zsh ~/.aliases/*.zsh; do [ -f "$f" ] && source "$f"; done'
   for rc in "${HOME}/.bashrc" "${HOME}/.zshrc"; do
     # Skip if rc file doesn't exist or already contains the exact snippet line
     if [ -f "${rc}" ] && ! grep -qxF "${snippet}" "${rc}"; then
@@ -32,6 +45,7 @@ setup_aliases() {
 }
 
 main() {
+  install_eza
   symlink .claude
   symlink .aliases
   setup_aliases
