@@ -19,15 +19,11 @@ symlink() {
 }
 
 ## ----------------------------------------
-## Install eza
+## Install apt packages
 ## ----------------------------------------
-install_eza() {
-  if command -v eza &>/dev/null; then
-    return
-  fi
-
+install_apt_packages() {
   if command -v apt-get &>/dev/null; then
-    sudo apt-get update && sudo apt-get install -y eza
+    sudo apt-get update && sudo apt-get install -y eza sox
   fi
 }
 
@@ -45,9 +41,10 @@ setup_aliases() {
 }
 
 main() {
-  install_eza
+  install_apt_packages
   symlink .claude
   symlink .aliases
+  symlink .gitignore
   setup_aliases
 }
 
