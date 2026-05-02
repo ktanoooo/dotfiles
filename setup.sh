@@ -132,7 +132,6 @@ install_asdf_global() {
   asdf plugin add deno https://github.com/asdf-community/asdf-deno.git || true
   asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
   asdf plugin add golang https://github.com/kennyp/asdf-golang.git || true
-  asdf plugin add python https://github.com/danhper/asdf-python.git || true
   asdf plugin add terraform https://github.com/Banno/asdf-hashicorp.git || true
   asdf plugin add terragrunt https://github.com/ohmer/asdf-terragrunt.git || true
   if [ -f "${HOME}/.tool-versions" ]; then
