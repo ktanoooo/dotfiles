@@ -79,26 +79,19 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}=
 ## ----------------------------------------
 ##  Keymap
 ## ----------------------------------------
-# zsh は -e も -v も無いと EDITOR の値を見て決め、nvim には vi が含まれるため
-# 行編集まで vi モードになる。emacs を明示する。以降の bindkey が main を
-# 書き換えるので、この行が先頭でなければならない。
+# Without -e or -v, zsh reads EDITOR to pick the keymap, and nvim contains vi,
+# so the line editor lands in vi insert mode. Ask for emacs explicitly, which
+# also supplies C-a, C-e, C-f, C-b, C-k, C-w, C-u, C-l and C-r as defaults.
+# Keep this above any bindkey below it: those edit whichever keymap is current.
 bindkey -e
 
-# Emacs 準拠。C-f/C-b は文字単位、単語単位は M-f/M-b に置く。
-# GUI アプリ側は AutoHotkey が同じキーで 1 文字移動を送るため、
-# ターミナルと GUI で CapsLock+f/b の挙動が揃う。
-bindkey '^F' forward-char
-bindkey '^B' backward-char
-bindkey '^[f' forward-word
-bindkey '^[b' backward-word
-bindkey "^A" beginning-of-line
-bindkey "^E" end-of-line
-bindkey "^W" backward-kill-word
-bindkey "^U" kill-whole-line
-bindkey "^L" clear-screen
-bindkey "^R" history-incremental-search-backward
-bindkey "^[[1;2A" up-line-or-beginning-search
-bindkey "^[[1;2B" down-line-or-beginning-search
+# Walk the history filtered by what has been typed so far, matching from the
+# start of the line. Typing "git" and pressing Shift+Up visits only the entries
+# beginning with it, unlike a plain Up which walks everything in order, or C-r
+# which matches anywhere in the line. Undefined in the emacs keymap, hence the
+# explicit binding; the widgets are registered near compinit above.
+bindkey "^[[1;2A" up-line-or-beginning-search   # Shift+Up
+bindkey "^[[1;2B" down-line-or-beginning-search # Shift+Down
 
 ## ----------------------------------------
 ##  Load
