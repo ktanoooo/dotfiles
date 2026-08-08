@@ -3,3 +3,4 @@
 # and so does not exist until setup.sh has run.
 *.pem
 *.key
+*.asc
