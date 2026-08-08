@@ -79,8 +79,13 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}=
 ## ----------------------------------------
 ##  Keymap
 ## ----------------------------------------
-bindkey '^F' forward-word
-bindkey '^B' backward-word
+# Emacs 準拠。C-f/C-b は文字単位、単語単位は M-f/M-b に置く。
+# GUI アプリ側は AutoHotkey が同じキーで 1 文字移動を送るため、
+# ターミナルと GUI で CapsLock+f/b の挙動が揃う。
+bindkey '^F' forward-char
+bindkey '^B' backward-char
+bindkey '^[f' forward-word
+bindkey '^[b' backward-word
 bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^W" backward-kill-word
