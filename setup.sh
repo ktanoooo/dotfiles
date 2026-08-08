@@ -191,14 +191,6 @@ install_zinit() {
 }
 
 ## ----------------------------------------
-##  Tmux
-## ----------------------------------------
-install_tmux_plugin_manager() {
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  /bin/bash ${HOME}/.tmux/plugins/tpm/scripts/install_plugins.sh
-}
-
-## ----------------------------------------
 ##  Herdr
 ##  Installs to ~/.local/bin and self-updates through `herdr update`.
 ##  symboliclink_dotfiles runs first, so ~/.config/herdr/config.toml is
@@ -266,7 +258,6 @@ main() {
   install_devbox
   install_heroku
   install_zinit
-  install_tmux_plugin_manager
   install_herdr
   setup_tig
   setup_gpg
