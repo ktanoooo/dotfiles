@@ -1,3 +1,9 @@
+# This file is symlinked from the dotfiles repository. Herdr writes to it
+# in place, so anything it decides on its own lands in a tracked file.
+# The key below has to be present, not just the file: a missing `onboarding`
+# triggers first-run setup on every fresh machine, which then writes here.
+onboarding = false
+
 [ui.toast]
 delivery = "off"
 
