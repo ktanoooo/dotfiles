@@ -4,6 +4,13 @@
 # triggers first-run setup on every fresh machine, which then writes here.
 onboarding = false
 
+[keys]
+# Everything else is left at the defaults on purpose, so `prefix+?` and the
+# documentation stay accurate. Only the prefix moves: the default ctrl+b is
+# already bound to backward-word in .zshrc, and ctrl+g keeps fzf's ctrl+t
+# file widget free, which the old tmux prefix used to swallow.
+prefix = "ctrl+g"
+
 [ui.toast]
 delivery = "off"
 
