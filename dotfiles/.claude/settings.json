@@ -88,5 +88,7 @@
     ]
   },
   "autoUpdatesChannel": "latest",
-  "teammateMode": "tmux"
+  "tui": "fullscreen",
+  "teammateMode": "tmux",
+  "model": "opus"
 }
