@@ -44,4 +44,4 @@ The lists in this directory are read by `setup.sh` at the repository root:
 ./setup.sh install_packages install_cargo_pkgs install_vsplug
 ```
 
-`Chocolateyfile` is Windows only and is read by `.windows/setup.ps1`.
+`Chocolateyfile` is Windows only and is read by `windows/bootstrap.ps1`.

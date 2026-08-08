@@ -8,7 +8,7 @@ DOTFILES_DIR=$(dirname "${SCRIPT_DIR}")
 ## Symbolic link dotfiles
 ## ----------------------------------------
 symlink() {
-  local src="${DOTFILES_DIR}/dotfiles/$1"
+  local src="${DOTFILES_DIR}/home/$1"
   local dst="${HOME}/$1"
 
   if [ -e "${src}" ]; then

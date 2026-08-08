@@ -2,7 +2,7 @@
 set -eu
 
 ## ----------------------------------------
-##  Run after initialize.sh, from the clone it creates.
+##  Run after bootstrap.sh, from the clone it creates.
 ##
 ##    ./setup.sh                     everything
 ##    ./setup.sh setup_gpg           only the named targets
@@ -72,7 +72,7 @@ symboliclink_dotfiles() {
     file=$1
     dirpath=$(dirname "${file}") && filename=$(basename "${file}")
     abspath=$(cd "${dirpath}" && pwd)"/${filename}"
-    relpath=${file#./dotfiles/}
+    relpath=${file#./home/}
     target="${HOME}/${relpath}"
     mkdir -p "$(dirname "${target}")"
     ln -sfn "${abspath}" "${target}"
@@ -80,12 +80,11 @@ symboliclink_dotfiles() {
   export -f handle_symlink_from_path
 
   bulk_symlink_target=(
-    "./dotfiles/.aliases"
-    "./dotfiles/.claude"
-    "./dotfiles/.git_template"
-    "./scripts"
+    "./home/.aliases"
+    "./home/.claude"
+    "./home/.git_template"
   )
-  is_linux || bulk_symlink_target+=("./dotfiles/.trashrc")
+  is_linux || bulk_symlink_target+=("./home/.trashrc")
 
   cd "${EXEPATH}"
   find_exclude=""
@@ -93,7 +92,7 @@ symboliclink_dotfiles() {
     handle_symlink_from_path "${i}"
     find_exclude="${find_exclude} -path \"${i}\" -prune -or "
   done
-  find_command="find ./dotfiles ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
+  find_command="find ./home ${find_exclude} \( -type l -or -type f \) -exec bash -c 'handle_symlink_from_path \"{}\"' \;"
   eval "${find_command}"
 }
 
@@ -105,9 +104,9 @@ symboliclink_dotfiles() {
 ## ----------------------------------------
 setup_gitconfig() {
   if is_linux; then
-    ln -sfn "${EXEPATH}/dotfiles/.gitconfig.linux" "${HOME}/.gitconfig.os"
+    ln -sfn "${EXEPATH}/home/.gitconfig.linux" "${HOME}/.gitconfig.os"
   else
-    ln -sfn "${EXEPATH}/dotfiles/.gitconfig.darwin" "${HOME}/.gitconfig.os"
+    ln -sfn "${EXEPATH}/home/.gitconfig.darwin" "${HOME}/.gitconfig.os"
   fi
 }
 
@@ -165,9 +164,9 @@ install_rust() {
 install_packages() {
   have brew || { skip "brew not installed"; return; }
   if is_linux; then
-    brew bundle --file "${EXEPATH}/bundle/Brewfile.win"
+    brew bundle --file "${EXEPATH}/packages/Brewfile.linux"
   else
-    brew bundle --file "${EXEPATH}/bundle/Brewfile.mac"
+    brew bundle --file "${EXEPATH}/packages/Brewfile.darwin"
   fi
 }
 
@@ -178,7 +177,7 @@ install_cargo_pkgs() {
   have cargo || { skip "cargo not installed"; return; }
 
   installed=$(cargo install --list | grep -E '^[a-zA-Z]' | cut -d' ' -f1)
-  sed -e 's/#.*$//' -e '/^[[:space:]]*$/d' "${EXEPATH}/bundle/Cargofile" |
+  sed -e 's/#.*$//' -e '/^[[:space:]]*$/d' "${EXEPATH}/packages/Cargofile" |
     while read -r pkg; do
       pkg=$(echo "${pkg}" | tr -d '[:space:]')
       [ -n "${pkg}" ] || continue
@@ -205,7 +204,7 @@ install_vsplug() {
       continue
     fi
     code --install-extension "${plugin}"
-  done < "${EXEPATH}/bundle/Vsplug"
+  done < "${EXEPATH}/packages/Vsplug"
 }
 
 ## ----------------------------------------
@@ -353,10 +352,10 @@ setup_gpg() {
 
   if is_linux; then
     have pinentry-gnome3 || sudo apt install -y pinentry-gnome3
-    ln -sfn "${EXEPATH}/dotfiles/.gnupg/gpg-agent.conf.linux" "${conf}"
+    ln -sfn "${EXEPATH}/home/.gnupg/gpg-agent.conf.linux" "${conf}"
   else
     have pinentry-mac || brew install pinentry-mac
-    ln -sfn "${EXEPATH}/dotfiles/.gnupg/gpg-agent.conf.mac" "${conf}"
+    ln -sfn "${EXEPATH}/home/.gnupg/gpg-agent.conf.mac" "${conf}"
   fi
 
   # Restarting the agent drops the cached passphrase, so only do it when the
@@ -371,7 +370,7 @@ setup_gpg() {
 ## ----------------------------------------
 ##  VSCode settings
 ##  WSL is skipped: the editor runs on the Windows side and
-##  windows/setup.ps1 places the files there.
+##  windows/bootstrap.ps1 places the files there.
 ## ----------------------------------------
 setup_vscode() {
   if is_linux; then
@@ -381,8 +380,8 @@ setup_vscode() {
     dir="${HOME}/Library/Application Support/Code/User"
   fi
   mkdir -p "${dir}"
-  ln -sfn "${EXEPATH}/.vscode/settings.json" "${dir}/settings.json"
-  ln -sfn "${EXEPATH}/.vscode/keybindings.json" "${dir}/keybindings.json"
+  ln -sfn "${EXEPATH}/vscode/settings.json" "${dir}/settings.json"
+  ln -sfn "${EXEPATH}/vscode/keybindings.json" "${dir}/keybindings.json"
 }
 
 ## ----------------------------------------

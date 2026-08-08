@@ -29,7 +29,7 @@ alias virc='vi ~/.zshrc' sorc='source ~/.zshrc'
 
 vssync() {
   ls -1 /mnt/c/Users | fzf | xargs -I{} \
-    curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.vscode/settings.json -o /mnt/c/Users/{}/AppData/Roaming/Code/User/settings.json
+    curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/vscode/settings.json -o /mnt/c/Users/{}/AppData/Roaming/Code/User/settings.json
 }
 
 ytmp3() {

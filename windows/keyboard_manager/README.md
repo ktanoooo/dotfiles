@@ -30,7 +30,7 @@ flowchart TD
 
 # Scancode Map
 
-`scancode_map.ps1` を管理者権限で実行し、**再起動**すると反映される。`setup.ps1` から呼ばれる。
+`scancode_map.ps1` を管理者権限で実行し、**再起動**すると反映される。`bootstrap.ps1` から呼ばれる。
 
 | 元のキー | 変更後 | 目的 |
 |---|---|---|
@@ -77,10 +77,10 @@ AutoHotkey v1 は BOM の無いファイルを ANSI として読む。日本語�
 
 ## スタートアップへの登録
 
-スクリプトは**スタートアップフォルダへコピーする**。`setup.ps1` がこれを行う。
+スクリプトは**スタートアップフォルダへコピーする**。`bootstrap.ps1` がこれを行う。
 
 ```
-cp .windows/keyboard_manager/move_cursor_like_ecmas.ahk \
+cp windows/keyboard_manager/move_cursor_like_ecmas.ahk \
   "/mnt/c/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/"
 ```
 

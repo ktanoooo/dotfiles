@@ -10,6 +10,6 @@ Then, restart the PC, open PowerShell with administrator and start setup.
 
 ```
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned
-curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/setup.ps1 -o .\setup.ps1 -UseBasicParsing
-.\setup.ps1
+curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/windows/bootstrap.ps1 -o .\bootstrap.ps1 -UseBasicParsing
+.\bootstrap.ps1
 ```
