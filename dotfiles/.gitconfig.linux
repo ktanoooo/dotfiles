@@ -1,0 +1,4 @@
+# Linked to ~/.gitconfig.os by setup.sh. See the [include] in .gitconfig.
+# osxkeychain does not exist here; cache keeps the credential in memory only.
+[credential]
+  helper = cache --timeout=3600

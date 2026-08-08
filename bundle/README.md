@@ -36,10 +36,12 @@ https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcme
 
 https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfbllamg
 
-##
+## Installing these lists
 
-setup
+The lists in this directory are read by `setup.sh` at the repository root:
 
 ```
-curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/bundle/install.sh | /bin/bash -s --
+./setup.sh install_packages install_cargo_pkgs install_vsplug
 ```
+
+`Chocolateyfile` is Windows only and is read by `.windows/setup.ps1`.

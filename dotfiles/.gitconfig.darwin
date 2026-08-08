@@ -1,0 +1,3 @@
+# Linked to ~/.gitconfig.os by setup.sh. See the [include] in .gitconfig.
+[credential]
+  helper = osxkeychain

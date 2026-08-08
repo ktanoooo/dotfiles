@@ -102,8 +102,12 @@
 [commit]
   gpgsign = true
 
-[credential]
-  helper = osxkeychain
+# includeIf only conditions on gitdir, onbranch and hasconfig, never on the
+# operating system, so the per-OS parts live in a file that setup.sh points at
+# the right variant. A missing include path is ignored, so this is harmless
+# before setup.sh has run.
+[include]
+  path = ~/.gitconfig.os
 
 [delta]
   light = true
