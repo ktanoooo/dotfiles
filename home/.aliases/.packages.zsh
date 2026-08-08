@@ -13,3 +13,14 @@ brewexport () {
 brewimport() {
   brew bundle --file=$(brewfile)
 }
+
+vscodefile() {
+  echo "$(ghq list -p -e dotfiles)/packages/VSCodefile"
+}
+
+# Export current installed VSCode extensions to VSCodefile
+vscodeexport() {
+  local extensions
+  extensions=$(code --list-extensions) || return 1
+  echo "${extensions}" > $(vscodefile)
+}
