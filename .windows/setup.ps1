@@ -15,7 +15,6 @@ wsl --set-default-version 2
 curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/windows_terminal_settings.json -o $env:USERPROFILE\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json
 
 # Install Keyboard Manager
-# curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/keyboard_manager/powertoys_default.json -o $env:USERPROFILE\AppData\Local\Microsoft\PowerToys\'Keyboard Manager'\default.json
 . ./keyboard_manager/scancode_map.ps1
 curl https://raw.githubusercontent.com/ktanoooo/dotfiles/main/.windows/keyboard_manager/move_cursor_like_ecmas.ahk -o $env:USERPROFILE\AppData\Roaming\Microsoft\Windows\'Start Menu'\Programs\Startup\move_cursor_like_ecmas.ahk
 
