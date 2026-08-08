@@ -28,6 +28,21 @@ install_apt_packages() {
 }
 
 ## ----------------------------------------
+## Global gitignore
+## Git never reads ~/.gitignore on its own; its default is
+## ~/.config/git/ignore. On a normal machine core.excludesfile is set in the
+## linked .gitconfig, but that file is not linked here, so the symlink alone
+## would leave the ignores inert.
+## ----------------------------------------
+setup_gitignore() {
+  symlink .gitignore
+  # Git expands the tilde itself for pathname values, so store it unexpanded
+  # and keep the value identical to the one in home/.gitconfig.
+  # shellcheck disable=SC2088
+  git config --global core.excludesfile "~/.gitignore"
+}
+
+## ----------------------------------------
 ## Load aliases in shell rc
 ## ----------------------------------------
 setup_aliases() {
@@ -44,7 +59,7 @@ main() {
   install_apt_packages
   symlink .claude
   symlink .aliases
-  symlink .gitignore
+  setup_gitignore
   setup_aliases
 }
 
