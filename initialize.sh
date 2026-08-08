@@ -3,26 +3,45 @@ set -eux
 
 ## ----------------------------------------
 ##  Preparation
-##  Step1. Please Install Ubuntu-20.04 at Microsoft Store
-##  Step2. Open Ubuntu-20.04 by Windows Terminal
+##  Step1. Please Install Ubuntu at Microsoft Store
+##  Step2. Open Ubuntu by Windows Terminal
+##
+##  Run this once on a new machine, then run setup.sh from the clone it
+##  creates. Every step is guarded, so re-running after a failure resumes
+##  instead of starting over.
 ## ----------------------------------------
+
+## ----------------------------------------
+##  Helpers
+## ----------------------------------------
+# Append a line only if the file does not already carry it, so re-running
+# does not stack duplicates in the shell rc files.
+append_once() {
+  local line=$1 file=$2
+  [ -f "${file}" ] || return 0
+  grep -qxF "${line}" "${file}" || echo "${line}" >> "${file}"
+}
 
 ## ----------------------------------------
 ## Install brew
 ## ----------------------------------------
 install_brew() {
-  # Install brew
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  if ! command -v brew > /dev/null 2>&1; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  fi
+
   test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-  if [[ $OSTYPE == "linux-gnu" ]]; then
-    test -r ~/.bash_profile && echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bash_profile
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
-  else
-    echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.zshrc
-  fi
   # https://docs.brew.sh/Homebrew-on-Linux
+  local shellenv
+  shellenv="eval \"\$($(brew --prefix)/bin/brew shellenv)\""
+  if [[ $OSTYPE == "linux-gnu" ]]; then
+    append_once "${shellenv}" ~/.bash_profile
+    append_once "${shellenv}" ~/.bashrc
+  else
+    append_once "${shellenv}" ~/.zshrc
+  fi
 }
 
 ## ----------------------------------------
@@ -34,21 +53,38 @@ setup_github() {
   SSH_KEY_PATH=${SSH_DIR}/${FILENAME}
   SSH_KEY_PUB_PATH=${SSH_KEY_PATH}.pub
 
-  mkdir -p ${SSH_DIR}
-  cd ${SSH_DIR}
-  ssh-keygen -t ed25519 -f ${FILENAME} -C "ktanoooo1112@gmail.com"
-  ssh-keyscan -t ed25519 github.com >> "${SSH_DIR}"/known_hosts
-  cd ${HOME}
+  mkdir -p "${SSH_DIR}"
+  chmod 700 "${SSH_DIR}"
+
+  if [ ! -f "${SSH_KEY_PATH}" ]; then
+    ssh-keygen -t ed25519 -f "${SSH_KEY_PATH}" -C "ktanoooo1112@gmail.com"
+  fi
+
+  touch "${SSH_DIR}/known_hosts"
+  if ! ssh-keygen -F github.com -f "${SSH_DIR}/known_hosts" > /dev/null 2>&1; then
+    ssh-keyscan -t ed25519 github.com >> "${SSH_DIR}/known_hosts"
+  fi
+
+  touch "${SSH_DIR}/config"
+  if ! grep -q "^HOST github.com" "${SSH_DIR}/config"; then
 # Keep the following indententions.
-cat >> ${SSH_DIR}/config << EOF
+cat >> "${SSH_DIR}/config" << EOF
 HOST github.com
   HostName github.com
   User git
   IdentityFile ${SSH_KEY_PATH}
 EOF
-  brew install gh ghq
-  yes | gh auth login -p ssh -h github.com -s admin:public_key --web
-  gh ssh-key add ${SSH_KEY_PUB_PATH} --title "main_pc"
+  fi
+
+  command -v gh > /dev/null 2>&1 || brew install gh
+  command -v ghq > /dev/null 2>&1 || brew install ghq
+
+  # gh auth login opens a browser, so only ask when not already authenticated.
+  if ! gh auth status > /dev/null 2>&1; then
+    yes | gh auth login -p ssh -h github.com -s admin:public_key --web
+    gh ssh-key add "${SSH_KEY_PUB_PATH}" --title "main_pc"
+  fi
+
   git config --global user.name ktanoooo
   git config --global user.email "ktanoooo1112@gmail.com"
 
@@ -59,20 +95,28 @@ EOF
 ## Install zsh
 ## ----------------------------------------
 install_zsh() {
-  brew install zsh
-  if [[ $OSTYPE == "linux-gnu" ]]; then
-    ZSH_PATH="$(brew --prefix)/bin/zsh"
-    ZSH_SHARE_PATH="$(brew --prefix)/share/zsh"
-    echo `which zsh` | sudo tee -a /etc/shells
-  else
-    ZSH_PATH="/usr/local/bin/zsh"
-    ZSH_SHARE_PATH="/usr/local/share/zsh"
-    sudo sh -c "$(echo $ZSH_PATH)" >> /etc/shells
+  command -v zsh > /dev/null 2>&1 || brew install zsh
+
+  # Resolve through brew so this works on both Intel and Apple Silicon; the
+  # prefix differs (/usr/local vs /opt/homebrew) and hardcoding it left the
+  # login shell pointing at a path that does not exist.
+  ZSH_PATH="$(brew --prefix)/bin/zsh"
+  ZSH_SHARE_PATH="$(brew --prefix)/share/zsh"
+
+  # /etc/shells needs root, so tee rather than a plain redirect: with `sudo cmd
+  # >> file` the redirect still runs as the calling user and is denied.
+  if ! grep -qxF "${ZSH_PATH}" /etc/shells; then
+    echo "${ZSH_PATH}" | sudo tee -a /etc/shells > /dev/null
   fi
-  chmod 755 $ZSH_SHARE_PATH
+
+  chmod 755 "${ZSH_SHARE_PATH}"
   chmod 755 "${ZSH_SHARE_PATH}/site-functions"
-  sudo chsh -s $ZSH_PATH
-  sudo chsh $USER -s $ZSH_PATH
+
+  # Only the invoking user's shell. A bare `sudo chsh -s` targets root, which
+  # is how root ended up on a brew-managed zsh.
+  if [ "$(getent passwd "${USER}" | cut -d: -f7)" != "${ZSH_PATH}" ]; then
+    sudo chsh "${USER}" -s "${ZSH_PATH}"
+  fi
 }
 
 main() {
@@ -85,7 +129,14 @@ main() {
   install_brew
   setup_github
   install_zsh
-  exec $SHELL -l
+
+  set +x
+  echo
+  echo "Done. Open a new terminal to pick up the new login shell and brew's"
+  echo "PATH, then run:"
+  echo "  cd \$(ghq root)/github.com/ktanoooo/dotfiles"
+  echo "  ./setup.sh"
+  echo
 }
 
 # Main
