@@ -79,6 +79,11 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}' '+m:{[:upper:]}=
 ## ----------------------------------------
 ##  Keymap
 ## ----------------------------------------
+# zsh は -e も -v も無いと EDITOR の値を見て決め、nvim には vi が含まれるため
+# 行編集まで vi モードになる。emacs を明示する。以降の bindkey が main を
+# 書き換えるので、この行が先頭でなければならない。
+bindkey -e
+
 # Emacs 準拠。C-f/C-b は文字単位、単語単位は M-f/M-b に置く。
 # GUI アプリ側は AutoHotkey が同じキーで 1 文字移動を送るため、
 # ターミナルと GUI で CapsLock+f/b の挙動が揃う。
