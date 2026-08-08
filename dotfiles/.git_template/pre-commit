@@ -1,13 +1,173 @@
 #!/bin/bash
 
 ## ----------------------------------------
-##  Checking
+##  Global pre-commit hook
+##
+##  Wired through core.hooksPath, so this runs in every repository on the
+##  machine. Checks are kept fast, dependency free and language agnostic;
+##  linting, formatting and tests belong to a per-project hook runner.
+##
+##  Bypass a false positive with: git commit --no-verify
 ## ----------------------------------------
-# Check for .pem files
-MATCH=$(git diff --cached --name-only | grep '.*\.pem$')
-if [[ ! -z $MATCH ]]; then
-  echo "It looks like you're trying to commit a PEM file in:"
-  echo "$MATCH\n\n"
-  echo "Please check your code and remove any PEM files."
+
+MAX_FILE_SIZE=$((5 * 1024 * 1024))
+
+if [ -t 2 ]; then
+  RED=$'\033[31m'
+  BOLD=$'\033[1m'
+  RESET=$'\033[0m'
+else
+  RED=''
+  BOLD=''
+  RESET=''
+fi
+
+failed=0
+
+report() {
+  printf '%s%s[pre-commit] %s%s\n' "$RED" "$BOLD" "$1" "$RESET" >&2
+  failed=1
+}
+
+detail() {
+  printf '  %s\n' "$1" >&2
+}
+
+## Diff against the empty tree so the very first commit is covered too.
+if git rev-parse --verify HEAD >/dev/null 2>&1; then
+  against=HEAD
+else
+  against=$(git hash-object -t tree /dev/null)
+fi
+
+staged=()
+while IFS= read -r -d '' file; do
+  staged+=("$file")
+done < <(git diff --cached -z --name-only --diff-filter=ACM "$against")
+
+if [ ${#staged[@]} -eq 0 ]; then
+  exit 0
+fi
+
+## Only added lines are inspected, so pre-existing content in the repository
+## never blocks an unrelated commit.
+added_lines=$(git diff --cached -U0 --no-color "$against" | grep '^+' | grep -v '^+++')
+
+## ----------------------------------------
+##  Secret looking filenames
+## ----------------------------------------
+SECRET_FILE_RE='(^|/)(\.env(\.[A-Za-z0-9_-]+)?|id_rsa|id_dsa|id_ecdsa|id_ed25519)$|\.(pem|key|p12|pfx|jks|keystore|ppk|asc)$'
+SECRET_FILE_ALLOW_RE='\.(example|sample|template|dist|md)$|(^|/)(fixtures?|testdata)/'
+
+file_hit=0
+for file in "${staged[@]}"; do
+  if [[ $file =~ $SECRET_FILE_RE ]] && ! [[ $file =~ $SECRET_FILE_ALLOW_RE ]]; then
+    if [ "$file_hit" -eq 0 ]; then
+      report 'Credential file staged for commit:'
+      file_hit=1
+    fi
+    detail "$file"
+  fi
+done
+
+if [ "$file_hit" -ne 0 ]; then
+  detail ''
+  detail 'Remove it from the index, then add it to .gitignore:'
+  detail '  git restore --staged <file>'
+fi
+
+## ----------------------------------------
+##  Secret looking content
+## ----------------------------------------
+## name::extended-regexp. Patterns are anchored on vendor prefixes to keep
+## false positives near zero; entropy based heuristics are deliberately avoided.
+SECRET_RULES=(
+  'private key block::-----BEGIN [A-Z ]*PRIVATE KEY-----'
+  'AWS access key id::AKIA[0-9A-Z]{16}'
+  'GitHub token::(gh[oprsu]_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{50,})'
+  'Slack token::xox[abprs]-[A-Za-z0-9-]{10,}'
+  'Slack webhook::hooks\.slack\.com/services/[A-Z0-9]'
+  'Anthropic API key::sk-ant-[A-Za-z0-9_-]{20,}'
+  'OpenAI API key::(sk-[A-Za-z0-9]{48}|sk-proj-[A-Za-z0-9_-]{20,})'
+  'Google API key::AIza[0-9A-Za-z_-]{35}'
+  'PyPI token::pypi-AgEIcHlwaS5vcmc[A-Za-z0-9_-]{10,}'
+  'RubyGems token::rubygems_[a-f0-9]{48}'
+)
+
+secret_hit=0
+for rule in "${SECRET_RULES[@]}"; do
+  name="${rule%%::*}"
+  pattern="${rule#*::}"
+
+  ## -e is required: several patterns start with a hyphen.
+  printf '%s\n' "$added_lines" | grep -qE -e "$pattern" || continue
+
+  if [ "$secret_hit" -eq 0 ]; then
+    report 'Possible credential found in the staged changes:'
+    secret_hit=1
+  fi
+
+  ## The matching value is never echoed back; only its location is reported.
+  for file in "${staged[@]}"; do
+    if git diff --cached -U0 --no-color "$against" -- "$file" |
+      grep '^+' | grep -v '^+++' | grep -qE -e "$pattern"; then
+      detail "$name -> $file"
+    fi
+  done
+done
+
+if [ "$secret_hit" -ne 0 ]; then
+  detail ''
+  detail 'Move the value to an environment variable or a secret manager.'
+  detail 'If the value is already public, rotate it anyway.'
+fi
+
+## ----------------------------------------
+##  Unresolved merge conflict markers
+## ----------------------------------------
+## "=======" alone is skipped because it is valid Markdown and reStructuredText.
+CONFLICT_RE='^\+(<{7}|>{7}|\|{7}) '
+
+if printf '%s\n' "$added_lines" | grep -qE "$CONFLICT_RE"; then
+  report 'Unresolved merge conflict markers:'
+  for file in "${staged[@]}"; do
+    if git diff --cached -U0 --no-color "$against" -- "$file" |
+      grep -qE "$CONFLICT_RE"; then
+      detail "$file"
+    fi
+  done
+fi
+
+## ----------------------------------------
+##  Oversized files
+## ----------------------------------------
+size_hit=0
+for file in "${staged[@]}"; do
+  size=$(git cat-file -s ":$file" 2>/dev/null) || continue
+  [ "$size" -gt "$MAX_FILE_SIZE" ] || continue
+
+  ## Files handed to git-lfs are stored as pointers, so they are not a problem.
+  if git check-attr filter -- "$file" 2>/dev/null | grep -q 'filter: lfs$'; then
+    continue
+  fi
+
+  if [ "$size_hit" -eq 0 ]; then
+    report "File larger than $((MAX_FILE_SIZE / 1024 / 1024))MB staged for commit:"
+    size_hit=1
+  fi
+  detail "$((size / 1024 / 1024))MB  $file"
+done
+
+if [ "$size_hit" -ne 0 ]; then
+  detail ''
+  detail 'Track it with git-lfs instead:'
+  detail '  git lfs track "<pattern>"'
+fi
+
+## ----------------------------------------
+if [ "$failed" -ne 0 ]; then
+  printf '\n%sCommit aborted. Use --no-verify to override.%s\n\n' "$BOLD" "$RESET" >&2
   exit 1
 fi
+
+exit 0
