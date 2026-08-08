@@ -1,0 +1,5 @@
+# Protection for this repository must not depend on core.excludesfile. That
+# setting points at ~/.gitignore, which is itself a link into this repository
+# and so does not exist until setup.sh has run.
+*.pem
+*.key
