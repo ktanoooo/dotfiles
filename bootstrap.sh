@@ -11,6 +11,13 @@ set -eux
 ##  instead of starting over.
 ## ----------------------------------------
 
+# ghq takes its root from ghq.root in ~/.gitconfig, which is a link into this
+# repository and so does not exist yet at this point. Without this the clone
+# lands in ghq's default ~/ghq, while every later `ghq list` and `ghq root`
+# reads ~/.ghq and never finds it. Keep in sync with [ghq] root in
+# home/.gitconfig.
+export GHQ_ROOT="${HOME}/.ghq"
+
 ## ----------------------------------------
 ##  Helpers
 ## ----------------------------------------
@@ -134,7 +141,7 @@ main() {
   echo
   echo "Done. Open a new terminal to pick up the new login shell and brew's"
   echo "PATH, then run:"
-  echo "  cd \$(ghq root)/github.com/ktanoooo/dotfiles"
+  echo "  cd ${GHQ_ROOT}/github.com/ktanoooo/dotfiles"
   echo "  ./setup.sh"
   echo
 }
