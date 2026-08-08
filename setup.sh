@@ -199,6 +199,17 @@ install_tmux_plugin_manager() {
 }
 
 ## ----------------------------------------
+##  Herdr
+##  Installs to ~/.local/bin and self-updates through `herdr update`.
+##  symboliclink_dotfiles runs first, so ~/.config/herdr/config.toml is
+##  already linked here and Herdr skips onboarding instead of writing
+##  its own config over it.
+## ----------------------------------------
+install_herdr() {
+  curl -fsSL https://herdr.dev/install.sh | sh
+}
+
+## ----------------------------------------
 ##  Tig
 ## ----------------------------------------
 setup_tig() {
@@ -256,6 +267,7 @@ main() {
   install_heroku
   install_zinit
   install_tmux_plugin_manager
+  install_herdr
   setup_tig
   setup_gpg
   setup_for_myself
