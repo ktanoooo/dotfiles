@@ -23,7 +23,7 @@ dotfiles/
 │   ├── Brewfile.linux     linuxbrew 用
 │   ├── Chocolateyfile
 │   ├── Cargofile
-│   ├── Vsplug
+│   ├── VSCodefile
 │   └── README.md          自動化できないもの（Chrome 拡張など）
 ├── windows/               Windows 専用
 │   ├── bootstrap.ps1
@@ -139,7 +139,7 @@ rust・gpg・`chsh` まで見る `setup.sh` は、使い捨てのコンテナに
 
 ### 4. スクリプトは薄く、パッケージ一覧はデータに寄せる
 
-`Brewfile` `Cargofile` `Chocolateyfile` `Vsplug` は宣言的なリスト。
+`Brewfile` `Cargofile` `Chocolateyfile` `VSCodefile` は宣言的なリスト。
 
 ### 5. `exec` を実行の途中に置かない
 

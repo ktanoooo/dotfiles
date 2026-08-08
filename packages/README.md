@@ -41,7 +41,7 @@ https://chrome.google.com/webstore/detail/wappalyzer/gppongmhjkpfnbhagpmjfkannfb
 The lists in this directory are read by `setup.sh` at the repository root:
 
 ```
-./setup.sh install_packages install_cargo_pkgs install_vsplug
+./setup.sh install_packages install_cargo_pkgs install_vscode_extensions
 ```
 
 `Chocolateyfile` is Windows only and is read by `windows/bootstrap.ps1`.

@@ -26,7 +26,7 @@ install_databases
 install_rust
 install_packages
 install_cargo_pkgs
-install_vsplug
+install_vscode_extensions
 install_gcloud
 install_asdf_global
 install_devbox
@@ -192,19 +192,19 @@ install_cargo_pkgs() {
 ## ----------------------------------------
 ##  VSCode extensions
 ## ----------------------------------------
-install_vsplug() {
+install_vscode_extensions() {
   have code || { skip "code CLI not found"; return; }
 
   installed=$(code --list-extensions 2> /dev/null || true)
-  while read -r plugin; do
-    plugin=$(echo "${plugin}" | tr -d '[:space:]')
-    [ -n "${plugin}" ] || continue
-    if echo "${installed}" | grep -qix "${plugin}"; then
-      skip "ext ${plugin}"
+  while read -r extension; do
+    extension=$(echo "${extension}" | tr -d '[:space:]')
+    [ -n "${extension}" ] || continue
+    if echo "${installed}" | grep -qix "${extension}"; then
+      skip "ext ${extension}"
       continue
     fi
-    code --install-extension "${plugin}"
-  done < "${EXEPATH}/packages/Vsplug"
+    code --install-extension "${extension}"
+  done < "${EXEPATH}/packages/VSCodefile"
 }
 
 ## ----------------------------------------
