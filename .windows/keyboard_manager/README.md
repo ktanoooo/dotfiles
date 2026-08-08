@@ -34,12 +34,17 @@ flowchart TD
 
 | 元のキー | 変更後 | 目的 |
 |---|---|---|
-| CapsLock | F13 | AutoHotkey のトリガー用 |
+| CapsLock | 右 Ctrl | Mac の Control と同じ位置なので Ctrl として扱う |
 | 左 Ctrl | 左 Win | 左下 3 キーを Mac の並びへ |
 | 左 Win | 左 Alt | 同上 |
 | 左 Alt | 左 Ctrl | 同上 |
 | 無変換 | 半角/全角 | |
 | 変換 | 半角/全角 | |
+
+左右の Ctrl を分けているのが要点である。左 Ctrl（物理 Alt）は Mac の ⌘ と同じ位置で
+コピー & ペーストを担い、右 Ctrl（物理 CapsLock）は Mac の Control として
+AutoHotkey のカーソル移動を担う。アプリからはどちらも `Ctrl` に見えるが、
+AutoHotkey はフック層で左右を判別できる。
 
 # AutoHotkey
 
@@ -47,31 +52,43 @@ flowchart TD
 
 | 打鍵（物理キー） | スクリプトの記述 | 動作 |
 |---|---|---|
-| CapsLock + f / b | `F13 & f` / `F13 & b` | → / ← |
-| CapsLock + p / n | `F13 & p` / `F13 & n` | ↑ / ↓ |
-| CapsLock + e / w | `F13 & e` / `F13 & w` | End / Home |
+| CapsLock + f / b | `>^f` / `>^b` | → / ← |
+| CapsLock + p / n | `>^p` / `>^n` | ↑ / ↓ |
+| CapsLock + a / e | `>^a` / `>^e` | Home / End |
+| CapsLock + w | `>^w` | Home |
+| CapsLock + d / h | `>^d` / `>^h` | Delete / BackSpace |
 
 キーに刻印された名前とキーコードが食い違う点に注意する。Scancode Map によって、
-物理キー `CapsLock` が押されるとシステムには F13 が届く。ユーザーモードに CapsLock は
-到達しないため、`CapsLock & f` と書いても動かない。
+物理キー `CapsLock` が押されるとシステムには右 Ctrl が届く。`>^` は右 Ctrl だけを
+指す記法なので、コピー & ペーストに使う左 Ctrl（物理 Alt）には影響しない。
 
-F13 を選んだのは、物理キーボードに存在せず既定の動作を持たないためである。
-AutoHotkey の `F13 & f` という記法は左側のキーを修飾キー扱いにし、そのキー本来の
-機能を抑制する。何もしないキーに変換してから修飾キーとして使うことで、CapsLock
-本来のロック機能との競合を避けている。
+ここで割り当てていないキーは素通しされる。`CapsLock + g` が Ctrl+G として herdr の
+prefix に届くのはそのためで、macOS の Control が f/b/p/n などだけ OS に横取りされ、
+残りがアプリへ渡るのと同じ構造になっている。
+
+ターミナルは `#IfWinNotActive` で除外している。shell 自身が Ctrl のキーバインドを
+持っているためで、macOS でも Cocoa のカーソル移動はターミナルには効かない。
+
+## コメントは ASCII で書く
+
+AutoHotkey v1 は BOM の無いファイルを ANSI として読む。日本語コメントの UTF-8
+バイト列が誤解釈され、**直後の 1 行が無言で消える**。コメントの下に置いたホットキーが
+登録されず、原因の分かりにくい不具合になる。
 
 ## スタートアップへの登録
 
-`setup.ps1` はスクリプトをスタートアップへコピーするが、リポジトリの編集を直接反映させたい場合は symlink にする。
+スクリプトは**スタートアップフォルダへコピーする**。`setup.ps1` がこれを行う。
 
 ```
-filename=move_cursor_like_ecmas.ahk
-targetPath="$(ghq root)/github.com/ktanoooo/dotfiles/.windows/keyboard_manager/$filename"
-
-startupPath='/mnt/c/Users/ktanoooo/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup'
-cd $startupPath
-ln -sfnv $targetPath $filename
+cp .windows/keyboard_manager/move_cursor_like_ecmas.ahk \
+  "/mnt/c/Users/<user>/AppData/Roaming/Microsoft/Windows/Start Menu/Programs/Startup/"
 ```
+
+WSL 上のパス（`\\wsl.localhost\...`）を symlink やショートカットで参照してはいけない。
+ログオン直後は WSL が起動しておらずパスを解決できないため、AutoHotkey は起動のたびに
+スクリプトを読めずに終了する。
+
+リポジトリを編集したら上記のコピーをやり直し、AutoHotkey を再起動する。
 
 # 経緯
 

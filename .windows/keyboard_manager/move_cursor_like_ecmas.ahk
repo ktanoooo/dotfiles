@@ -1,30 +1,39 @@
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
-; 連打エラーを防ぐ
+; Comments must stay ASCII. AutoHotkey v1 reads a file without a BOM as ANSI,
+; and the raw UTF-8 bytes of a non-ASCII comment swallow the line that follows
+; it, silently dropping whichever hotkey sits underneath.
+
 ; https://sites.google.com/site/autohotkeyjp/reference/commands/-MaxHotkeysPerInterval
 #MaxHotkeysPerInterval 400
 
-; CapsLockとAppsKey入れ替え
-; powertoysに置き換え
-; vkF0::F13
-; F13::vkF0
+; CapsLock is remapped to right Ctrl by the Scancode Map. `>^` matches the
+; right side only, so the left Ctrl (the physical Alt key) keeps driving the
+; usual application shortcuts such as copy and paste.
+;
+; On macOS the OS intercepts Control plus f/b/p/n and passes everything else
+; through as a Control chord. Keys left unbound here behave the same way, which
+; is how CapsLock + g still reaches herdr as its Ctrl+G prefix.
 
-; mac風に入れ替え
-; powertoysに置き換え
-; LCtrl::LWin
-; LWin::LAlt
-; LAlt::LCtrl
+; The shell owns its own Ctrl bindings, so the terminal is left alone. macOS
+; behaves the same: the Cocoa text bindings do not apply inside a terminal.
+#IfWinNotActive ahk_exe WindowsTerminal.exe
 
-; Ecmas風矢印設定
-; 次の改行大事
+; Cursor movement
+>^f::Send {Right}
+>^b::Send {Left}
+>^p::Send {Up}
+>^n::Send {Down}
 
-F13 & f::Right
-F13 & b::Left
-F13 & p::Up
-F13 & n::Down
+; Line start and end
+>^a::Send {Home}
+>^e::Send {End}
+>^w::Send {Home}
 
-F13 & e::End
-F13 & w::Home
+; Deletion
+>^d::Send {Delete}
+>^h::Send {BackSpace}
+
+#IfWinActive
