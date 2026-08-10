@@ -1,38 +1,38 @@
 {
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[javascriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
   },
   "[rust]": {
     "editor.defaultFormatter": "rust-lang.rust-analyzer",
     "editor.formatOnSave": true,
     "editor.tabSize": 4,
-    "editor.insertSpaces": true
+    "editor.insertSpaces": true,
   },
   "[prisma]": {
-    "editor.defaultFormatter": "Prisma.prisma"
+    "editor.defaultFormatter": "Prisma.prisma",
   },
   "[proto3]": {
-    "editor.defaultFormatter": "xaver.clang-format"
+    "editor.defaultFormatter": "xaver.clang-format",
   },
   "[terraform]": {
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "hashicorp.terraform"
+    "editor.defaultFormatter": "hashicorp.terraform",
   },
   "[ruby]": {
-    "editor.defaultFormatter": "Shopify.ruby-lsp"
+    "editor.defaultFormatter": "Shopify.ruby-lsp",
   },
   "window.newWindowDimensions": "inherit",
   "clang-format.language.proto.style": "google",
@@ -48,10 +48,10 @@
   "ruby.useLanguageServer": true,
   "explorer.confirmDragAndDrop": false,
   "files.exclude": {
-    "**/.git": false
+    "**/.git": false,
   },
   "files.associations": {
-    "*.gs": "javascript"
+    "*.gs": "javascript",
   },
   "editor.wordWrap": "on",
   "prettier.prettierPath": "/usr/local/lib/node_modules/prettier",
@@ -61,10 +61,9 @@
   "editor.tabSize": 2,
   "security.workspace.trust.untrustedFiles": "newWindow",
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "editor.codeActionsOnSave": [
     "source.organizeImports",
-    "source.fixAll.eslint"
+    "source.fixAll.eslint",
   ],
   "window.zoomLevel": -1,
   "workbench.colorTheme": "Nord",
@@ -72,7 +71,7 @@
   // https://php-mania.com/memo/48
   "workbench.colorCustomizations": {
     "editorLineNumber.foreground": "#556e57",
-    "sideBar.foreground": "#77aca1"
+    "sideBar.foreground": "#77aca1",
   },
   // https://gist.github.com/junagao/f785ed77589246a3d063273b3a56f114
   "editor.tokenColorCustomizations": {
@@ -103,24 +102,23 @@
           "source.dockerfile",
           "source.powershell",
           "source.json.comments",
-          "entity.other.inherited-class.module.first.ruby"
+          "entity.other.inherited-class.module.first.ruby",
         ],
         "settings": {
-          "fontStyle": "italic"
-        }
-      }
-    ]
+          "fontStyle": "italic",
+        },
+      },
+    ],
   },
-  "bracket-pair-colorizer-2.depreciation-notice": false,
   // https://github.com/redhat-developer/vscode-yaml/issues/397#issuecomment-896049900
   "yaml.schemas": {
-    "https://json.schemastore.org/github-workflow": "/.github/workflows/**/*.yml"
+    "https://json.schemastore.org/github-workflow": "/.github/workflows/**/*.yml",
   },
   "github.copilot.nextEditSuggestions.enabled": true,
   "remote.autoForwardPortsSource": "hybrid",
   "dev.containers.defaultExtensions": [
     "eamodio.gitlens",
-    "oderwat.indent-rainbow"
+    "oderwat.indent-rainbow",
   ],
   "dotfiles.repository": "ktanoooo/dotfiles",
   "dotfiles.installCommand": "devcontainer/install.sh",
@@ -129,5 +127,15 @@
   "gitlens.ai.model": "vscode",
   "gitlens.ai.vscode.model": "copilot:gpt-4.1",
   "terminal.integrated.scrollback": 20000,
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "yaml.disableSchemaDetection": [
+    "**/docker-compose.yml",
+    "**/docker-compose.yaml",
+    "**/docker-compose.*.yml",
+    "**/docker-compose.*.yaml",
+    "**/compose.yml",
+    "**/compose.yaml",
+    "**/compose.*.yml",
+    "**/compose.*.yaml",
+  ],
 }
