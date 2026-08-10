@@ -184,7 +184,7 @@ install_cargo_pkgs() {
         skip "cargo ${pkg}"
         continue
       fi
-      cargo install "${pkg}"
+      cargo install --locked "${pkg}"
     done
 }
 
