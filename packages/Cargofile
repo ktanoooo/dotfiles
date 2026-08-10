@@ -1,16 +1,12 @@
 cargo-audit
 cargo-expand
-cargo-edit
 cargo-update
 cargo-outdated
-cargo-tree
-cargo-watch
 
 # Replacement
 sd        # sed
 bat       # cat
 eza       # ls
-ytop      # top, htop
 procs     # ps
 hexyl     # hexdump
 tokei     # cloc
