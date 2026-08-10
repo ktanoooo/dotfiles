@@ -163,9 +163,9 @@ install_rust() {
 install_packages() {
   have brew || { skip "brew not installed"; return; }
   if is_linux; then
-    brew bundle --file "${EXEPATH}/packages/Brewfile.linux"
+    brew bundle --no-upgrade --file "${EXEPATH}/packages/Brewfile.linux"
   else
-    brew bundle --file "${EXEPATH}/packages/Brewfile.darwin"
+    brew bundle --no-upgrade --file "${EXEPATH}/packages/Brewfile.darwin"
   fi
 }
 
