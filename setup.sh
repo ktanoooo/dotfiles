@@ -81,7 +81,6 @@ symboliclink_dotfiles() {
 
   bulk_symlink_target=(
     "./home/.aliases"
-    "./home/.claude"
     "./home/.git_template"
   )
   is_linux || bulk_symlink_target+=("./home/.trashrc")
