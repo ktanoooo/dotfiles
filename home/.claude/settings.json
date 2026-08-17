@@ -28,6 +28,8 @@
       "Bash(bun test:*)",
       "Bash(bun install:*)",
       "Bash(make:*)",
+      "Bash(gradle:*)",
+      "Bash(./gradlew:*)",
       "Bash(docker ps:*)",
       "Bash(docker images:*)",
       "Bash(docker logs:*)",
