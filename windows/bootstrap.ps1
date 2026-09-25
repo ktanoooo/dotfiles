@@ -12,13 +12,8 @@ $repo = "https://raw.githubusercontent.com/ktanoooo/dotfiles/main"
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Install Chocolatey packages
-$chocoPkgs = curl "$repo/packages/Chocolateyfile" -UseBasicParsing
-foreach ($pkg in ($chocoPkgs.Content -split "`n")) {
-  $pkg = $pkg.Trim()
-  if ([string]::IsNullOrEmpty($pkg) -or $pkg.StartsWith("#")) { continue }
-  Write-Host "Installing $pkg"
-  choco install $pkg -y
-}
+$chocoPkgs = (curl "$repo/packages/Chocolateyfile" -UseBasicParsing).Content -split '\s+' | Where-Object { $_ }
+choco install $chocoPkgs -y
 
 # Set WSL2 as default
 wsl --set-default-version 2
