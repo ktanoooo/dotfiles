@@ -125,6 +125,7 @@ CLAUDE.local.md
 !/.claude/CLAUDE.md
 !/.claude/settings.json
 !/.claude/skills/
+/.claude/skills/synced/
 !/.claude/commands/
 !/.claude/agents/
 !/.claude/hooks/
