@@ -33,6 +33,7 @@ install_devbox
 install_heroku
 install_zinit
 install_herdr
+install_uv
 setup_tig
 setup_gpg
 setup_vscode
@@ -323,6 +324,20 @@ install_herdr() {
     return
   fi
   curl -fsSL https://herdr.dev/install.sh | sh
+}
+
+## ----------------------------------------
+##  uv
+##  Installs to ~/.local/bin. On mac the Brewfile already provides it.
+##  UV_NO_MODIFY_PATH keeps the installer from appending to ~/.zshrc, which
+##  is a link into this repo and already puts ~/.local/bin on PATH.
+## ----------------------------------------
+install_uv() {
+  if have uv; then
+    skip "uv already installed"
+    return
+  fi
+  curl -LsSf https://astral.sh/uv/install.sh | env UV_NO_MODIFY_PATH=1 sh
 }
 
 ## ----------------------------------------
