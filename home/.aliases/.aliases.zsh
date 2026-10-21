@@ -9,8 +9,6 @@ alias -g X='| xargs'
 alias -g C='| wc -l'
 alias -g CP='| pbcopy'
 
-alias jq='gojq'  # An implementation of jq command written in Go language
-
 alias cdh='cd ~'
 alias ls='eza -h'
 alias ll='eza -alhg --group-directories-first --time-style=long-iso'
